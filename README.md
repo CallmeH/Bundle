@@ -67,6 +67,7 @@ probably will update later
 - Bundle: tableview with checkbox + putback buttons
 - View Controllers
 - LaunchScreenViewController
+- HomeViewController
 - <Add flow>
 - InputTodoViewController
 - AssignToEventViewController

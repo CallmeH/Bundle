@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-FN-qJx">
+                                <rect key="frame" x="0.0" y="-6" width="375" height="824"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-RF-0Qg">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="824"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLW-Hh-etE">
+                                                <rect key="frame" x="67.333333333333329" y="200" width="53" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Add">
+                                                    <color key="titleColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="D4b-bC-sKy" kind="show" id="mhD-Dj-fvP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.1647058824" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="top" secondItem="1HE-RF-0Qg" secondAttribute="top" constant="200" id="ba1-K6-uQ4"/>
+                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="centerX" secondItem="1HE-RF-0Qg" secondAttribute="centerX" id="jYH-Hr-EPc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyx-Bi-k9D">
+                                        <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="824"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUg-BM-PRb">
+                                                <rect key="frame" x="37" y="576" width="113" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Check in">
+                                                    <color key="titleColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="0OZ-oP-Tg4" kind="show" id="HCD-sE-wcX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.21960784310000001" green="0.59215686270000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="200" id="Jgn-yc-pP2"/>
+                                            <constraint firstItem="FUg-BM-PRb" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="zbV-hc-uxj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NWI-FN-qJx" secondAttribute="trailing" id="Ta6-wr-Po6"/>
+                            <constraint firstItem="NWI-FN-qJx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-50" id="k9d-5p-x8I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NWI-FN-qJx" secondAttribute="bottom" constant="-40" id="kxc-I4-hkp"/>
+                            <constraint firstItem="NWI-FN-qJx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x9w-HI-apZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="33.990147783251231"/>
+        </scene>
+        <!--Add-->
+        <scene sceneID="9UZ-Vn-0jN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add" id="D4b-bC-sKy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N0E-5k-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613" y="-47"/>
+        </scene>
+        <!--Checkin-->
+        <scene sceneID="Ni7-Ig-5tE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Checkin" id="0OZ-oP-Tg4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNE-9a-g0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="609" y="96"/>
+        </scene>
+    </scenes>
+</document>
