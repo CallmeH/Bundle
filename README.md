@@ -60,6 +60,7 @@ On the main page, a user can also see all todos to change trigger event, and rev
 probably will update later
 
 - Views
+
 - check & quit round icons
 - event selection collection view
 - TodoChoice: tableview <with delete function>
@@ -68,7 +69,7 @@ probably will update later
   - LaunchScreenViewController
   - HomeViewController
     - functionalities: add new todo, check in
-  - <Add flow>
+  - (Add flow)
     - InputTodoViewController
       - input textfield, cancel button, done button (for dragging)
       - provides: todo.todoTitle, event.preposition
@@ -76,7 +77,7 @@ probably will update later
       - label displaying "before" or "after", collectionview of cells with labels for all events
       - needs to know: todo.todoTitle, event.preposition
       - provides: event.eventName
-  - <Checkin flow>
+  - (Checkin flow)
     - CheckinViewController
       - label displaying "I'm about to..." or "I just did...", similar collectionview
       - provides: event.preposition
@@ -89,8 +90,8 @@ probably will update later
       - bundle icon, bundleName textfield, tableview with the selected todos from TodoChoiceViewController (cell containing a checkbox, putback button, and the todoTitle), importMoreTodos button, 
       - needs to know: event.preposition, event.eventName, todo.select
       - provides: bundle.bundleName, todo.status, bundle.completionTime
-  - <review flow>
-  - <view all flow>
+  - *(review flow)
+  - *(view all flow)
 - Other Classes
 - [list any other classes you will need]
 
