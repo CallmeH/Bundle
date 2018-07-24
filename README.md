@@ -11,7 +11,6 @@
 - [External services](#external-services)
 - [Views, View Controllers, and other Classes](#Views-View-Controllers-and-other-Classes)
 - [MVP Milestones](#mvp-milestones)
-- [Week 3](#week-3)
 - [Week 4](#week-4)
 - [Week 5](#week-5)
 - [Week 6](#week-6)
@@ -56,7 +55,7 @@ On the main page, a user can also see all todos to change trigger event, and rev
 - iOS push notifications + alarm? (not sure if these count as external service)
 - *additional feature: linking iOS calendar
 
-#### Views, View Controllers, and other Classes (? naming…?)
+#### Views, View Controllers, and other Classes
 
 probably will update later
 
@@ -66,35 +65,50 @@ probably will update later
 - TodoChoice: tableview <with delete function>
 - Bundle: tableview with checkbox + putback buttons
 - View Controllers
-- LaunchScreenViewController
-- HomeViewController
-- <Add flow>
-- InputTodoViewController
-- AssignToEventViewController
-- <Checkin flow>
-- CheckinViewController
-- TodoChoiceViewController
-- <bundle window>
-- BundleViewController
-- <review flow>
-- <view all flow>
+  - LaunchScreenViewController
+  - HomeViewController
+    - functionalities: add new todo, check in
+  - <Add flow>
+    - InputTodoViewController
+      - input textfield, cancel button, done button (for dragging)
+      - provides: todo.todoTitle, event.preposition
+    - AssignToEventViewController
+      - label displaying "before" or "after", collectionview of cells with labels for all events
+      - needs to know: todo.todoTitle, event.preposition
+      - provides: event.eventName
+  - <Checkin flow>
+    - CheckinViewController
+      - label displaying "I'm about to..." or "I just did...", similar collectionview
+      - provides: event.preposition
+    - TodoChoiceViewController
+      - label: "this time I'll complete...", tableview with the entire list of todos under this event (cell containing todoTitle & possibly a trash can button), quit button, done button
+      - needs to know: event.preposition, event.eventName
+      - provides: todo.select
+  - <bundle window>
+    - BundleViewController
+      - bundle icon, bundleName textfield, tableview with the selected todos from TodoChoiceViewController (cell containing a checkbox, putback button, and the todoTitle), importMoreTodos button, 
+      - needs to know: event.preposition, event.eventName, todo.select
+      - provides: bundle.bundleName, todo.status, bundle.completionTime
+  - <review flow>
+  - <view all flow>
 - Other Classes
 - [list any other classes you will need]
 
 #### Data models
 
 - event
-- before(true)/after(false)—preposition: Bool
-- what the event is (text)—eventName: String
+  - before(true)/after(false)—preposition: Bool
+  - what the event is (text)—eventName: String
 - todo
-- corresponding event—eventName: String
-- corresponding bundle—bundleName: String?
-- completed—status: Bool
+  - corresponding event—eventName: String
+  - corresponding bundle—bundleName: String?
+  - todoTitle: String
+  - completed or not—status: Bool
+  - selected or not—select: Bool
 - bundle
-- title—bundleName: String?
-- corresponding event (=corresponding event of the bigger todo list this bundle is selected from)—eventName: String
-- completed—status: Bool
-- completion time—completionTime: String <converted from Date(), see Notes app tutorial>
+  - bundleName: String?
+  - corresponding event (=corresponding event of the bigger todo list this bundle is selected from)—eventName: String
+  - completion time—completionTime: String <converted from Date(), see Notes app tutorial>
 
 [Back to top ^](#)
 
