@@ -8,37 +8,41 @@
 
 import UIKit
 
-class InputTodoViewController: UIViewController, UITextFieldDelegate {
-
-   
-    @IBOutlet weak var inputTextField: UITextField!
+class InputTodoViewController: UIViewController, UITextViewDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-        self.view.endEditing(true)
-        return true
-    }
-    
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.inputTextField.resignFirstResponder()
-    }
+    @IBOutlet weak var inputTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.inputTextField.delegate = self
+        self.inputTextView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        inputTextView.returnKeyType = .done
+        self.inputTextView.text = ""
+        self.inputTextView.textColor = UIColor(red: 238, green: 238, blue: 238, alpha: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.inputTextField.becomeFirstResponder()
+        self.inputTextView.becomeFirstResponder()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
 
+    @IBAction func cancelButton(_ sender: UIButton) {
+        self.inputTextView.resignFirstResponder()
+    }
     /*
     // MARK: - Navigation
 

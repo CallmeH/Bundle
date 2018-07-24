@@ -19,7 +19,14 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func unwindFromInput(_ segue: UIStoryboardSegue) {
+        print("unwind from input")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let initialViewController = storyboard.instantiateInitialViewController() else {fatalError("Cannot initialize storyboard")}
+        self.view.window?.rootViewController = initialViewController
+        self.view.window?.makeKeyAndVisible()
+    }
 
 }
 

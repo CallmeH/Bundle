@@ -18,36 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyu-Ft-1vA">
-                                <rect key="frame" x="25" y="35" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkP-Xx-2Gq">
-                                <rect key="frame" x="20" y="120" width="335" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyu-Ft-1vA">
+                                <rect key="frame" x="20" y="50" width="48" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="XM1-qC-k3h"/>
+                                    <constraint firstAttribute="width" constant="48" id="qkn-e0-2a0"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="tcZ-CC-mn2" eventType="touchUpInside" id="IKT-tc-PIJ"/>
+                                    <segue destination="DYg-oB-S3Z" kind="unwind" unwindAction="unwindFromInput:" id="uys-jF-px5"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1rm-al-OAx">
+                                <rect key="frame" x="67" y="166" width="240" height="213"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="textColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lkP-Xx-2Gq" firstAttribute="leading" secondItem="ViY-Et-jit" secondAttribute="leading" constant="20" id="3Hv-YB-f0S"/>
-                            <constraint firstItem="ViY-Et-jit" firstAttribute="trailing" secondItem="lkP-Xx-2Gq" secondAttribute="trailing" constant="20" id="KXC-Ta-5yY"/>
-                            <constraint firstItem="lkP-Xx-2Gq" firstAttribute="top" secondItem="ViY-Et-jit" secondAttribute="top" constant="100" id="zY1-fY-g24"/>
+                            <constraint firstItem="ViY-Et-jit" firstAttribute="leading" secondItem="lyu-Ft-1vA" secondAttribute="leading" constant="-20" id="5MW-MJ-iIu"/>
+                            <constraint firstItem="ViY-Et-jit" firstAttribute="top" secondItem="lyu-Ft-1vA" secondAttribute="top" constant="-30" id="yIA-dg-NZh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ViY-Et-jit"/>
                     </view>
                     <connections>
-                        <outlet property="inputTextField" destination="lkP-Xx-2Gq" id="dMo-0v-Yz6"/>
+                        <outlet property="inputTextView" destination="1rm-al-OAx" id="psP-r8-GbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g73-TR-fHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="DYg-oB-S3Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="135" y="36"/>
+            <point key="canvasLocation" x="133.59999999999999" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>
