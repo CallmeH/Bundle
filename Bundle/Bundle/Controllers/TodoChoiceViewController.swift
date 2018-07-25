@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class TodoChoiceViewController: UIViewController {
 
     override func viewDidLoad() {

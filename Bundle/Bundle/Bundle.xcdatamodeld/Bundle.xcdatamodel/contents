@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Bundle" representedClassName="Bundle" syncable="YES" codeGenerationType="class"/>
-    <entity name="BundleTodo" representedClassName="BundleTodo" syncable="YES" codeGenerationType="class"/>
-    <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class"/>
-    <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class"/>
+    <entity name="Bundle" representedClassName="Bundle" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="containsTodos" toMany="YES" deletionRule="Nullify" destinationEntity="BundledTodo" inverseName="copyToBundle" inverseEntity="BundledTodo" syncable="YES"/>
+    </entity>
+    <entity name="BundledTodo" representedClassName="BundledTodo" parentEntity="Todo" syncable="YES" codeGenerationType="class">
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="copyToBundle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bundle" inverseName="containsTodos" inverseEntity="Bundle" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
+        <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="preposition" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="todoArray" toMany="YES" deletionRule="Nullify" destinationEntity="Todo" inverseName="belongToEvent" inverseEntity="Todo" syncable="YES"/>
+    </entity>
+    <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
+        <attribute name="isRecycled" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="belongToEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="todoArray" inverseEntity="Event" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="Todo" positionX="-54" positionY="-9" width="128" height="45"/>
-        <element name="Bundle" positionX="-36" positionY="9" width="128" height="45"/>
-        <element name="BundleTodo" positionX="-18" positionY="27" width="128" height="45"/>
+        <element name="Event" positionX="-65" positionY="-135" width="128" height="103"/>
+        <element name="Todo" positionX="171" positionY="-153" width="128" height="90"/>
+        <element name="Bundle" positionX="-65" positionY="0" width="128" height="88"/>
+        <element name="BundledTodo" positionX="162" positionY="24" width="128" height="73"/>
     </elements>
 </model>
