@@ -14,12 +14,9 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     //√ cancel button--unwind set in Home
     @IBOutlet weak var inputTextView: UITextView!
     //complete icon for dragging
-    //now I need 3 buttons for before/after?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.inputTextView.delegate = self
     }
     
@@ -44,12 +41,8 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
-
-    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        self.inputTextView.resignFirstResponder()
-    }
     
-    //toggle resuable
+    //√toggle resuable
     @IBAction func reusableToggled(_ sender: UISwitch) {
 //        sender.isOn ? todoAtInput.isRecycled = true : todoAtInput.isRecycled = false
         if sender.isOn {
@@ -61,38 +54,52 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    
-    //passing preposition to AssignToEvent
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {return}
-        func inputToAssign(preposition: String) {
-            print("\(preposition) tapped")
-            let destination = segue.destination as! AssignToEventViewController
-            destination.prepositionStatus = preposition.capitalized
-            destination.todoAtAssign = todoAtInput
-        }
-        switch identifier {
-        case "beforeAssign":
-            inputToAssign(preposition: "before")
-        case "afterAssign":
-            inputToAssign(preposition: "after")
-        case "whenAssign":
-            inputToAssign(preposition: "when")
+    //before/when/after
+    @IBOutlet weak var prepositionChoice: UISegmentedControl!
+    var prepositionStatus = prepType.before
+    @IBAction func prepositionTapped(_ sender: UISegmentedControl) {
+        switch prepositionChoice.selectedSegmentIndex {
+        case 0:
+            prepositionStatus = .before
+        case 1:
+            prepositionStatus = .when
+        case 2:
+            prepositionStatus = .after
         default:
-            inputToAssign(preposition: "Swipe to choose when")
+            prepositionStatus = .before
         }
+        performSegue(withIdentifier: "toAssign", sender: Any?.self)
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    //√ passing preposition to AssignToEvent
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        self.inputTextView.resignFirstResponder()
+        guard segue.identifier != nil else {return}
+        let destination = segue.destination as! AssignToEventViewController
+        destination.prepositionStatus = prepositionStatus
+//        func inputToAssign(preposition: prepType) {
+//            print("\(preposition) tapped")
+//            let destination = segue.destination as! AssignToEventViewController
+//            destination.prepositionStatus = preposition.displayName
+//            destination.todoAtAssign = todoAtInput
+//        }
+//        switch identifier {
+//        case "beforeAssign":
+//            inputToAssign(preposition: .before)
+//        case "afterAssign":
+//            inputToAssign(preposition: .after)
+//        case "whenAssign":
+//            inputToAssign(preposition: .when)
+//        default:
+//            inputToAssign(preposition: .when)
+//        }
     }
-    */
-
+    
+    // unwind from Assign
+    @IBAction func unwindFromAssigntoInput(_ segue: UIStoryboardSegue) {
+        print("unwind from assign")
+    }
+    
 }

@@ -12,19 +12,17 @@ import CoreData
 
 enum prepType: Int16 {
     case before = 0
-    case after = 1
-    case when = 2
+    case when = 1
+    case after = 2
     var displayName: String {
-        switch rawValue {
-        case 0:
+        if rawValue == 0 {
             return "Before"
-        case 1:
-            return "After"
-        case 2:
+        } else if rawValue == 1 {
             return "When"
-        default:
-            return "not accepteed prepType"
-            
+        } else if rawValue == 2 {
+            return "After"
+        } else {
+            return "Swipe to set up trigger time"
         }
     }
 }

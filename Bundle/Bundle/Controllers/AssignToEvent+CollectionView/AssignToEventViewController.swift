@@ -14,8 +14,6 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlo
     
     @IBOutlet weak var selectEventsCollectionView: UICollectionView!
     
-    
-    var prepositionStatus: String? = nil
     var todoAtAssign: Todo? = nil
     
     override func viewDidLoad() {
@@ -25,8 +23,8 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlo
         selectEventsCollectionView.dataSource = self
         
         // Do any additional setup after loading the view.
-        self.prepositionDisplayLabel.text = prepositionStatus
-        
+        self.prepositionDisplayLabel.text = prepositionStatus.displayName
+        prepositionChoice.selectedSegmentIndex = Int(prepositionStatus.rawValue)
         let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
         alignedFlowLayout?.horizontalAlignment = .left
         alignedFlowLayout?.verticalAlignment = .top
@@ -37,6 +35,29 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlo
         // Dispose of any resources that can be recreated.
     }
     
+    // before/when/after
+    //    var prepositionStatus: String = prepType.when.displayName
+    var prepositionStatus: prepType = .before
+    //    var prepositionStatus: String? = nil
+    @IBOutlet weak var prepositionChoice: UISegmentedControl!
+    @IBAction func prepositionTapped(_ sender: UISegmentedControl) {
+        switch prepositionChoice.selectedSegmentIndex {
+        case 0:
+            prepositionStatus = .before
+            self.prepositionDisplayLabel.text = prepType.before.displayName
+        case 1:
+            prepositionStatus = .when
+            self.prepositionDisplayLabel.text = prepType.when.displayName
+        case 2:
+            prepositionStatus = .after
+            self.prepositionDisplayLabel.text = prepType.after.displayName
+        default:
+            print("no change")
+        }
+    }
+    
+    
+    //collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return EventPlaceholder.count
     }

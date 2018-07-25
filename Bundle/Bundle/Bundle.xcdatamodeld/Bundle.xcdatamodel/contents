@@ -12,7 +12,7 @@
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="preposition" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="preposition" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="todoArray" toMany="YES" deletionRule="Nullify" destinationEntity="Todo" inverseName="belongToEvent" inverseEntity="Todo" syncable="YES"/>
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
@@ -21,9 +21,9 @@
         <relationship name="belongToEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="todoArray" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-65" positionY="-135" width="128" height="103"/>
-        <element name="Todo" positionX="171" positionY="-153" width="128" height="90"/>
         <element name="Bundle" positionX="-65" positionY="0" width="128" height="88"/>
         <element name="BundledTodo" positionX="162" positionY="24" width="128" height="73"/>
+        <element name="Event" positionX="-65" positionY="-135" width="128" height="105"/>
+        <element name="Todo" positionX="171" positionY="-153" width="128" height="90"/>
     </elements>
 </model>

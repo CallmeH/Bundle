@@ -24,6 +24,7 @@
 		7964137B2106919800BD18A8 /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137A2106919800BD18A8 /* Add.storyboard */; };
 		7964137D2106919F00BD18A8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137C2106919F00BD18A8 /* Checkin.storyboard */; };
 		79CDE8F32107E53C009DB3F0 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */; };
+		79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */; };
 		9F3299CF00D41A68DDB5586D /* Pods_BundleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */; };
 		D1E8A22875348FBE4E433BD5 /* Pods_BundleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */; };
 		DBFA97AB7BD8771758F97FD7 /* Pods_Bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */; };
@@ -75,6 +76,8 @@
 		7964137C2106919F00BD18A8 /* Checkin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
 		7964137E2107B4F600BD18A8 /* Attribution.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Attribution.md; sourceTree = "<group>"; };
 		79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		79CDE8F621085572009DB3F0 /* Plans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Plans.md; sourceTree = "<group>"; };
+		79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bundle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A82A62ECC94B647BACDAC /* Pods-BundleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BundleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BundleTests/Pods-BundleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BundleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +150,7 @@
 			children = (
 				7964133A21068E6700BD18A8 /* AppDelegate.swift */,
 				7964137E2107B4F600BD18A8 /* Attribution.md */,
+				79CDE8F621085572009DB3F0 /* Plans.md */,
 				7964136D21068F0600BD18A8 /* Controllers */,
 				7964137821068FFB00BD18A8 /* Storyboards */,
 				796413792106901400BD18A8 /* Helper */,
@@ -180,10 +184,9 @@
 			children = (
 				7964133C21068E6700BD18A8 /* HomeViewController.swift */,
 				7964136B21068F0200BD18A8 /* InputTodoViewController.swift */,
-				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
-				79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */,
+				79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */,
 				7964137221068F6C00BD18A8 /* CheckinViewController.swift */,
-				7964137421068F7600BD18A8 /* TodoChoiceViewController.swift */,
+				79F479BB2109224500B40FBA /* TodoChoice+TableView */,
 				7964137021068F6000BD18A8 /* BundleViewController.swift */,
 			);
 			path = Controllers;
@@ -206,6 +209,24 @@
 				7964137621068FE800BD18A8 /* CoreDataHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		79F479BB2109224500B40FBA /* TodoChoice+TableView */ = {
+			isa = PBXGroup;
+			children = (
+				7964137421068F7600BD18A8 /* TodoChoiceViewController.swift */,
+				79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */,
+			);
+			path = "TodoChoice+TableView";
+			sourceTree = "<group>";
+		};
+		79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
+				79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */,
+			);
+			path = "AssignToEvent+CollectionView";
 			sourceTree = "<group>";
 		};
 		E2FD376CED674FB05D91D176 /* Pods */ = {
@@ -440,6 +461,7 @@
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,
 				7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */,
 				7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */,
+				79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */,
 				79CDE8F32107E53C009DB3F0 /* TagCollectionViewCell.swift in Sources */,
 				7964136F21068F5400BD18A8 /* AssignToEventViewController.swift in Sources */,
 				7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */,
