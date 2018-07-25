@@ -44,7 +44,7 @@ class CheckinViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromTodoChoice(_ segue: UIStoryboardSegue) {
+    @IBAction func unwindToCheckin(_ segue: UIStoryboardSegue) {
     }
     
     /*
