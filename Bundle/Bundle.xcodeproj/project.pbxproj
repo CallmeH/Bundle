@@ -23,7 +23,10 @@
 		7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964137621068FE800BD18A8 /* CoreDataHelper.swift */; };
 		7964137B2106919800BD18A8 /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137A2106919800BD18A8 /* Add.storyboard */; };
 		7964137D2106919F00BD18A8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137C2106919F00BD18A8 /* Checkin.storyboard */; };
-		79CDE8F32107E53C009DB3F0 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */; };
+		796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */; };
+		796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */; };
+		796D3105210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */; };
+		796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3106210A31A4004C0FCA /* FlowLayout.swift */; };
 		79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */; };
 		9F3299CF00D41A68DDB5586D /* Pods_BundleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */; };
 		D1E8A22875348FBE4E433BD5 /* Pods_BundleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */; };
@@ -75,7 +78,10 @@
 		7964137A2106919800BD18A8 /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		7964137C2106919F00BD18A8 /* Checkin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
 		7964137E2107B4F600BD18A8 /* Attribution.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Attribution.md; sourceTree = "<group>"; };
-		79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousReusableFunctions.swift; sourceTree = "<group>"; };
+		796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTagsCollectionViewCell.swift; sourceTree = "<group>"; };
+		796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTagsCollectionViewCell.xib; sourceTree = "<group>"; };
+		796D3106210A31A4004C0FCA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		79CDE8F621085572009DB3F0 /* Plans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Plans.md; sourceTree = "<group>"; };
 		79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bundle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				7964137621068FE800BD18A8 /* CoreDataHelper.swift */,
+				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -224,7 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
-				79CDE8F22107E53C009DB3F0 /* TagCollectionViewCell.swift */,
+				796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */,
+				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
+				796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */,
 			);
 			path = "AssignToEvent+CollectionView";
 			sourceTree = "<group>";
@@ -354,6 +363,7 @@
 				7964134821068E6B00BD18A8 /* LaunchScreen.storyboard in Resources */,
 				7964134521068E6B00BD18A8 /* Assets.xcassets in Resources */,
 				7964137B2106919800BD18A8 /* Add.storyboard in Resources */,
+				796D3105210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib in Resources */,
 				7964134021068E6700BD18A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,9 +470,11 @@
 				7964136C21068F0200BD18A8 /* InputTodoViewController.swift in Sources */,
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,
 				7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */,
+				796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */,
+				796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */,
+				796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */,
 				7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */,
 				79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */,
-				79CDE8F32107E53C009DB3F0 /* TagCollectionViewCell.swift in Sources */,
 				7964136F21068F5400BD18A8 /* AssignToEventViewController.swift in Sources */,
 				7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */,
 			);

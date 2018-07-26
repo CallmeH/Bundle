@@ -44,6 +44,10 @@ class CheckinViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
     @IBAction func unwindToCheckin(_ segue: UIStoryboardSegue) {
     }
     

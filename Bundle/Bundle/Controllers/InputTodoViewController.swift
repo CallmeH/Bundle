@@ -28,7 +28,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     // call keyboard automatically
     override func viewWillAppear(_ animated: Bool) {
         inputTextView.returnKeyType = .done
-        self.inputTextView.text = ""
+//        self.inputTextView.text = ""
         self.inputTextView.textColor = UIColor(red: 238, green: 238, blue: 238, alpha: 1)
     }
     
@@ -38,6 +38,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             textView.resignFirstResponder()
+            performSegue(withIdentifier: "toAssign", sender: Any?.self)
         }
         return true
     }
@@ -55,21 +56,21 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     }
     
     //before/when/after
-    @IBOutlet weak var prepositionChoice: UISegmentedControl!
-    var prepositionStatus = prepType.before
-    @IBAction func prepositionTapped(_ sender: UISegmentedControl) {
-        switch prepositionChoice.selectedSegmentIndex {
-        case 0:
-            prepositionStatus = .before
-        case 1:
-            prepositionStatus = .when
-        case 2:
-            prepositionStatus = .after
-        default:
-            prepositionStatus = .before
-        }
-        performSegue(withIdentifier: "toAssign", sender: Any?.self)
-    }
+//    @IBOutlet weak var prepositionChoice: MySelectableSegmentedControl!
+//    var prepositionStatus = prepType.before
+//    @IBAction func prepositionTapped(_ sender: MySelectableSegmentedControl) {
+//        switch prepositionChoice.selectedSegmentIndex {
+//        case 0:
+//            prepositionStatus = .before
+//        case 1:
+//            prepositionStatus = .when
+//        case 2:
+//            prepositionStatus = .after
+//        default:
+//            prepositionStatus = .before
+//        }
+//        performSegue(withIdentifier: "toAssign", sender: Any?.self)
+//    }
     
     
     
@@ -77,8 +78,8 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.inputTextView.resignFirstResponder()
         guard segue.identifier != nil else {return}
-        let destination = segue.destination as! AssignToEventViewController
-        destination.prepositionStatus = prepositionStatus
+//        let destination = segue.destination as! AssignToEventViewController
+//        destination.prepositionStatus = prepositionStatus
 //        func inputToAssign(preposition: prepType) {
 //            print("\(preposition) tapped")
 //            let destination = segue.destination as! AssignToEventViewController

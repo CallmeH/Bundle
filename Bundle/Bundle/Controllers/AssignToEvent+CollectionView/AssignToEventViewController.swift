@@ -8,10 +8,9 @@
 
 import UIKit
 import AlignedCollectionViewFlowLayout
-class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class AssignToEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var prepositionDisplayLabel: UILabel!
-    
     @IBOutlet weak var selectEventsCollectionView: UICollectionView!
     
     var todoAtAssign: Todo? = nil
@@ -22,12 +21,17 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlo
         selectEventsCollectionView.delegate = self
         selectEventsCollectionView.dataSource = self
         
+//        let cellNib = UINib(nibName: "EventTagsCollectionViewCell", bundle: nil)
+//        self.collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "tagCell")
+//        self.collectionView.backgroundColor = UIColor.clearColor()
+        
         // Do any additional setup after loading the view.
         self.prepositionDisplayLabel.text = prepositionStatus.displayName
         prepositionChoice.selectedSegmentIndex = Int(prepositionStatus.rawValue)
-        let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
-        alignedFlowLayout?.horizontalAlignment = .left
-        alignedFlowLayout?.verticalAlignment = .top
+//        let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
+//        alignedFlowLayout?.horizontalAlignment = .left
+//        alignedFlowLayout?.verticalAlignment = .top
+//        self.collectionVie
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,15 +67,15 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! EventTagsCollectionViewCell
         let event = EventPlaceholder[indexPath.item]
         cell.eventTag.text = event
-        cell.backgroundColor = .red
+//        cell.backgroundColor = .red
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 50)
+        return CGSize(width: 200, height: 50)
     }
 
     /*
