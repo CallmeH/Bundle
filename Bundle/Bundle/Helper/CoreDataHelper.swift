@@ -49,6 +49,11 @@ struct CoreDataHelper {
         return todo
     }
     
+    static func newEvent() -> Event {
+        let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
+        return event
+    }
+    
     static func save() {
         do {
             try context.save()
@@ -57,13 +62,13 @@ struct CoreDataHelper {
         }
     }
     
-//    static func deleteTodo(todo: Todo) {
-//        context.delete(todo)
-//
-//        save()
-//    }
+    static func deleteTodo(todo: Todo) {
+        context.delete(todo)
+
+        save()
+    }
     
-    static func retrieveTodo() -> [Todo] {
+    static func retrieveAllTodo() -> [Todo] {
         do {
             let gofetch = NSFetchRequest<Todo>(entityName: "Todo")
             let results = try context.fetch(gofetch)
@@ -74,7 +79,7 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveEvent() -> [Event] {
+    static func retrieveAllEvent() -> [Event] {
         do {
             let gofetch = NSFetchRequest<Event>(entityName: "Event")
             let results = try context.fetch(gofetch)
@@ -85,7 +90,7 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveBundle() -> [Bundle] {
+    static func retrieveAllBundle() -> [Bundle] {
         do {
             let gofetch = NSFetchRequest<Bundle>(entityName: "Bundle")
             let results = try context.fetch(gofetch)
@@ -96,6 +101,29 @@ struct CoreDataHelper {
         }
     }
     
+    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
+        do {
+            let fetchSub = NSFetchRequest<Todo>(entityName: "Bundle.containsTodos")
+//            fetchSub.predicate = NSPredicate(format: "= %@", <#T##args: CVarArg...##CVarArg#>)
+            let results = try context.fetch(fetchSub)
+            return results
+            /*
+             let predicate = NSPredicate(format: "categoryName == %@", "yourCategoryHere")
+             let fetchSubcategory = NSFetchRequest(entityName: "Subcategory")
+             fetchSubcategory.predicate = predicate
+             if let subCategoryResults = try context.executeFetchRequest(fetchSubcategory) as? [Subcategory] {
+             //do stuff
+             }
+             let fetchItem = NSFetchRequest(entityName: "Item")
+             fetchItem.predicate = predicate
+             if let itemResults = try context.executeFetchRequest(fetchItem) as? [Item] {
+             //do stuff
+             */
+        } catch let error {
+            print("couldn't fetch todo in bundle\(bundleName) due to \(error.localizedDescription)")
+            return []
+        }
+    }
     //retrieve an unsaved session from before
 }
 

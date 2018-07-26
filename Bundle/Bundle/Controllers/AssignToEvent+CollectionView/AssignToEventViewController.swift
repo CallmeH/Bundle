@@ -13,7 +13,7 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var prepositionDisplayLabel: UILabel!
     @IBOutlet weak var selectEventsCollectionView: UICollectionView!
     
-    var todoAtAssign: Todo? = nil
+    var todoAtAssign: Todo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,7 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
 //        alignedFlowLayout?.horizontalAlignment = .left
 //        alignedFlowLayout?.verticalAlignment = .top
 //        self.collectionVie
+        print(todoAtAssign?.title)
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,6 +78,11 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 50)
     }
+    
+    
+//    func placeholderCellTappedSegueBack {
+//        
+//    }
 
     /*
     // MARK: - Navigation

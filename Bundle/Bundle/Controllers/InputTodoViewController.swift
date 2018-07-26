@@ -18,6 +18,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextView.delegate = self
+        self.inputTextView.text = ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,7 +29,6 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     // call keyboard automatically
     override func viewWillAppear(_ animated: Bool) {
         inputTextView.returnKeyType = .done
-//        self.inputTextView.text = ""
         self.inputTextView.textColor = UIColor(red: 238, green: 238, blue: 238, alpha: 1)
     }
     
@@ -38,6 +38,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             textView.resignFirstResponder()
+            guard inputTextView.text != "" else { return true }
             performSegue(withIdentifier: "toAssign", sender: Any?.self)
         }
         return true
@@ -77,9 +78,17 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     //√ passing preposition to AssignToEvent
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.inputTextView.resignFirstResponder()
+        
+        let titleAndRecycle = CoreDataHelper.newTodo()
+        titleAndRecycle.title = inputTextView.text
+        titleAndRecycle.isRecycled = todoAtInput?.isRecycled ?? false
+        CoreDataHelper.save()
+        
+
         guard segue.identifier != nil else {return}
-//        let destination = segue.destination as! AssignToEventViewController
-//        destination.prepositionStatus = prepositionStatus
+        let destination = segue.destination as! AssignToEventViewController
+        destination.todoAtAssign = titleAndRecycle
+        
 //        func inputToAssign(preposition: prepType) {
 //            print("\(preposition) tapped")
 //            let destination = segue.destination as! AssignToEventViewController
