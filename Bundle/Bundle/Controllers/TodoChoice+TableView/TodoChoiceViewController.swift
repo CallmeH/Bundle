@@ -7,14 +7,15 @@
 //
 
 import UIKit
-class TodoChoiceViewController: UIViewController {
+class TodoChoiceViewController: UIViewController/*, UITableViewDataSource, UITableViewDelegate*/ {
 
     var currentEvent: Event?
     
+    @IBOutlet weak var choiceTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentEvent?.name)
-        print(currentEvent?.todoArray)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -36,5 +37,21 @@ class TodoChoiceViewController: UIViewController {
     
     @IBAction func unwindToTodoChoice(_ segue: UIStoryboardSegue) {
     }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return currentEvent?.todoArray?.count ?? 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+////        let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! TodoChoiceTableViewCell
+////        let accessTodo = currentEvent?.todoArray
+////        cell.todoForEvent.text = accessTodo![indexPath.row].title
+//////        cell.notePreview.text = accessnote.content
+//////        cell.noteModificationTimeLabel.text = accessnote.modificationTime?.convertToString() ?? "unknown"
+////
+////
+////        return cell
+//    }
+    
 
 }

@@ -197,8 +197,16 @@
                                                         <constraint firstItem="cr5-kV-X29" firstAttribute="leading" secondItem="K8Q-EP-1wi" secondAttribute="leadingMargin" constant="10" id="qEQ-fw-96f"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="todoForEvent" destination="cr5-kV-X29" id="rD9-aP-VP8"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="KQs-iK-DOo" id="e51-Bj-UqR"/>
+                                            <outlet property="delegate" destination="KQs-iK-DOo" id="TYc-nu-Q5N"/>
+                                            <outlet property="prefetchDataSource" destination="KQs-iK-DOo" id="5bc-al-pzo"/>
+                                        </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d1-50-rLt" userLabel="ActionButtons">
                                         <rect key="frame" x="10" y="460.5" width="317.5" height="57.5"/>
@@ -252,6 +260,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KtI-3v-jBe"/>
                     </view>
+                    <connections>
+                        <outlet property="choiceTableView" destination="aqa-Gi-eJS" id="Doi-EC-S62"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdD-SZ-5g9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HZz-Xa-CGB" userLabel="Exit" sceneMemberID="exit"/>
