@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,7 +74,7 @@
                                             <constraint firstItem="Eeh-YL-dCs" firstAttribute="width" secondItem="lcO-GB-Xnk" secondAttribute="width" multiplier="0.3" id="gRi-PB-A4S"/>
                                         </constraints>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1rm-al-OAx">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1rm-al-OAx">
                                         <rect key="frame" x="0.0" y="60" width="337.5" height="291"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <color key="textColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +128,7 @@
                                 </constraints>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="XuI-8S-8SB" kind="unwind" unwindAction="unwindFromAssigntoInput:" id="qUq-5A-Sw8"/>
+                                    <segue destination="XuI-8S-8SB" kind="unwind" identifier="AssigntoInput" unwindAction="unwindFromAssigntoInput:" id="qUq-5A-Sw8"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QVe-32-BWd">
@@ -160,8 +161,26 @@
                                             <constraint firstItem="ZXe-sA-e7v" firstAttribute="centerX" secondItem="CDv-ue-JHQ" secondAttribute="centerX" id="OvC-IB-2Lw"/>
                                         </constraints>
                                     </stackView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gng-np-hl9" customClass="AssignCollectionView" customModule="Bundle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="337.5" height="522.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AL-Uy-vLh" userLabel="New Event View">
+                                        <rect key="frame" x="0.0" y="60" width="337.5" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a new event..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l0d-ru-MEY" userLabel="Input New Event">
+                                                <rect key="frame" x="17" y="10" width="303.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="l0d-ru-MEY" firstAttribute="centerX" secondItem="7AL-Uy-vLh" secondAttribute="centerX" id="75d-Nm-WSg"/>
+                                            <constraint firstItem="l0d-ru-MEY" firstAttribute="centerY" secondItem="7AL-Uy-vLh" secondAttribute="centerY" id="Esk-lD-yeT"/>
+                                            <constraint firstItem="l0d-ru-MEY" firstAttribute="width" secondItem="7AL-Uy-vLh" secondAttribute="width" multiplier="0.9" id="Fax-jp-bs2"/>
+                                            <constraint firstAttribute="height" constant="50" id="ok1-hI-Z9c"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gng-np-hl9">
+                                        <rect key="frame" x="0.0" y="120" width="337.5" height="406.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxW-Kc-bSm" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
                                             <size key="itemSize" width="50" height="50"/>
@@ -178,7 +197,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtO-0p-ujm">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="51.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="91.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -197,9 +216,43 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-7Q-SP4" userLabel="ActionButtons">
+                                        <rect key="frame" x="0.0" y="536.5" width="337.5" height="46"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Bh-9c-YmG">
+                                                <rect key="frame" x="10" y="4.5" width="37" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="9Bh-9c-YmG" secondAttribute="height" multiplier="1:1" id="3Bu-Zc-aZP"/>
+                                                </constraints>
+                                                <state key="normal" image="icons8-close-window-50"/>
+                                                <connections>
+                                                    <segue destination="XuI-8S-8SB" kind="unwind" identifier="addingCanceled" unwindAction="unwindFromInput:" id="gUy-i1-iuO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APQ-Bn-qZm">
+                                                <rect key="frame" x="290.5" y="4.5" width="37" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="APQ-Bn-qZm" secondAttribute="height" multiplier="1:1" id="lLQ-rd-9FH"/>
+                                                </constraints>
+                                                <state key="normal" image="icons8-checked-checkbox-50"/>
+                                                <connections>
+                                                    <segue destination="XuI-8S-8SB" kind="unwind" identifier="eventsAssigned" unwindAction="unwindFromInput:" id="Vdv-aW-f7t"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="9Bh-9c-YmG" firstAttribute="leading" secondItem="eBg-7Q-SP4" secondAttribute="leading" constant="10" id="G6k-TU-OMf"/>
+                                            <constraint firstItem="9Bh-9c-YmG" firstAttribute="centerY" secondItem="eBg-7Q-SP4" secondAttribute="centerY" id="R2a-Mo-FkP"/>
+                                            <constraint firstAttribute="trailing" secondItem="APQ-Bn-qZm" secondAttribute="trailing" constant="10" id="ccg-fl-fkx"/>
+                                            <constraint firstItem="APQ-Bn-qZm" firstAttribute="centerY" secondItem="eBg-7Q-SP4" secondAttribute="centerY" id="lmU-uZ-gOE"/>
+                                            <constraint firstItem="APQ-Bn-qZm" firstAttribute="height" secondItem="eBg-7Q-SP4" secondAttribute="height" multiplier="0.8" id="qfF-jP-89T"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CDv-ue-JHQ" firstAttribute="width" secondItem="QVe-32-BWd" secondAttribute="width" id="AQ2-bb-JD5"/>
+                                    <constraint firstItem="7AL-Uy-vLh" firstAttribute="centerX" secondItem="QVe-32-BWd" secondAttribute="centerX" id="nxZ-xv-dt3"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -215,6 +268,7 @@
                         <viewLayoutGuide key="safeArea" id="6Qi-FK-LLH"/>
                     </view>
                     <connections>
+                        <outlet property="inputEventNameTextField" destination="l0d-ru-MEY" id="vK4-fZ-GWO"/>
                         <outlet property="prepositionChoice" destination="ZXe-sA-e7v" id="Nc6-b1-vMG"/>
                         <outlet property="prepositionDisplayLabel" destination="Hbh-KG-jQe" id="XgL-kI-Kfo"/>
                         <outlet property="selectEventsCollectionView" destination="gng-np-hl9" id="w5m-MG-dKU"/>
@@ -226,4 +280,8 @@
             <point key="canvasLocation" x="1872.8" y="35.532233883058474"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-checked-checkbox-50" width="37" height="37"/>
+        <image name="icons8-close-window-50" width="37" height="37"/>
+    </resources>
 </document>

@@ -21,46 +21,120 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3X5-XH-87W">
-                                <rect key="frame" x="282" y="58" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Swipe left"/>
-                                <connections>
-                                    <segue destination="KQs-iK-DOo" kind="show" identifier="toTodoChoice" id="v1X-Lm-swb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDm-Ao-7Yx">
-                                <rect key="frame" x="22" y="58" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="swipe right"/>
-                                <connections>
-                                    <segue destination="Erm-Lv-T82" kind="unwind" unwindAction="unwindFromCheckin:" id="y5O-sF-78Y"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'm about to..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxG-gq-CZ8">
-                                <rect key="frame" x="135" y="61" width="105" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z06-oK-JAq">
-                                <rect key="frame" x="93" y="96" width="189" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Before"/>
-                                    <segment title="When"/>
-                                    <segment title="After"/>
-                                </segments>
-                                <connections>
-                                    <action selector="prepositionTapped:" destination="5yk-Pg-AXI" eventType="valueChanged" id="dkk-MV-wZA"/>
-                                </connections>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rnD-rr-VSD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAv-rN-QmN" userLabel="Header Stack">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDm-Ao-7Yx">
+                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="50"/>
+                                                <state key="normal" title="swipe right"/>
+                                                <connections>
+                                                    <segue destination="Erm-Lv-T82" kind="unwind" unwindAction="unwindFromCheckin:" id="y5O-sF-78Y"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm preparing to..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxG-gq-CZ8">
+                                                <rect key="frame" x="112.5" y="0.0" width="150" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3X5-XH-87W">
+                                                <rect key="frame" x="262.5" y="0.0" width="112.5" height="50"/>
+                                                <state key="normal" title="Swipe left"/>
+                                                <connections>
+                                                    <segue destination="KQs-iK-DOo" kind="show" identifier="toTodoChoice" id="v1X-Lm-swb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="O67-qC-w2z"/>
+                                            <constraint firstItem="3X5-XH-87W" firstAttribute="width" secondItem="RAv-rN-QmN" secondAttribute="width" multiplier="0.3" id="WpL-aU-M1l"/>
+                                            <constraint firstItem="YDm-Ao-7Yx" firstAttribute="width" secondItem="RAv-rN-QmN" secondAttribute="width" multiplier="0.3" id="txB-ig-vHl"/>
+                                        </constraints>
+                                    </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z06-oK-JAq">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="PkR-vr-8pj"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Before"/>
+                                            <segment title="When"/>
+                                            <segment title="After"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="prepositionTapped:" destination="5yk-Pg-AXI" eventType="valueChanged" id="dkk-MV-wZA"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdB-wq-1ts">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="547"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-iV-Zxx">
+                                                <rect key="frame" x="19" y="27.5" width="337.5" height="492"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zxh-iA-ToQ" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tagCellCheckin" id="x0s-K1-jZK" customClass="CheckinCollectionViewCell" customModule="Bundle" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-pX-p5v">
+                                                                    <rect key="frame" x="4" y="14.5" width="42" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="DwZ-pX-p5v" firstAttribute="centerX" secondItem="x0s-K1-jZK" secondAttribute="centerX" id="6HO-zl-rmc"/>
+                                                            <constraint firstItem="DwZ-pX-p5v" firstAttribute="centerY" secondItem="x0s-K1-jZK" secondAttribute="centerY" id="qYK-2t-cVK"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="eventTagCheckin" destination="DwZ-pX-p5v" id="Cuu-3X-NWH"/>
+                                                            <segue destination="KQs-iK-DOo" kind="show" identifier="afterChoosingAnEvent" id="67O-eF-BdT"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="PF7-iV-Zxx" firstAttribute="width" secondItem="kdB-wq-1ts" secondAttribute="width" multiplier="0.9" id="Xfb-uX-DwK"/>
+                                            <constraint firstItem="PF7-iV-Zxx" firstAttribute="centerX" secondItem="kdB-wq-1ts" secondAttribute="centerX" id="dOK-YT-yiR"/>
+                                            <constraint firstItem="PF7-iV-Zxx" firstAttribute="centerY" secondItem="kdB-wq-1ts" secondAttribute="centerY" id="fY0-eQ-nef"/>
+                                            <constraint firstItem="PF7-iV-Zxx" firstAttribute="height" secondItem="kdB-wq-1ts" secondAttribute="height" multiplier="0.9" id="zLJ-1e-Gcl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z06-oK-JAq" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="7lg-aY-o5W"/>
+                                    <constraint firstItem="kdB-wq-1ts" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="9Eb-RN-Jzk"/>
+                                    <constraint firstItem="RAv-rN-QmN" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="Thm-3G-nlw"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rnD-rr-VSD" firstAttribute="height" secondItem="UfN-b7-V4J" secondAttribute="height" id="70w-Po-jtE"/>
+                            <constraint firstItem="rnD-rr-VSD" firstAttribute="centerX" secondItem="UfN-b7-V4J" secondAttribute="centerX" id="Q0l-e4-HAd"/>
+                            <constraint firstItem="rnD-rr-VSD" firstAttribute="width" secondItem="UfN-b7-V4J" secondAttribute="width" id="hOy-cY-NRc"/>
+                            <constraint firstItem="rnD-rr-VSD" firstAttribute="centerY" secondItem="UfN-b7-V4J" secondAttribute="centerY" id="xhK-LC-6MZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UfN-b7-V4J"/>
                     </view>
                     <connections>
+                        <outlet property="CheckinCollectionView" destination="PF7-iV-Zxx" id="fwX-mA-mg4"/>
                         <outlet property="prepositionChoice" destination="z06-oK-JAq" id="hRz-fv-IQV"/>
                         <outlet property="prepositionDisplayLabel" destination="KxG-gq-CZ8" id="ZSw-ZL-1gF"/>
                     </connections>
@@ -239,7 +313,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9IS-ub-FIZ">
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9IS-ub-FIZ">
                                                             <rect key="frame" x="10" y="5.5" width="52" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="f4b-gq-MLn"/>
@@ -254,6 +328,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="9IS-ub-FIZ" firstAttribute="leading" secondItem="WjF-a5-tco" secondAttribute="leading" constant="10" id="3lT-jH-Blm"/>
+                                                        <constraint firstItem="9IS-ub-FIZ" firstAttribute="centerY" secondItem="WjF-a5-tco" secondAttribute="centerY" id="Cyd-We-q5u"/>
                                                         <constraint firstItem="xFF-wO-nyx" firstAttribute="centerY" secondItem="WjF-a5-tco" secondAttribute="centerY" id="iGX-OL-wcw"/>
                                                         <constraint firstItem="xFF-wO-nyx" firstAttribute="leading" secondItem="9IS-ub-FIZ" secondAttribute="trailing" constant="5" id="p2o-kG-9bn"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="xFF-wO-nyx" secondAttribute="trailing" constant="10" id="zuw-mf-xMb"/>
@@ -326,4 +401,7 @@
         <image name="icons8-checked-checkbox-50" width="37" height="37"/>
         <image name="icons8-close-window-50" width="37" height="37"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="67O-eF-BdT"/>
+    </inferredMetricsTieBreakers>
 </document>

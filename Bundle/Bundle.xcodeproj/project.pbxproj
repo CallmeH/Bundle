@@ -26,6 +26,7 @@
 		796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */; };
 		796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */; };
 		796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3106210A31A4004C0FCA /* FlowLayout.swift */; };
+		799851EA210B8FB10049EB8C /* CheckinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */; };
 		79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */; };
 		9F3299CF00D41A68DDB5586D /* Pods_BundleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */; };
 		D1E8A22875348FBE4E433BD5 /* Pods_BundleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */; };
@@ -80,6 +81,7 @@
 		796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousReusableFunctions.swift; sourceTree = "<group>"; };
 		796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		796D3106210A31A4004C0FCA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCollectionViewCell.swift; sourceTree = "<group>"; };
 		79CDE8F621085572009DB3F0 /* Plans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Plans.md; sourceTree = "<group>"; };
 		79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bundle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +191,7 @@
 				7964133C21068E6700BD18A8 /* HomeViewController.swift */,
 				7964136B21068F0200BD18A8 /* InputTodoViewController.swift */,
 				79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */,
-				7964137221068F6C00BD18A8 /* CheckinViewController.swift */,
+				799851EB210B8FC70049EB8C /* Checkin+CollectionView */,
 				79F479BB2109224500B40FBA /* TodoChoice+TableView */,
 				7964137021068F6000BD18A8 /* BundleViewController.swift */,
 			);
@@ -214,6 +216,15 @@
 				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		799851EB210B8FC70049EB8C /* Checkin+CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7964137221068F6C00BD18A8 /* CheckinViewController.swift */,
+				799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */,
+			);
+			path = "Checkin+CollectionView";
 			sourceTree = "<group>";
 		};
 		79F479BB2109224500B40FBA /* TodoChoice+TableView */ = {
@@ -462,6 +473,7 @@
 			files = (
 				7964137121068F6000BD18A8 /* BundleViewController.swift in Sources */,
 				7964137521068F7600BD18A8 /* TodoChoiceViewController.swift in Sources */,
+				799851EA210B8FB10049EB8C /* CheckinCollectionViewCell.swift in Sources */,
 				7964134321068E6700BD18A8 /* Bundle.xcdatamodeld in Sources */,
 				7964136C21068F0200BD18A8 /* InputTodoViewController.swift in Sources */,
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,

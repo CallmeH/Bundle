@@ -9,9 +9,12 @@
 import UIKit
 class TodoChoiceViewController: UIViewController {
 
+    var currentEvent: Event?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(currentEvent?.name)
+        print(currentEvent?.todoArray)
         // Do any additional setup after loading the view.
     }
 

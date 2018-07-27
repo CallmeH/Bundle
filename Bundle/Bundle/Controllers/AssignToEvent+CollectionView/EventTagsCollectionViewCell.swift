@@ -23,4 +23,13 @@ class EventTagsCollectionViewCell: UICollectionViewCell {
         
 //    }
 
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected == true {
+                self.backgroundColor = UIColor.cyan
+            } else {
+                self.backgroundColor = UIColor.lightGray
+            }
+        }
+    }
 }

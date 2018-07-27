@@ -82,7 +82,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         let titleAndRecycle = CoreDataHelper.newTodo()
         titleAndRecycle.title = inputTextView.text
         titleAndRecycle.isRecycled = todoAtInput?.isRecycled ?? false
-        CoreDataHelper.save()
+//        CoreDataHelper.save()
         
 
         guard segue.identifier != nil else {return}

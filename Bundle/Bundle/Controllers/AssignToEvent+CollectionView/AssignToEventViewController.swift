@@ -9,19 +9,29 @@
 import UIKit
 import AlignedCollectionViewFlowLayout
 //import TagCellLayout
-class AssignToEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AssignToEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var prepositionDisplayLabel: UILabel!
     @IBOutlet weak var selectEventsCollectionView: UICollectionView!
+    @IBOutlet weak var inputEventNameTextField: UITextField!
     
     var todoAtAssign: Todo?
     
+    var allEvents = [Event]() {
+        didSet {
+            selectEventsCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        allEvents = CoreDataHelper.retrieveAllEvent()
 
         selectEventsCollectionView.delegate = self
         selectEventsCollectionView.dataSource = self
         
+        selectEventsCollectionView.allowsMultipleSelection = true
 //        let cellNib = UINib(nibName: "EventTagsCollectionViewCell", bundle: nil)
 //        self.collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "tagCell")
 //        self.collectionView.backgroundColor = UIColor.clearColor()
@@ -29,16 +39,42 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         // Do any additional setup after loading the view.
         self.prepositionDisplayLabel.text = prepositionStatus.displayName
         prepositionChoice.selectedSegmentIndex = Int(prepositionStatus.rawValue)
-        let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
-        alignedFlowLayout?.horizontalAlignment = .left
-        alignedFlowLayout?.verticalAlignment = .top
-        alignedFlowLayout?.minimumInteritemSpacing = 10
-        alignedFlowLayout?.minimumLineSpacing = 10
+        presetCollectionViewLayout(in: selectEventsCollectionView)
 //        self.collectionVie
 //        let tagCellLayout = TagCellLayout(alignment: .center, delegate: self as? TagCellLayoutDelegate)
 //        selectEventsCollectionView.collectionViewLayout = tagCellLayout
         
-        print(todoAtAssign?.title)
+//        print(todoAtAssign?.title)
+//        print(todoAtAssign?.isRecycled)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        inputEventNameTextField.delegate = self
+        inputEventNameTextField.returnKeyType = .done
+        self.inputEventNameTextField.textColor = UIColor.brown//UIColor(red: 238, green: 238, blue: 238, alpha: 1)
+    }
+    
+//    func textField(_ textField: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if (text == "\n") {
+//            textField.resignFirstResponder()
+//            guard inputEventNameTextField.text != "" else { return true }
+//            let newEvent = CoreDataHelper.newEvent()
+//            newEvent.name = inputEventNameTextField.text
+//            CoreDataHelper.save()
+//        }
+//        return true
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        inputEventNameTextField.resignFirstResponder()
+        guard inputEventNameTextField.text != "" else { return true }
+        let newEvent = CoreDataHelper.newEvent()
+        newEvent.name = inputEventNameTextField.text
+        CoreDataHelper.save()
+        inputEventNameTextField.text = ""
+        allEvents = CoreDataHelper.retrieveAllEvent()
+        return true
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,17 +106,18 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
     
     //collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return EventPlaceholder.count
+        return allEvents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! EventTagsCollectionViewCell
-        let event = EventPlaceholder[indexPath.item]
-        cell.eventTag.text = event
+        let event = allEvents[indexPath.item]
+        cell.eventTag.text = event.name
         cell.backgroundColor = .lightGray
         return cell
     }
     
+
     
     
 //    func placeholderCellTappedSegueBack {
@@ -96,16 +133,42 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {return}
+        func initializeNewTodo() {
+            guard let indexPaths = selectEventsCollectionView.indexPathsForSelectedItems else { return }
+            for i in indexPaths {
+                let setTodo = CoreDataHelper.newTodo()
+                setTodo.title = (todoAtAssign?.title)!
+                setTodo.isRecycled = (todoAtAssign?.isRecycled)!
+                setTodo.belongToEvent = allEvents[i.item]
+                CoreDataHelper.save()
+            }
+            
+//            setTodo.belongToEvent = EventPlaceholder
+        }
+        switch identifier {
+        case "AssigntoInput":
+            inputEventNameTextField.resignFirstResponder()
+            print("going back from assign to input")
+        case "eventsAssigned":
+            print("event assigned!")
+            initializeNewTodo()
+        case "addingCanceled":
+            print("adding process canceled")
+        default:
+            print("unidentified segue")
+        }
+    }
 }
 
 extension AssignToEventViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = EventPlaceholder[indexPath.item].size(withAttributes: [.font: UIFont.systemFont(ofSize: 17.0)])
-        print(size)
+        let size = allEvents[indexPath.item].name?.size(withAttributes: [.font: UIFont.systemFont(ofSize: 17.0)])
+//        print(size)
         
-        let adjustedSize = CGSize(width: size.width + 8, height: size.height + 5)
+        let adjustedSize = CGSize(width: (size?.width) ?? 40 + 8, height: size?.height ?? 15 + 5)
         
         return adjustedSize
     }

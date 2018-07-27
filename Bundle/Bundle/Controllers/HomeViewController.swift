@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func unwindFromInput(_ segue: UIStoryboardSegue) {
         print("unwind from input")
-        inputViewController?.dismissKeyboard()
+//        inputViewController?.dismissKeyboard()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let initialViewController = storyboard.instantiateInitialViewController() else {fatalError("Cannot initialize storyboard")}
         self.view.window?.rootViewController = initialViewController
