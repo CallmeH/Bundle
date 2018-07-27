@@ -25,7 +25,6 @@
 		7964137D2106919F00BD18A8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137C2106919F00BD18A8 /* Checkin.storyboard */; };
 		796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */; };
 		796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */; };
-		796D3105210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */; };
 		796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3106210A31A4004C0FCA /* FlowLayout.swift */; };
 		79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */; };
 		9F3299CF00D41A68DDB5586D /* Pods_BundleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */; };
@@ -80,7 +79,6 @@
 		7964137E2107B4F600BD18A8 /* Attribution.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Attribution.md; sourceTree = "<group>"; };
 		796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousReusableFunctions.swift; sourceTree = "<group>"; };
 		796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTagsCollectionViewCell.swift; sourceTree = "<group>"; };
-		796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		796D3106210A31A4004C0FCA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		79CDE8F621085572009DB3F0 /* Plans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Plans.md; sourceTree = "<group>"; };
 		79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoChoiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
 				796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */,
 				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
-				796D3103210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib */,
 			);
 			path = "AssignToEvent+CollectionView";
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 				7964134821068E6B00BD18A8 /* LaunchScreen.storyboard in Resources */,
 				7964134521068E6B00BD18A8 /* Assets.xcassets in Resources */,
 				7964137B2106919800BD18A8 /* Add.storyboard in Resources */,
-				796D3105210A2ECF004C0FCA /* EventTagsCollectionViewCell.xib in Resources */,
 				7964134021068E6700BD18A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

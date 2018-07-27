@@ -8,6 +8,7 @@
 
 import UIKit
 import AlignedCollectionViewFlowLayout
+//import TagCellLayout
 class AssignToEventViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var prepositionDisplayLabel: UILabel!
@@ -28,10 +29,15 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         // Do any additional setup after loading the view.
         self.prepositionDisplayLabel.text = prepositionStatus.displayName
         prepositionChoice.selectedSegmentIndex = Int(prepositionStatus.rawValue)
-//        let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
-//        alignedFlowLayout?.horizontalAlignment = .left
-//        alignedFlowLayout?.verticalAlignment = .top
+        let alignedFlowLayout = selectEventsCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
+        alignedFlowLayout?.horizontalAlignment = .left
+        alignedFlowLayout?.verticalAlignment = .top
+        alignedFlowLayout?.minimumInteritemSpacing = 10
+        alignedFlowLayout?.minimumLineSpacing = 10
 //        self.collectionVie
+//        let tagCellLayout = TagCellLayout(alignment: .center, delegate: self as? TagCellLayoutDelegate)
+//        selectEventsCollectionView.collectionViewLayout = tagCellLayout
+        
         print(todoAtAssign?.title)
     }
     
@@ -71,17 +77,14 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! EventTagsCollectionViewCell
         let event = EventPlaceholder[indexPath.item]
         cell.eventTag.text = event
-//        cell.backgroundColor = .red
+        cell.backgroundColor = .lightGray
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 50)
-    }
     
     
 //    func placeholderCellTappedSegueBack {
-//        
+//
 //    }
 
     /*
@@ -94,4 +97,17 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
     }
     */
 
+}
+
+extension AssignToEventViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = EventPlaceholder[indexPath.item].size(withAttributes: [.font: UIFont.systemFont(ofSize: 17.0)])
+        print(size)
+        
+        let adjustedSize = CGSize(width: size.width + 8, height: size.height + 5)
+        
+        return adjustedSize
+    }
+    
 }
