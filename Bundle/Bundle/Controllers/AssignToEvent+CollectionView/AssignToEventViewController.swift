@@ -165,10 +165,10 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
 extension AssignToEventViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = allEvents[indexPath.item].name?.size(withAttributes: [.font: UIFont.systemFont(ofSize: 17.0)])
+        let size = allEvents[indexPath.item].name?.size(withAttributes: [.font: UIFont.systemFont(ofSize: 20.0)])
 //        print(size)
         
-        let adjustedSize = CGSize(width: (size?.width) ?? 40 + 8, height: size?.height ?? 15 + 5)
+        let adjustedSize = CGSize(width: (size?.width) ?? 40 + 40, height: size?.height ?? 15 + 20)
         
         return adjustedSize
     }

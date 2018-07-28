@@ -177,7 +177,7 @@
                                         <rect key="frame" x="34" y="88" width="270" height="362.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fFT-6O-o1W" customClass="TodoChoiceTableViewCell" customModule="Bundle" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="listTodosTableViewCell" editingAccessoryType="checkmark" id="fFT-6O-o1W" customClass="TodoChoiceTableViewCell" customModule="Bundle" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="270" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fFT-6O-o1W" id="K8Q-EP-1wi">
@@ -202,11 +202,6 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="KQs-iK-DOo" id="e51-Bj-UqR"/>
-                                            <outlet property="delegate" destination="KQs-iK-DOo" id="TYc-nu-Q5N"/>
-                                            <outlet property="prefetchDataSource" destination="KQs-iK-DOo" id="5bc-al-pzo"/>
-                                        </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d1-50-rLt" userLabel="ActionButtons">
                                         <rect key="frame" x="10" y="460.5" width="317.5" height="57.5"/>
