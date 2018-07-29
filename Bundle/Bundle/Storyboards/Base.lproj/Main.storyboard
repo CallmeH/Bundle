@@ -34,18 +34,29 @@
                                                     <segue destination="D4b-bC-sKy" kind="show" id="mhD-Dj-fvP"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-QM-qHK">
+                                                <rect key="frame" x="53.333333333333336" y="268" width="80.666666666666657" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="nYz-Ma-yP8"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="h6g-QM-qHK" firstAttribute="centerX" secondItem="eLW-Hh-etE" secondAttribute="centerX" id="3Aa-ut-IT8"/>
                                             <constraint firstItem="eLW-Hh-etE" firstAttribute="top" secondItem="1HE-RF-0Qg" secondAttribute="top" constant="200" id="ba1-K6-uQ4"/>
                                             <constraint firstItem="eLW-Hh-etE" firstAttribute="centerX" secondItem="1HE-RF-0Qg" secondAttribute="centerX" id="jYH-Hr-EPc"/>
+                                            <constraint firstItem="h6g-QM-qHK" firstAttribute="top" secondItem="eLW-Hh-etE" secondAttribute="bottom" constant="20" id="rna-zT-8H8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyx-Bi-k9D">
                                         <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="824"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUg-BM-PRb">
-                                                <rect key="frame" x="37" y="576" width="113" height="48"/>
+                                                <rect key="frame" x="36.333333333333343" y="576" width="113" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Check in">
                                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,10 +65,22 @@
                                                     <segue destination="0OZ-oP-Tg4" kind="show" id="HCD-sE-wcX"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to one of your existing events" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddy-eN-eIs">
+                                                <rect key="frame" x="0.0" y="644" width="187.33333333333334" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="WeF-Fo-ZaC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="ddy-eN-eIs" firstAttribute="top" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="20" id="5ix-0S-5Zd"/>
+                                            <constraint firstItem="ddy-eN-eIs" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" id="Cul-B9-jsB"/>
                                             <constraint firstAttribute="bottom" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="200" id="Jgn-yc-pP2"/>
+                                            <constraint firstItem="FUg-BM-PRb" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="Pxp-pa-gsa"/>
+                                            <constraint firstItem="ddy-eN-eIs" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="xQV-mj-qYc"/>
                                             <constraint firstItem="FUg-BM-PRb" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="zbV-hc-uxj"/>
                                         </constraints>
                                     </view>
