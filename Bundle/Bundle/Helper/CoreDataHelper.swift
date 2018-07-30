@@ -62,11 +62,17 @@ struct CoreDataHelper {
         }
     }
     
-//    static func deleteTodo(todo: Todo) {
-//        context.delete(todo)
-//
-//        save()
-//    }
+    static func deleteTodo(todo: Todo) {
+        context.delete(todo)
+
+        save()
+    }
+    
+    static func deleteEvent(event: Event) {
+        context.delete(event)
+        
+        save()
+    }
     
     static func retrieveAllTodo() -> [Todo] {
         do {

@@ -10,9 +10,12 @@ import UIKit
 
 class TodoChoiceTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var todoForEvent: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .blue
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

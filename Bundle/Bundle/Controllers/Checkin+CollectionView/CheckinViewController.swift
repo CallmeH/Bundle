@@ -77,7 +77,7 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         switch identifier {
         case "afterChoosingAnEvent":
             guard let indexPath = CheckinCollectionView.indexPathsForSelectedItems else { return }
-            guard indexPath.count == 1 else {return}
+//            guard indexPath.count == 1 else {return}
             let selectedEvent = allEvents[indexPath[0].item]
             let destination = segue.destination as! TodoChoiceViewController
             destination.currentEvent = selectedEvent

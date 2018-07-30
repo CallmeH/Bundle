@@ -22,11 +22,12 @@
 - location reminder, routine events time-based reminder (only to open and check-in though, no specific tasks) (Aktar, Mags, Me)
 - pomodoro functionality when tapped into an event
 - share with family (Anna)
-
+- profile picture? for accounts on Firebase
+*** tag at tableview cell for before/when/after instead of choice beforehand
 
 
 copy/duplicate/recycle events too for before/after/when
-"face" like design of interface (front page)
+"face" like design of interface (front page)- four functional parts (add/check-in, review bundle, all todos)
 
 
 
