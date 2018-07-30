@@ -24,6 +24,13 @@
 - share with family (Anna)
 - profile picture? for accounts on Firebase
 *** tag at tableview cell for before/when/after instead of choice beforehand
+- location [https://developer.apple.com/documentation/mapkit] [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/LocationAwarenessPG/Introduction/Introduction.html]
+
+
+
+## edge cases!!!
+- loooooong event/todo names: limit characters (placeholder "keep it concise", show char count, stop allowing for input)
+
 
 
 copy/duplicate/recycle events too for before/after/when
