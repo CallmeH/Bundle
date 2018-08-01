@@ -80,7 +80,31 @@ struct CoreDataHelper {
             let results = try context.fetch(gofetch)
             return results
         } catch let error {
-            print("Couldn't fetch \(error.localizedDescription)")
+            print("Couldn't fetch all todos \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveUncompletedTodo() -> [Todo] {
+        do {
+            let fetch = NSFetchRequest<Todo>(entityName: "Todo")
+            fetch.predicate = NSPredicate(format: "isCompleted == FALSE")
+            let results = try context.fetch(fetch)
+            return results
+        } catch let error {
+            print("Couldn't fetch uncompleted todo \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveTodoInBundle() -> [Todo] {
+        do {
+            let fetch = NSFetchRequest<Todo>(entityName: "Todo")
+            fetch.predicate = NSPredicate(format: "isSelected == TRUE")
+            let results = try context.fetch(fetch)
+            return results
+        } catch let error {
+            print("Couldn't fetch selected todo \(error.localizedDescription)")
             return []
         }
     }
@@ -91,7 +115,7 @@ struct CoreDataHelper {
             let results = try context.fetch(gofetch)
             return results
         } catch let error {
-            print("Couldn't fetch \(error.localizedDescription)")
+            print("Couldn't fetch all events \(error.localizedDescription)")
             return []
         }
     }

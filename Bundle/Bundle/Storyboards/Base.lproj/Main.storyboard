@@ -73,6 +73,15 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-2o-ang">
+                                                <rect key="frame" x="1" y="397" width="184" height="68"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Review completed bundles"/>
+                                                <connections>
+                                                    <segue destination="n8Q-TS-e8g" kind="show" id="atF-ce-VJz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -116,6 +125,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNE-9a-g0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="609" y="96"/>
+        </scene>
+        <!--Review Bundles View Controller-->
+        <scene sceneID="BSq-8m-J3Q">
+            <objects>
+                <viewController id="n8Q-TS-e8g" customClass="ReviewBundlesViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="34s-hj-Jhz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-Xj-FvV">
+                                <rect key="frame" x="16" y="76" width="343" height="702"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gzR-gy-Shc"/>
+                    </view>
+                    <connections>
+                        <outlet property="temporaryDisplayLabel" destination="uYj-Xj-FvV" id="EBL-i1-86L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x8X-Eu-JGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="716.74876847290648"/>
         </scene>
     </scenes>
 </document>

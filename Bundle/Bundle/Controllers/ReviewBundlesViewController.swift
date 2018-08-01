@@ -1,18 +1,21 @@
 //
-//  BundleViewController.swift
+//  ReviewBundlesViewController.swift
 //  Bundle
 //
-//  Created by Pei Qin on 2018/7/23.
+//  Created by Pei Qin on 2018/7/31.
 //  Copyright © 2018 MakeSchool. All rights reserved.
 //
 
 import UIKit
 
-class BundleViewController: UIViewController {
-
+class ReviewBundlesViewController: UIViewController {
+    @IBOutlet weak var temporaryDisplayLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let bundles = CoreDataHelper.retrieveAllBundle()
+        print(bundles)
+        
         // Do any additional setup after loading the view.
     }
 

@@ -11,9 +11,7 @@ import UIKit
 class InputTodoViewController: UIViewController, UITextViewDelegate {
     
     var todoAtInput: Todo?
-    //√ cancel button--unwind set in Home
     @IBOutlet weak var inputTextView: UITextView!
-    //complete icon for dragging
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +29,6 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         inputTextView.returnKeyType = .done
         self.inputTextView.textColor = UIColor(red: 238, green: 238, blue: 238, alpha: 1)
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         self.inputTextView.becomeFirstResponder()
     }
@@ -44,14 +41,15 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    //√toggle resuable
+    
+    //√toggle repeating
     @IBAction func reusableToggled(_ sender: UISwitch) {
 //        sender.isOn ? todoAtInput.isRecycled = true : todoAtInput.isRecycled = false
         if sender.isOn {
-            todoAtInput?.isRecycled = true
+            todoAtInput?.isRepeated = true
             print("recycle!")
         } else {
-            todoAtInput?.isRecycled = false
+            todoAtInput?.isRepeated = false
             print("non-recycle!")
         }
     }
@@ -79,15 +77,17 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.inputTextView.resignFirstResponder()
         
-        let titleAndRecycle = CoreDataHelper.newTodo()
-        titleAndRecycle.title = inputTextView.text
-        titleAndRecycle.isRecycled = todoAtInput?.isRecycled ?? false
+        let initialTodo = CoreDataHelper.newTodo()
+        initialTodo.title = inputTextView.text
+        initialTodo.isRepeated = todoAtInput?.isRepeated ?? false
+        initialTodo.isCompleted = false
+        initialTodo.isSelected = false
 //        CoreDataHelper.save()
         
 
         guard segue.identifier != nil else {return}
         let destination = segue.destination as! AssignToEventViewController
-        destination.todoAtAssign = titleAndRecycle
+        destination.todoAtAssign = initialTodo
         
 //        func inputToAssign(preposition: prepType) {
 //            print("\(preposition) tapped")

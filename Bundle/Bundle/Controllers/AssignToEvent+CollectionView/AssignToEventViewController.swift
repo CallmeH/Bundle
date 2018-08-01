@@ -137,14 +137,18 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         guard let identifier = segue.identifier else {return}
         func initializeNewTodo() {
             guard let indexPaths = selectEventsCollectionView.indexPathsForSelectedItems else { return }
-            for i in indexPaths {
+            for (index, i) in indexPaths.enumerated() {
                 let setTodo = CoreDataHelper.newTodo()
                 setTodo.title = (todoAtAssign?.title)!
-                setTodo.isRecycled = (todoAtAssign?.isRecycled)!
-                setTodo.belongToEvent = allEvents[i.item]
+                setTodo.isRepeated = (todoAtAssign?.isRepeated)!
+//                setTodo.belongToEvent = allEvents[i.item]
+                setTodo.isCompleted = false
+                let selectedIndex = indexPaths[index]
+                let selectedEvent = allEvents[selectedIndex[1]]
+                selectedEvent.addToTodoArray(setTodo)
                 CoreDataHelper.save()
             }
-            
+          
 //            setTodo.belongToEvent = EventPlaceholder
         }
         switch identifier {

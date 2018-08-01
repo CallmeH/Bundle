@@ -1,22 +1,22 @@
 //
-//  TodoChoiceTableViewCell.swift
+//  BundleTableViewCell.swift
 //  Bundle
 //
-//  Created by Pei Qin on 2018/7/25.
+//  Created by Pei Qin on 2018/7/30.
 //  Copyright © 2018 MakeSchool. All rights reserved.
 //
 
 import UIKit
 
-class TodoChoiceTableViewCell: UITableViewCell {
+class BundleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var todoForEvent: UILabel!
-    
+    @IBOutlet weak var todoForBundle: UILabel!
+    @IBAction func putBack(_ sender: UIButton) {
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.selectionStyle = .blue
-//        selectedIcon.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
