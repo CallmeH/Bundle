@@ -10,7 +10,7 @@ import UIKit
 
 class InputTodoViewController: UIViewController, UITextViewDelegate {
     
-    var todoAtInput: Todo?
+    var selectedState: Bool = false
     @IBOutlet weak var inputTextView: UITextView!
     
     override func viewDidLoad() {
@@ -46,10 +46,10 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
     @IBAction func reusableToggled(_ sender: UISwitch) {
 //        sender.isOn ? todoAtInput.isRecycled = true : todoAtInput.isRecycled = false
         if sender.isOn {
-            todoAtInput?.isRepeated = true
+            selectedState = true
             print("recycle!")
         } else {
-            todoAtInput?.isRepeated = false
+            selectedState = false
             print("non-recycle!")
         }
     }
@@ -79,7 +79,7 @@ class InputTodoViewController: UIViewController, UITextViewDelegate {
         
         let initialTodo = CoreDataHelper.newTodo()
         initialTodo.title = inputTextView.text
-        initialTodo.isRepeated = todoAtInput?.isRepeated ?? false
+        initialTodo.isRepeated = selectedState
         initialTodo.isCompleted = false
         initialTodo.isSelected = false
 //        CoreDataHelper.save()

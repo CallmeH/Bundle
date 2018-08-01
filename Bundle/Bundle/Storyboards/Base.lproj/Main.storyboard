@@ -79,7 +79,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Review completed bundles"/>
                                                 <connections>
-                                                    <segue destination="n8Q-TS-e8g" kind="show" id="atF-ce-VJz"/>
+                                                    <segue destination="hTo-yK-TDc" kind="show" id="Jwp-Qf-xcs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -116,7 +116,7 @@
                 <viewControllerPlaceholder storyboardName="Add" id="D4b-bC-sKy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0E-5k-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="-47"/>
+            <point key="canvasLocation" x="588" y="-122"/>
         </scene>
         <!--Checkin-->
         <scene sceneID="Ni7-Ig-5tE">
@@ -124,34 +124,15 @@
                 <viewControllerPlaceholder storyboardName="Checkin" id="0OZ-oP-Tg4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNE-9a-g0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="609" y="96"/>
+            <point key="canvasLocation" x="646" y="-17"/>
         </scene>
-        <!--Review Bundles View Controller-->
-        <scene sceneID="BSq-8m-J3Q">
+        <!--ReviewCompletedBundle-->
+        <scene sceneID="8kb-Zg-O1E">
             <objects>
-                <viewController id="n8Q-TS-e8g" customClass="ReviewBundlesViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="34s-hj-Jhz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-Xj-FvV">
-                                <rect key="frame" x="16" y="76" width="343" height="702"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="gzR-gy-Shc"/>
-                    </view>
-                    <connections>
-                        <outlet property="temporaryDisplayLabel" destination="uYj-Xj-FvV" id="EBL-i1-86L"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x8X-Eu-JGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ReviewCompletedBundle" id="hTo-yK-TDc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xlm-JF-bQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="716.74876847290648"/>
+            <point key="canvasLocation" x="727" y="126"/>
         </scene>
     </scenes>
 </document>

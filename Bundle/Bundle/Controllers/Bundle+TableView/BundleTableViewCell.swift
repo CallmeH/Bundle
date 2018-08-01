@@ -14,6 +14,18 @@ class BundleTableViewCell: UITableViewCell {
     @IBAction func putBack(_ sender: UIButton) {
         
     }
+    
+    var onButtonTouched: ((UITableViewCell)->Void)? = nil
+    @IBAction func checkButtonTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+        } else {
+            sender.isSelected = true
+        }
+    }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

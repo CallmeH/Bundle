@@ -52,10 +52,27 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func unwindToTodoChoice(_ segue: UIStoryboardSegue) {
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentEvent?.todoArray?.count ?? 0
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Single use"
+        } else {
+            return "Repeated reminders"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard accessTodo != nil else { return 0 }
+        if section == 0 {
+            return accessTodo?.filter {$0.isRepeated == false}.count ?? 0
+        } else {
+            return accessTodo?.filter {$0.isRepeated == true}.count ?? 0
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listTodosTableViewCell", for: indexPath) as! TodoChoiceTableViewCell
 //        let allTodos = CoreDataHelper.retrieveAllTodo()
@@ -65,7 +82,20 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         
 //        print(accessTodo)
 //        print(accessTodo?.allObjects)
-        cell.todoForEvent.text = accessTodo![indexPath.row].title
+        
+        
+        
+        let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
+        let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
+        var todoPlaceholder: Todo
+        if indexPath.section == 0 {
+            todoPlaceholder = nonrepeatingCopy[indexPath.row]
+            cell.todoForEvent.text = nonrepeatingCopy[indexPath.row].title
+        } else {
+            todoPlaceholder = repeatingCopy[indexPath.row]
+            cell.todoForEvent.text = repeatingCopy[indexPath.row].title
+        }
+        
 //        cell.showsReorderControl = true
             //String(indexPath.count)//accessTodo![indexPath.row].title
 
@@ -89,19 +119,28 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-                accessTodo![indexPath.row].isSelected = false
-                print(cell.isSelected)
-            }
-            else{
-                cell.accessoryType = .checkmark
-                accessTodo![indexPath.row].isSelected = true
-                print(cell.isSelected)
+        let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
+        let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
+        func callCheckmark(_ repeatOrNot: [Todo]) {
+            if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+                if cell.accessoryType == .checkmark {
+                    cell.accessoryType = .none
+                    repeatOrNot[indexPath.row].isSelected = false
+                    print(cell.isSelected)
+                }
+                else{
+                    cell.accessoryType = .checkmark
+                    repeatOrNot[indexPath.row].isSelected = true
+                    print(cell.isSelected)
+                }
             }
         }
+        if indexPath.section == 0 {
+            callCheckmark(nonrepeatingCopy)
+        } else {
+            callCheckmark(repeatingCopy)
+        }
+        
         
     }
     

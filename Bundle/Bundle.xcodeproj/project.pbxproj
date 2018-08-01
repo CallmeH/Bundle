@@ -31,6 +31,7 @@
 		79FFEEAD210FC151006D2654 /* BundleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFEEAC210FC151006D2654 /* BundleTableViewCell.swift */; };
 		79FFEEB02111014A006D2654 /* AddFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */; };
 		79FFEEB22111274D006D2654 /* ReviewBundlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFEEB12111274D006D2654 /* ReviewBundlesViewController.swift */; };
+		79FFEEB42111669B006D2654 /* ReviewCompletedBundle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FFEEB32111669B006D2654 /* ReviewCompletedBundle.storyboard */; };
 		9F3299CF00D41A68DDB5586D /* Pods_BundleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */; };
 		D1E8A22875348FBE4E433BD5 /* Pods_BundleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */; };
 		DBFA97AB7BD8771758F97FD7 /* Pods_Bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */; };
@@ -91,6 +92,7 @@
 		79FFEEAC210FC151006D2654 /* BundleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTableViewCell.swift; sourceTree = "<group>"; };
 		79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFirstScreenViewController.swift; sourceTree = "<group>"; };
 		79FFEEB12111274D006D2654 /* ReviewBundlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBundlesViewController.swift; sourceTree = "<group>"; };
+		79FFEEB32111669B006D2654 /* ReviewCompletedBundle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewCompletedBundle.storyboard; sourceTree = "<group>"; };
 		A2B37E95C5A2EC2325A30D96 /* Pods_Bundle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bundle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A82A62ECC94B647BACDAC /* Pods-BundleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BundleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BundleTests/Pods-BundleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D21DA0559711AF5CCC602883 /* Pods_BundleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BundleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +217,7 @@
 				7964133E21068E6700BD18A8 /* Main.storyboard */,
 				7964137A2106919800BD18A8 /* Add.storyboard */,
 				7964137C2106919F00BD18A8 /* Checkin.storyboard */,
+				79FFEEB32111669B006D2654 /* ReviewCompletedBundle.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				7964134821068E6B00BD18A8 /* LaunchScreen.storyboard in Resources */,
 				7964134521068E6B00BD18A8 /* Assets.xcassets in Resources */,
 				7964137B2106919800BD18A8 /* Add.storyboard in Resources */,
+				79FFEEB42111669B006D2654 /* ReviewCompletedBundle.storyboard in Resources */,
 				7964134021068E6700BD18A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

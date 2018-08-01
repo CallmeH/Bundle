@@ -54,6 +54,11 @@ struct CoreDataHelper {
         return event
     }
     
+    static func newBundle() -> Bundle {
+        let bundle = NSEntityDescription.insertNewObject(forEntityName: "Bundle", into: context) as! Bundle
+        return bundle
+    }
+    
     static func save() {
         do {
             try context.save()
