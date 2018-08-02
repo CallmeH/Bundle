@@ -10,9 +10,8 @@ import UIKit
 
 class AddFirstScreenViewController: UIViewController {
 
-    @IBOutlet weak var todoLabel: UILabel!
+    @IBOutlet weak var todoButtonDisplay: UIButton!
     
-    @IBOutlet weak var eventLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

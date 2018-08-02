@@ -133,16 +133,31 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func tryToCompleteButton(_ sender: UIButton) {
+        guard selectEventsCollectionView.indexPathsForSelectedItems != [] else {
+            print("\n\n\n no selection \n\n\n")
+            return
+        }
+        guard selectEventsCollectionView.indexPathsForSelectedItems != nil else {
+            print("\n\n\n no selection \n\n\n")
+            return
+        }
+        performSegue(withIdentifier: "eventsAssigned", sender: Any?.self)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         func initializeNewTodo() {
             guard let indexPaths = selectEventsCollectionView.indexPathsForSelectedItems else { return }
-            for (index, i) in indexPaths.enumerated() {
+            for (index, _) in indexPaths.enumerated() {
                 let setTodo = CoreDataHelper.newTodo()
                 setTodo.title = (todoAtAssign?.title)!
                 setTodo.isRepeated = (todoAtAssign?.isRepeated)!
 //                setTodo.belongToEvent = allEvents[i.item]
                 setTodo.isCompleted = false
+                setTodo.isSelected = false
                 let selectedIndex = indexPaths[index]
                 let selectedEvent = allEvents[selectedIndex[1]]
                 selectedEvent.addToTodoArray(setTodo)
@@ -151,12 +166,24 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
           
 //            setTodo.belongToEvent = EventPlaceholder
         }
+//        if segue.identifier == "eventAssigned" {
+//            guard selectEventsCollectionView.indexPathsForSelectedItems != [] else {
+//                print("\n\n\n no selection \n\n\n")
+//                return
+//            }
+//            guard selectEventsCollectionView.indexPathsForSelectedItems != nil else {
+//                print("\n\n\n no selection \n\n\n")
+//                return
+//            }
+//            print("event assigned to events: \(selectEventsCollectionView.indexPathsForSelectedItems)")
+//            initializeNewTodo()
+//        }
         switch identifier {
         case "AssigntoInput":
             inputEventNameTextField.resignFirstResponder()
             print("going back from assign to input")
         case "eventsAssigned":
-            print("event assigned!")
+            print("event assigned! to events: \(selectEventsCollectionView.indexPathsForSelectedItems)")
             initializeNewTodo()
         case "addingCanceled":
             print("adding process canceled")

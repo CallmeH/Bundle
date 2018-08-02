@@ -215,7 +215,7 @@
                                                 </constraints>
                                                 <state key="normal" image="icons8-checked-checkbox-50"/>
                                                 <connections>
-                                                    <segue destination="p79-Hc-e9y" kind="show" identifier="toBundle" id="c8B-vo-tyC"/>
+                                                    <action selector="afterSelectionButton:" destination="KQs-iK-DOo" eventType="touchUpInside" id="3Ru-9t-1Lf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -249,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="choiceTableView" destination="aqa-Gi-eJS" id="Doi-EC-S62"/>
+                        <segue destination="p79-Hc-e9y" kind="show" identifier="toBundle" id="L7f-K6-tXr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdD-SZ-5g9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,6 +362,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="checkButton" destination="y72-1d-jMi" id="ShC-jj-YxJ"/>
                                                     <outlet property="todoForBundle" destination="xFF-wO-nyx" id="oI3-RG-Uye"/>
                                                 </connections>
                                             </tableViewCell>
@@ -376,7 +378,7 @@
                                                 </constraints>
                                                 <state key="normal" image="icons8-close-window-50"/>
                                                 <connections>
-                                                    <segue destination="O2r-G6-4iQ" kind="unwind" unwindAction="unwindToTodoChoice:" id="qny-g2-2KH"/>
+                                                    <segue destination="O2r-G6-4iQ" kind="unwind" identifier="bundleAbandoned" unwindAction="unwindToTodoChoice:" id="qny-g2-2KH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lec-mu-nGt">
@@ -387,7 +389,6 @@
                                                 <state key="normal" image="icons8-checked-checkbox-50"/>
                                                 <connections>
                                                     <action selector="attemptToCompleteButtonTapped:" destination="p79-Hc-e9y" eventType="touchUpInside" id="dFw-QT-sCg"/>
-                                                    <segue destination="O2r-G6-4iQ" kind="unwind" identifier="bundleCompleted" unwindAction="unwindFromCheckin:" id="pGq-4z-A8z"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -423,6 +424,7 @@
                     <connections>
                         <outlet property="bundleNameTextField" destination="mmB-AC-fz4" id="evc-Xg-YEV"/>
                         <outlet property="bundleTableView" destination="NQ6-uV-XFl" id="J4H-Tx-PfP"/>
+                        <segue destination="O2r-G6-4iQ" kind="unwind" identifier="bundleCompleted" unwindAction="unwindFromCheckin:" id="HYt-bp-rNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8r-kj-YEA" userLabel="First Responder" sceneMemberID="firstResponder"/>

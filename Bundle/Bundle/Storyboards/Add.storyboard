@@ -180,43 +180,55 @@
                                             <constraint firstAttribute="height" constant="50" id="ok1-hI-Z9c"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gng-np-hl9">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDn-63-ZXp">
                                         <rect key="frame" x="0.0" y="120" width="337.5" height="402"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gng-np-hl9">
+                                                <rect key="frame" x="17" y="20" width="303.5" height="362"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxW-Kc-bSm" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tagCell" id="IDq-Ov-Gpb" customClass="EventTagsCollectionViewCell" customModule="Bundle" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtO-0p-ujm">
+                                                                    <rect key="frame" x="2" y="2" width="45.5" height="46"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="ZtO-0p-ujm" firstAttribute="top" secondItem="IDq-Ov-Gpb" secondAttribute="top" constant="2" id="5A2-A5-lDn"/>
+                                                            <constraint firstItem="ZtO-0p-ujm" firstAttribute="leading" secondItem="IDq-Ov-Gpb" secondAttribute="leading" constant="2" id="8o4-Kq-Bug"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ZtO-0p-ujm" secondAttribute="trailing" constant="2" id="IJJ-hR-4F9"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ZtO-0p-ujm" secondAttribute="bottom" constant="2" id="d0d-Md-3L0"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="eventTag" destination="ZtO-0p-ujm" id="MUB-FV-ZUx"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxW-Kc-bSm" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tagCell" id="IDq-Ov-Gpb" customClass="EventTagsCollectionViewCell" customModule="Bundle" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtO-0p-ujm">
-                                                            <rect key="frame" x="2" y="2" width="45.5" height="147.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </view>
-                                                <constraints>
-                                                    <constraint firstItem="ZtO-0p-ujm" firstAttribute="top" secondItem="IDq-Ov-Gpb" secondAttribute="top" constant="2" id="5A2-A5-lDn"/>
-                                                    <constraint firstItem="ZtO-0p-ujm" firstAttribute="leading" secondItem="IDq-Ov-Gpb" secondAttribute="leading" constant="2" id="8o4-Kq-Bug"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ZtO-0p-ujm" secondAttribute="trailing" constant="2" id="IJJ-hR-4F9"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ZtO-0p-ujm" secondAttribute="bottom" constant="2" id="d0d-Md-3L0"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="eventTag" destination="ZtO-0p-ujm" id="MUB-FV-ZUx"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
+                                        <constraints>
+                                            <constraint firstItem="gng-np-hl9" firstAttribute="width" secondItem="PDn-63-ZXp" secondAttribute="width" multiplier="0.9" id="1wg-rv-Mhb"/>
+                                            <constraint firstItem="gng-np-hl9" firstAttribute="height" secondItem="PDn-63-ZXp" secondAttribute="height" multiplier="0.9" id="9f9-2c-16I"/>
+                                            <constraint firstItem="gng-np-hl9" firstAttribute="centerY" secondItem="PDn-63-ZXp" secondAttribute="centerY" id="bJZ-iJ-XgG"/>
+                                            <constraint firstItem="gng-np-hl9" firstAttribute="centerX" secondItem="PDn-63-ZXp" secondAttribute="centerX" id="vxN-t2-MsH"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-7Q-SP4" userLabel="ActionButtons">
                                         <rect key="frame" x="0.0" y="532" width="337.5" height="50"/>
                                         <subviews>
@@ -237,7 +249,7 @@
                                                 </constraints>
                                                 <state key="normal" image="icons8-checked-checkbox-50"/>
                                                 <connections>
-                                                    <segue destination="XuI-8S-8SB" kind="unwind" identifier="eventsAssigned" unwindAction="unwindFromInput:" id="Vdv-aW-f7t"/>
+                                                    <action selector="tryToCompleteButton:" destination="2he-KH-bni" eventType="touchUpInside" id="IrC-v2-S2d"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -273,6 +285,7 @@
                         <outlet property="prepositionChoice" destination="ZXe-sA-e7v" id="Nc6-b1-vMG"/>
                         <outlet property="prepositionDisplayLabel" destination="Hbh-KG-jQe" id="XgL-kI-Kfo"/>
                         <outlet property="selectEventsCollectionView" destination="gng-np-hl9" id="w5m-MG-dKU"/>
+                        <segue destination="XuI-8S-8SB" kind="unwind" identifier="eventsAssigned" unwindAction="unwindFromCheckin:" id="gOm-HQ-tHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qzo-rI-56c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -298,16 +311,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Py4-yA-h9l" userLabel="Reminder">
-                                        <rect key="frame" x="0.0" y="68" width="337.5" height="203.5"/>
+                                        <rect key="frame" x="0.0" y="68" width="337.5" height="174.5"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zn1-JO-Nt8">
-                                                <rect key="frame" x="17" y="9.5" width="303.5" height="183.5"/>
+                                                <rect key="frame" x="17" y="8" width="303.5" height="157.5"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Hey let's try having a super long piece of text and see if the button displays it well">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="18" name="BodoniSvtyTwoITCTT-Book"/>
+                                                                <font key="NSFont" size="18" name="Courier"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -334,38 +347,20 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxn-FF-W00" userLabel="Preposition Choice">
-                                        <rect key="frame" x="0.0" y="281.5" width="337.5" height="29"/>
-                                        <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wTg-fF-fyC">
-                                                <rect key="frame" x="87" y="0.0" width="164" height="30"/>
-                                                <segments>
-                                                    <segment title="Before"/>
-                                                    <segment title="When"/>
-                                                    <segment title="After"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="prepositionTapped:" destination="2he-KH-bni" eventType="valueChanged" id="vAq-qy-Qmn"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
+                                        <rect key="frame" x="0.0" y="252.5" width="337.5" height="87.5"/>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="wTg-fF-fyC" firstAttribute="centerX" secondItem="hxn-FF-W00" secondAttribute="centerX" id="ciP-W2-AMv"/>
-                                            <constraint firstItem="wTg-fF-fyC" firstAttribute="top" secondItem="hxn-FF-W00" secondAttribute="top" id="iC0-Fa-k2F"/>
-                                            <constraint firstAttribute="bottom" secondItem="wTg-fF-fyC" secondAttribute="bottom" id="qCA-wY-DO0"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCt-3f-1zn" userLabel="Event">
-                                        <rect key="frame" x="0.0" y="320.5" width="337.5" height="203.5"/>
+                                        <rect key="frame" x="0.0" y="350" width="337.5" height="174.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbE-jc-4fg">
-                                                <rect key="frame" x="17" y="9.5" width="303.5" height="183.5"/>
+                                                <rect key="frame" x="17" y="8" width="303.5" height="157.5"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="let's try a long event title as well but it ended up being not as long">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="18" name="BodoniSvtyTwoITCTT-Book"/>
+                                                                <font key="NSFont" size="18" name="Courier"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -382,17 +377,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNN-32-3Wl" userLabel="ActionButtons">
-                                        <rect key="frame" x="0.0" y="534" width="337.5" height="48"/>
+                                        <rect key="frame" x="0.0" y="534.5" width="337.5" height="47.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-gp-Q8k">
-                                                <rect key="frame" x="10" y="6" width="37" height="37"/>
+                                                <rect key="frame" x="10" y="5.5" width="37" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vV5-gp-Q8k" secondAttribute="height" multiplier="1:1" id="hUh-Jg-ptM"/>
                                                 </constraints>
                                                 <state key="normal" image="icons8-close-window-50"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-gl-1jB">
-                                                <rect key="frame" x="290" y="5.5" width="37.5" height="38"/>
+                                                <rect key="frame" x="290.5" y="5.5" width="37" height="37.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="RMQ-gl-1jB" secondAttribute="height" multiplier="1:1" id="IND-fC-EQs"/>
                                                 </constraints>
@@ -410,9 +405,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Py4-yA-h9l" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="11Z-X3-FpE"/>
-                                    <constraint firstItem="hxn-FF-W00" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.05" id="DcD-tc-pf0"/>
-                                    <constraint firstItem="nCt-3f-1zn" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="Ncr-ek-Wpw"/>
+                                    <constraint firstItem="Py4-yA-h9l" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.3" id="11Z-X3-FpE"/>
+                                    <constraint firstItem="hxn-FF-W00" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.15" id="DcD-tc-pf0"/>
+                                    <constraint firstItem="nCt-3f-1zn" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.3" id="Ncr-ek-Wpw"/>
                                     <constraint firstItem="XX7-bG-hXR" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.1" id="xE0-vH-AmZ"/>
                                 </constraints>
                             </stackView>
@@ -427,6 +422,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u3w-Z4-sPC"/>
                     </view>
+                    <connections>
+                        <outlet property="todoButtonDisplay" destination="zn1-JO-Nt8" id="krT-il-HS3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGM-Pb-ndk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

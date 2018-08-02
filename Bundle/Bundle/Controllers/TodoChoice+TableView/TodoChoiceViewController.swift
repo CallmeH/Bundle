@@ -32,6 +32,14 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         }
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        accessTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+//        for i in accessTodo! {
+//            i.isSelected = false
+//        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -87,12 +95,9 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         
         let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
         let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
-        var todoPlaceholder: Todo
         if indexPath.section == 0 {
-            todoPlaceholder = nonrepeatingCopy[indexPath.row]
             cell.todoForEvent.text = nonrepeatingCopy[indexPath.row].title
         } else {
-            todoPlaceholder = repeatingCopy[indexPath.row]
             cell.todoForEvent.text = repeatingCopy[indexPath.row].title
         }
         
@@ -153,6 +158,13 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //            accessTodo = CoreDataHelper.retrieveAllTodo()
             tableView.reloadData()
         }
+    }
+    
+    
+    @IBAction func afterSelectionButton(_ sender: UIButton) {
+        guard choiceTableView.indexPathsForSelectedRows != [] else {return}
+        guard choiceTableView.indexPathsForSelectedRows != nil else { return }
+        performSegue(withIdentifier: "toBundle", sender: Any?.self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

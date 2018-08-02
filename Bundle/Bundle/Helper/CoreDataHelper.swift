@@ -57,6 +57,12 @@ struct CoreDataHelper {
         return bundle
     }
     
+    static func newTimeTag() -> TimeTag {
+        let timeTag = NSEntityDescription.insertNewObject(forEntityName: "TimeTag", into: context) as! TimeTag
+        
+        return timeTag
+    }
+    
     static func save() {
         do {
             try context.save()
@@ -73,6 +79,18 @@ struct CoreDataHelper {
     
     static func deleteEvent(event: Event) {
         context.delete(event)
+        
+        save()
+    }
+    
+    static func deleteBundle(bundle: Bundle) {
+        context.delete(bundle)
+        
+        save()
+    }
+    
+    static func deleteTimeTag(timeTag: Event) {
+        context.delete(timeTag)
         
         save()
     }
@@ -100,10 +118,10 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveTodoInBundle() -> [Todo] {
+    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
         do {
             let fetch = NSFetchRequest<Todo>(entityName: "Todo")
-            fetch.predicate = NSPredicate(format: "isSelected == TRUE")
+            fetch.predicate = NSPredicate(format: "belongToBundle == bundleName")
             let results = try context.fetch(fetch)
             return results
         } catch let error {
@@ -134,29 +152,41 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
+    static func retrieveTimeTagInEvent(event: Event) -> [TimeTag] {
         do {
-            let fetchSub = NSFetchRequest<Todo>(entityName: "Bundle.containsTodos")
-//            fetchSub.predicate = NSPredicate(format: "= %@", <#T##args: CVarArg...##CVarArg#>)
-            let results = try context.fetch(fetchSub)
+            let fetch = NSFetchRequest<TimeTag>(entityName: "TimeTag")
+            fetch.predicate = NSPredicate(format: "withinEvent == event")
+            let results =  try context.fetch(fetch)
             return results
-            /*
-             let predicate = NSPredicate(format: "categoryName == %@", "yourCategoryHere")
-             let fetchSubcategory = NSFetchRequest(entityName: "Subcategory")
-             fetchSubcategory.predicate = predicate
-             if let subCategoryResults = try context.executeFetchRequest(fetchSubcategory) as? [Subcategory] {
-             //do stuff
-             }
-             let fetchItem = NSFetchRequest(entityName: "Item")
-             fetchItem.predicate = predicate
-             if let itemResults = try context.executeFetchRequest(fetchItem) as? [Item] {
-             //do stuff
-             */
         } catch let error {
-            print("couldn't fetch todo in bundle\(bundleName) due to \(error.localizedDescription)")
+            print("Couldn't fetch time tags in event \(error.localizedDescription)")
             return []
         }
     }
+    
+//    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
+//        do {
+//            let fetchSub = NSFetchRequest<Todo>(entityName: "Bundle.containsTodos")
+////            fetchSub.predicate = NSPredicate(format: "= %@", <#T##args: CVarArg...##CVarArg#>)
+//            let results = try context.fetch(fetchSub)
+//            return results
+//            /*
+//             let predicate = NSPredicate(format: "categoryName == %@", "yourCategoryHere")
+//             let fetchSubcategory = NSFetchRequest(entityName: "Subcategory")
+//             fetchSubcategory.predicate = predicate
+//             if let subCategoryResults = try context.executeFetchRequest(fetchSubcategory) as? [Subcategory] {
+//             //do stuff
+//             }
+//             let fetchItem = NSFetchRequest(entityName: "Item")
+//             fetchItem.predicate = predicate
+//             if let itemResults = try context.executeFetchRequest(fetchItem) as? [Item] {
+//             //do stuff
+//             */
+//        } catch let error {
+//            print("couldn't fetch todo in bundle\(bundleName) due to \(error.localizedDescription)")
+//            return []
+//        }
+//    }
     //retrieve an unsaved session from before
 }
 

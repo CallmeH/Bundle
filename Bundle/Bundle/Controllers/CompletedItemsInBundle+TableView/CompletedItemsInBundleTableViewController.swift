@@ -13,7 +13,7 @@ class CompletedItemsInBundleTableViewController: UITableViewController {
     var tasks: [Todo]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.allowsSelection = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

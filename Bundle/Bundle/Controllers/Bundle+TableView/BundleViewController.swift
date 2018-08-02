@@ -28,7 +28,9 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         bundleTableView.allowsMultipleSelection = true
         
         let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
-        bundleCopy = bundleAll?.filter { $0.isSelected == true}
+        bundleCopy = bundleAll?.filter { $0.isSelected == true}.reversed()
+        bundleNameTextField.returnKeyType = .done
+        bundleTableView.allowsSelection = false
 //        NSPredicate
     }
 
@@ -69,29 +71,35 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             //            guard nonrepeatingCopy != nil else {return}
             todoPlaceholder = nonrepeatingCopy[indexPath.row]
             cell.todoForBundle.text = todoPlaceholder.title
-            cell.onButtonTouched = { (cell) in
-                guard let indexPath = tableView.indexPath(for: cell) else { return }
+            cell.onButtonTouched = { (cellin) in
+                guard let indexPath = tableView.indexPath(for: cellin) else { return }
                 print ("button tapped at\(indexPath.row)")
                 if todoPlaceholder.isCompleted == false {
                     todoPlaceholder.isCompleted = true
+                    cell.checkButton.isSelected = true
                     self.completedCounter += 1
+                    print("completed one")
                 } else {
                     todoPlaceholder.isCompleted = false
+                    cell.checkButton.isSelected = false
                     self.completedCounter -= 1
+                    print("uncompleted")
                 }
             }
         } else {
             //            guard repeatingCopy != nil else {return}
             todoPlaceholder = repeatingCopy[indexPath.row]
             cell.todoForBundle.text = todoPlaceholder.title
-            cell.onButtonTouched = { (cell) in
-                guard let indexPath = tableView.indexPath(for: cell) else { return }
+            cell.onButtonTouched = { (cellin) in
+                guard let indexPath = tableView.indexPath(for: cellin) else { return }
                 print ("button tapped at\(indexPath.row)")
                 if todoPlaceholder.isCompleted == false {
                     todoPlaceholder.isCompleted = true
+                    cell.checkButton.isSelected = true
                     self.completedCounter += 1
                 } else {
                     todoPlaceholder.isCompleted = false
+                    cell.checkButton.isSelected = false
                     self.completedCounter -= 1
                 }
             }
@@ -109,7 +117,11 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
 //        return UITableViewCellEditingStyle.init(rawValue: 3)!
 //    }
 
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        bundleNameTextField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func attemptToCompleteButtonTapped(_ sender: UIButton) {
         if completedCounter == bundleCopy?.count {
@@ -122,6 +134,12 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {
+        case "bundleAbandoned":
+            for i in bundleCopy! {
+//                i.isSelected = false
+                i.isCompleted = false
+            }
+            CoreDataHelper.save()
         case "bundleCompleted":
             let newBundle = CoreDataHelper.newBundle()
             newBundle.name = bundleNameTextField.text == "" ? "No name" : bundleNameTextField.text

@@ -62,3 +62,11 @@ extension Date {
         return self < Date()
     }
 }
+
+
+//WRONG!
+//let day = bundles?.filter{$0.dateCompleted?.isInToday ?? false}[indexPath.row]
+//let week = bundles?.filter{(($0.dateCompleted?.isInThisWeek)! && $0.dateCompleted?.isInToday == false)}[indexPath.row]
+//let month = bundles?.filter{($0.dateCompleted?.isInThisMonth)! && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]
+//let year = bundles?.filter{($0.dateCompleted?.isInThisYear)! && $0.dateCompleted?.isInThisMonth == false && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]
+//let moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false && $0.dateCompleted?.isInThisMonth == false && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]

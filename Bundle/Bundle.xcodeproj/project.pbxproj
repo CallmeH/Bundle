@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7927F4A12112D13000A23285 /* FirstTimeGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A02112D13000A23285 /* FirstTimeGuide.swift */; };
+		7927F4A32112ED2B00A23285 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */; };
 		7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964133A21068E6700BD18A8 /* AppDelegate.swift */; };
 		7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964133C21068E6700BD18A8 /* HomeViewController.swift */; };
 		7964134021068E6700BD18A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964133E21068E6700BD18A8 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		2DA2F987E9794F81CEED1920 /* Pods-Bundle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bundle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bundle/Pods-Bundle.release.xcconfig"; sourceTree = "<group>"; };
 		45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BundleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF8EE29FFAF89EC87BB9368 /* Pods-BundleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BundleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BundleUITests/Pods-BundleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7927F4A02112D13000A23285 /* FirstTimeGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeGuide.swift; sourceTree = "<group>"; };
+		7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7964133721068E6700BD18A8 /* Bundle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bundle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7964133A21068E6700BD18A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7964133C21068E6700BD18A8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				7964137E2107B4F600BD18A8 /* Attribution.md */,
 				79CDE8F621085572009DB3F0 /* Plans.md */,
 				79FFEEAB210F9064006D2654 /* Polish Elements.md */,
+				7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */,
 				79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */,
 				7964136D21068F0600BD18A8 /* Controllers */,
 				7964137821068FFB00BD18A8 /* Storyboards */,
@@ -240,6 +245,7 @@
 				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
 				79D09DCF21122DE10049BEA3 /* Constants.swift */,
 				79D09DDA211292640049BEA3 /* DateFormatting.swift */,
+				7927F4A02112D13000A23285 /* FirstTimeGuide.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 				7964134321068E6700BD18A8 /* Bundle.xcdatamodeld in Sources */,
 				79FFEEAD210FC151006D2654 /* BundleTableViewCell.swift in Sources */,
 				7964136C21068F0200BD18A8 /* InputTodoViewController.swift in Sources */,
+				7927F4A32112ED2B00A23285 /* LaunchScreenViewController.swift in Sources */,
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,
 				7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */,
 				79D09DD22112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift in Sources */,
@@ -543,6 +550,7 @@
 				796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */,
 				79D09DD521125B250049BEA3 /* ReviewBundlesTableViewCell.swift in Sources */,
 				7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */,
+				7927F4A12112D13000A23285 /* FirstTimeGuide.swift in Sources */,
 				79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */,
 				7964136F21068F5400BD18A8 /* AssignToEventViewController.swift in Sources */,
 				7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */,

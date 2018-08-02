@@ -25,6 +25,11 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
     
     var bundles: [Bundle]?
     var events: [Event]?
+    var day: [Bundle]?
+    var week: [Bundle]?
+    var month: [Bundle]?
+    var year: [Bundle]?
+    var moreThanAYear: [Bundle]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,13 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         bundles = CoreDataHelper.retrieveAllBundle()
         events = CoreDataHelper.retrieveAllEvent().filter{$0.todoArray != []}
         
+        day = bundles?.filter{($0.dateCompleted?.isInToday)!}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
+        week = bundles?.filter{($0.dateCompleted?.isInThisWeek)!}.filter{$0.dateCompleted?.isInToday == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
+        month = bundles?.filter{$0.dateCompleted?.isInThisMonth ?? false}.filter{($0.dateCompleted?.isInThisWeek)! == false}.filter{$0.dateCompleted?.isInToday == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
+        year = bundles?.filter{($0.dateCompleted?.isInThisYear)! }.filter{($0.dateCompleted?.isInThisMonth)! == false}.filter{($0.dateCompleted?.isInThisWeek)! == false}.filter{($0.dateCompleted?.isInToday)!}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
+        moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
+        
+        completedBundlesTableView.allowsSelection = false
 //        print(bundles)
     }
 
@@ -57,25 +69,15 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
             switch section {
             case 0:
-                return bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInToday ?? false
-                }).count ?? 0
+                return day?.count ?? 0
             case 1:
-                return bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisWeek ?? false
-                }).count ?? 0
+                return week?.count ?? 0
             case 2:
-                return bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisMonth ?? false
-                }).count ?? 0
+                return month?.count ?? 0
             case 3:
-                return bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisYear ?? false
-                }).count ?? 0
+                return year?.count ?? 0
             default:
-                return bundles?.filter({ (bundle: Bundle) -> Bool in
-                    !(bundle.dateCompleted?.isInThisYear ?? false)
-                }).count ?? 0
+                return moreThanAYear?.count ?? 0
             }
         } else {
             for i in 0...(events?.count)!-1 {
@@ -116,46 +118,41 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bundleReview", for: indexPath) as! ReviewBundlesTableViewCell
         var bundlesPlaceholder: Bundle
-        func setCellExceptForToday() {
+        
+        func setCell() {
             cell.bundleNameLabel.text = bundlesPlaceholder.name
-            cell.eventInitialsLabel.text = bundlesPlaceholder.belongToEvent?.name
-            cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToString()
+            if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
+                cell.eventInitialsLabel.text = bundlesPlaceholder.belongToEvent?.name
+            } else {return}
+            if (bundlesPlaceholder.dateCompleted?.isInToday)! {
+                cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToStringToday()
+            } else {
+                cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToString()
+            }
         }
         if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
             switch indexPath.section {
             case 0:
-                bundlesPlaceholder = (bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInToday ?? false
-                })[indexPath.row])!
-                cell.bundleNameLabel.text = bundlesPlaceholder.name
-                cell.eventInitialsLabel.text = bundlesPlaceholder.belongToEvent?.name
-                cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToStringToday()
+                bundlesPlaceholder = day![indexPath.row]
+                setCell()
             case 1:
-                bundlesPlaceholder = (bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisWeek ?? false
-                })[indexPath.row])!
-                setCellExceptForToday()
+                bundlesPlaceholder = week![indexPath.row]
+                setCell()
             case 2:
-                bundlesPlaceholder = (bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisMonth ?? false
-                })[indexPath.row])!
-                setCellExceptForToday()
+                bundlesPlaceholder = month![indexPath.row]
+                setCell()
             case 3:
-                bundlesPlaceholder = (bundles?.filter({ (bundle: Bundle) -> Bool in
-                    bundle.dateCompleted?.isInThisYear ?? false
-                })[indexPath.row])!
-                setCellExceptForToday()
+                bundlesPlaceholder = year![indexPath.row]
+                setCell()
             default:
-                bundlesPlaceholder = (bundles?.filter({ (bundle: Bundle) -> Bool in
-                    !(bundle.dateCompleted?.isInThisYear ?? false)
-                })[indexPath.row])!
-                setCellExceptForToday()
+                bundlesPlaceholder = moreThanAYear![indexPath.row]
+                setCell()
             }
         } else {
             for i in 0...numberOfSections(in: completedBundlesTableView)-1 {
                 if indexPath.section == i {
                     bundlesPlaceholder = events![i].bundleArray?.allObjects[indexPath.row] as! Bundle
-                    setCellExceptForToday()
+                    setCell()
                 }
             }
         }

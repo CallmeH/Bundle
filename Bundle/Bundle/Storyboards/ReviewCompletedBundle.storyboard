@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AiW-u8-WVt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vlr-E1-vxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Review Bundles View Controller-->
+        <!--All Bundles-->
         <scene sceneID="Ihc-ZC-v7p">
             <objects>
                 <viewController id="AiW-u8-WVt" customClass="ReviewBundlesViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,13 +21,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SbF-AR-1f7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kc-HV-xMC" userLabel="Header">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XHI-fa-aSR" userLabel="Header Content Stack View">
-                                                <rect key="frame" x="104" y="12" width="167.5" height="28"/>
+                                                <rect key="frame" x="104" y="10" width="167.5" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re2-6N-9be">
                                                         <rect key="frame" x="0.0" y="0.0" width="60.5" height="28"/>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lir-wm-daf">
-                                        <rect key="frame" x="0.0" y="62" width="375" height="585"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="375" height="544.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bundleReview" id="Bdl-P4-e5c" customClass="ReviewBundlesTableViewCell" customModule="Bundle" customModuleProvider="target">
@@ -146,6 +146,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dxR-Bq-a4e"/>
                     </view>
+                    <navigationItem key="navigationItem" title="All Bundles" id="cAd-Bj-HNr">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Main menu" id="lKz-21-tSY">
+                            <connections>
+                                <segue destination="NwE-s0-CvP" kind="show" id="3ak-Vo-vQ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="completedBundlesTableView" destination="Lir-wm-daf" id="0dc-0z-TQo"/>
                         <outlet property="sortSegmentedControl" destination="kA8-ne-o4h" id="9sg-Fs-275"/>
@@ -153,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMk-iB-LjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2638" y="18"/>
+            <point key="canvasLocation" x="3576.8000000000002" y="17.541229385307346"/>
         </scene>
         <!--Finished Tasks-->
         <scene sceneID="3G5-dY-OZ3">
@@ -226,7 +233,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzn-Ug-oGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3492" y="17.541229385307346"/>
+            <point key="canvasLocation" x="4431.1999999999998" y="17.541229385307346"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NJt-a9-jJ8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vlr-E1-vxG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MG3-av-a3S">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AiW-u8-WVt" kind="relationship" relationship="rootViewController" id="GPz-hY-iB5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-7z-yjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.5999999999999" y="17.541229385307346"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="f34-H6-xQS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="NwE-s0-CvP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxP-9d-rZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3103" y="-204"/>
         </scene>
     </scenes>
 </document>
