@@ -1,6 +1,7 @@
 #  Development Plan
 
 ## additional features
+- have some template data (check if the app is launched for the first time)
 - link to event in calendar (so the event can have a alarm) (Me, May)
 - choice of having add todo->assign event or creating event->adding multiple todos (Mags)
 - drag&drop to change order

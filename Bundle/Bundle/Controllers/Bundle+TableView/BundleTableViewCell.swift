@@ -17,6 +17,7 @@ class BundleTableViewCell: UITableViewCell {
     
     var onButtonTouched: ((UITableViewCell)->Void)? = nil
     @IBAction func checkButtonTapped(_ sender: UIButton) {
+        onButtonTouched?(self)
         if sender.isSelected {
             sender.isSelected = false
         } else {

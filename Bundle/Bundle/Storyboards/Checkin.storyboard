@@ -176,7 +176,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-kV-X29">
-                                                            <rect key="frame" x="10" y="0.5" width="250" height="42.5"/>
+                                                            <rect key="frame" x="10" y="0.5" width="283.5" height="42.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -313,10 +313,10 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-qv-zo5">
-                                                            <rect key="frame" x="10" y="9.5" width="250" height="18"/>
+                                                            <rect key="frame" x="10" y="9.5" width="283.5" height="19.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y72-1d-jMi">
-                                                                    <rect key="frame" x="0.0" y="0.5" width="17.5" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="y72-1d-jMi" secondAttribute="height" multiplier="1:1" id="QXt-Xn-mv5"/>
                                                                     </constraints>
@@ -327,13 +327,13 @@
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-wO-nyx">
-                                                                    <rect key="frame" x="27.5" y="0.5" width="195" height="18"/>
+                                                                    <rect key="frame" x="30" y="0.0" width="223.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-Ro-HpS">
-                                                                    <rect key="frame" x="232.5" y="0.5" width="17.5" height="18"/>
+                                                                    <rect key="frame" x="263.5" y="0.0" width="20" height="20.5"/>
                                                                     <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="Wcy-Ro-HpS" secondAttribute="height" multiplier="1:1" id="jLZ-ck-j1v"/>
@@ -386,7 +386,8 @@
                                                 </constraints>
                                                 <state key="normal" image="icons8-checked-checkbox-50"/>
                                                 <connections>
-                                                    <segue destination="O2r-G6-4iQ" kind="unwind" identifier="bundleCompleted" unwindAction="unwindFromCheckin:" id="x04-wL-aRC"/>
+                                                    <action selector="attemptToCompleteButtonTapped:" destination="p79-Hc-e9y" eventType="touchUpInside" id="dFw-QT-sCg"/>
+                                                    <segue destination="O2r-G6-4iQ" kind="unwind" identifier="bundleCompleted" unwindAction="unwindFromCheckin:" id="pGq-4z-A8z"/>
                                                 </connections>
                                             </button>
                                         </subviews>

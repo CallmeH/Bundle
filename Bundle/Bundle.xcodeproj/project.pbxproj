@@ -27,6 +27,11 @@
 		796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */; };
 		796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3106210A31A4004C0FCA /* FlowLayout.swift */; };
 		799851EA210B8FB10049EB8C /* CheckinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */; };
+		79D09DD021122DE10049BEA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D09DCF21122DE10049BEA3 /* Constants.swift */; };
+		79D09DD22112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D09DD12112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift */; };
+		79D09DD521125B250049BEA3 /* ReviewBundlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D09DD421125B250049BEA3 /* ReviewBundlesTableViewCell.swift */; };
+		79D09DD821125B500049BEA3 /* CompletedItemsInBundleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D09DD721125B500049BEA3 /* CompletedItemsInBundleTableViewCell.swift */; };
+		79D09DDB211292640049BEA3 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D09DDA211292640049BEA3 /* DateFormatting.swift */; };
 		79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */; };
 		79FFEEAD210FC151006D2654 /* BundleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFEEAC210FC151006D2654 /* BundleTableViewCell.swift */; };
 		79FFEEB02111014A006D2654 /* AddFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */; };
@@ -87,6 +92,11 @@
 		796D3106210A31A4004C0FCA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCollectionViewCell.swift; sourceTree = "<group>"; };
 		79CDE8F621085572009DB3F0 /* Plans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Plans.md; sourceTree = "<group>"; };
+		79D09DCF21122DE10049BEA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79D09DD12112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedItemsInBundleTableViewController.swift; sourceTree = "<group>"; };
+		79D09DD421125B250049BEA3 /* ReviewBundlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBundlesTableViewCell.swift; sourceTree = "<group>"; };
+		79D09DD721125B500049BEA3 /* CompletedItemsInBundleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedItemsInBundleTableViewCell.swift; sourceTree = "<group>"; };
+		79D09DDA211292640049BEA3 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		79F479BC2109226C00B40FBA /* TodoChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		79FFEEAB210F9064006D2654 /* Polish Elements.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Polish Elements.md"; sourceTree = "<group>"; };
 		79FFEEAC210FC151006D2654 /* BundleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,7 +215,8 @@
 				799851EB210B8FC70049EB8C /* Checkin+CollectionView */,
 				79F479BB2109224500B40FBA /* TodoChoice+TableView */,
 				79FFEEAE210FC155006D2654 /* Bundle+TableView */,
-				79FFEEB12111274D006D2654 /* ReviewBundlesViewController.swift */,
+				79D09DD621125B300049BEA3 /* ReviewBundle+TableView */,
+				79D09DD921125BA70049BEA3 /* CompletedItemsInBundle+TableView */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,6 +238,8 @@
 			children = (
 				7964137621068FE800BD18A8 /* CoreDataHelper.swift */,
 				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
+				79D09DCF21122DE10049BEA3 /* Constants.swift */,
+				79D09DDA211292640049BEA3 /* DateFormatting.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -238,6 +251,24 @@
 				799851E9210B8FB10049EB8C /* CheckinCollectionViewCell.swift */,
 			);
 			path = "Checkin+CollectionView";
+			sourceTree = "<group>";
+		};
+		79D09DD621125B300049BEA3 /* ReviewBundle+TableView */ = {
+			isa = PBXGroup;
+			children = (
+				79FFEEB12111274D006D2654 /* ReviewBundlesViewController.swift */,
+				79D09DD421125B250049BEA3 /* ReviewBundlesTableViewCell.swift */,
+			);
+			path = "ReviewBundle+TableView";
+			sourceTree = "<group>";
+		};
+		79D09DD921125BA70049BEA3 /* CompletedItemsInBundle+TableView */ = {
+			isa = PBXGroup;
+			children = (
+				79D09DD12112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift */,
+				79D09DD721125B500049BEA3 /* CompletedItemsInBundleTableViewCell.swift */,
+			);
+			path = "CompletedItemsInBundle+TableView";
 			sourceTree = "<group>";
 		};
 		79F479BB2109224500B40FBA /* TodoChoice+TableView */ = {
@@ -496,21 +527,26 @@
 			files = (
 				79FFEEB22111274D006D2654 /* ReviewBundlesViewController.swift in Sources */,
 				7964137121068F6000BD18A8 /* BundleViewController.swift in Sources */,
+				79D09DDB211292640049BEA3 /* DateFormatting.swift in Sources */,
 				79FFEEB02111014A006D2654 /* AddFirstScreenViewController.swift in Sources */,
 				7964137521068F7600BD18A8 /* TodoChoiceViewController.swift in Sources */,
 				799851EA210B8FB10049EB8C /* CheckinCollectionViewCell.swift in Sources */,
+				79D09DD821125B500049BEA3 /* CompletedItemsInBundleTableViewCell.swift in Sources */,
 				7964134321068E6700BD18A8 /* Bundle.xcdatamodeld in Sources */,
 				79FFEEAD210FC151006D2654 /* BundleTableViewCell.swift in Sources */,
 				7964136C21068F0200BD18A8 /* InputTodoViewController.swift in Sources */,
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,
 				7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */,
+				79D09DD22112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift in Sources */,
 				796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */,
 				796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */,
 				796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */,
+				79D09DD521125B250049BEA3 /* ReviewBundlesTableViewCell.swift in Sources */,
 				7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */,
 				79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */,
 				7964136F21068F5400BD18A8 /* AssignToEventViewController.swift in Sources */,
 				7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */,
+				79D09DD021122DE10049BEA3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

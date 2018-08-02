@@ -297,39 +297,42 @@
                                         <color key="textColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-KO-INx" userLabel="Todo">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Py4-yA-h9l" userLabel="Reminder">
                                         <rect key="frame" x="0.0" y="68" width="337.5" height="203.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e.g. Email Dan..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jat-Iu-FUM">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="203.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9c-dd-Db5" userLabel="Edit Todo">
-                                                <rect key="frame" x="304" y="0.0" width="33.5" height="203.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-9j-yAY">
-                                                        <rect key="frame" x="0.5" y="85.5" width="33.5" height="33.5"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="t5B-9j-yAY" secondAttribute="height" multiplier="1:1" id="Vf6-3r-sU1"/>
-                                                        </constraints>
-                                                        <state key="normal" image="icons8-edit-50"/>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="t5B-9j-yAY" firstAttribute="centerX" secondItem="l9c-dd-Db5" secondAttribute="centerX" id="0SI-M4-0cY"/>
-                                                    <constraint firstItem="t5B-9j-yAY" firstAttribute="width" secondItem="l9c-dd-Db5" secondAttribute="width" id="132-ch-YC6"/>
-                                                    <constraint firstItem="t5B-9j-yAY" firstAttribute="centerY" secondItem="l9c-dd-Db5" secondAttribute="centerY" id="5LT-yC-WqT"/>
-                                                </constraints>
-                                            </view>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zn1-JO-Nt8">
+                                                <rect key="frame" x="17" y="9.5" width="303.5" height="183.5"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Hey let's try having a super long piece of text and see if the button displays it well">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="18" name="BodoniSvtyTwoITCTT-Book"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                         </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="l9c-dd-Db5" firstAttribute="width" secondItem="eBB-KO-INx" secondAttribute="width" multiplier="0.1" id="S9P-dT-K17"/>
+                                            <constraint firstItem="zn1-JO-Nt8" firstAttribute="height" secondItem="Py4-yA-h9l" secondAttribute="height" multiplier="0.9" id="4uE-QZ-Yv5"/>
+                                            <constraint firstItem="zn1-JO-Nt8" firstAttribute="width" secondItem="Py4-yA-h9l" secondAttribute="width" multiplier="0.9" id="7na-ji-a3a"/>
+                                            <constraint firstItem="zn1-JO-Nt8" firstAttribute="centerX" secondItem="Py4-yA-h9l" secondAttribute="centerX" id="Mcc-mI-S3B"/>
+                                            <constraint firstItem="zn1-JO-Nt8" firstAttribute="centerY" secondItem="Py4-yA-h9l" secondAttribute="centerY" id="RX3-MF-V1D"/>
                                         </constraints>
-                                    </stackView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxn-FF-W00" userLabel="Preposition Choice">
                                         <rect key="frame" x="0.0" y="281.5" width="337.5" height="29"/>
                                         <subviews>
@@ -352,39 +355,32 @@
                                             <constraint firstAttribute="bottom" secondItem="wTg-fF-fyC" secondAttribute="bottom" id="qCA-wY-DO0"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFK-Ny-OS5" userLabel="Event">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCt-3f-1zn" userLabel="Event">
                                         <rect key="frame" x="0.0" y="320.5" width="337.5" height="203.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...I leave work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T35-Ji-Ql3">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="203.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwd-sV-Cf8" userLabel="Edit Event">
-                                                <rect key="frame" x="304" y="0.0" width="33.5" height="203.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-4N-00a">
-                                                        <rect key="frame" x="0.0" y="85.5" width="33.5" height="33.5"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="jqw-4N-00a" secondAttribute="height" multiplier="1:1" id="9HM-c8-WTJ"/>
-                                                        </constraints>
-                                                        <state key="normal" image="icons8-edit-50"/>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="jqw-4N-00a" firstAttribute="centerX" secondItem="zwd-sV-Cf8" secondAttribute="centerX" id="gXj-V7-vAH"/>
-                                                    <constraint firstItem="jqw-4N-00a" firstAttribute="width" secondItem="zwd-sV-Cf8" secondAttribute="width" id="h8S-eH-zIj"/>
-                                                    <constraint firstItem="jqw-4N-00a" firstAttribute="centerY" secondItem="zwd-sV-Cf8" secondAttribute="centerY" id="s7b-za-uPV"/>
-                                                </constraints>
-                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbE-jc-4fg">
+                                                <rect key="frame" x="17" y="9.5" width="303.5" height="183.5"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="let's try a long event title as well but it ended up being not as long">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="18" name="BodoniSvtyTwoITCTT-Book"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                            </button>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="zwd-sV-Cf8" firstAttribute="width" secondItem="CFK-Ny-OS5" secondAttribute="width" multiplier="0.1" id="MgF-XA-csU"/>
+                                            <constraint firstItem="rbE-jc-4fg" firstAttribute="width" secondItem="nCt-3f-1zn" secondAttribute="width" multiplier="0.9" id="6Qb-uo-GAt"/>
+                                            <constraint firstItem="rbE-jc-4fg" firstAttribute="height" secondItem="nCt-3f-1zn" secondAttribute="height" multiplier="0.9" id="Dak-gf-o2D"/>
+                                            <constraint firstItem="rbE-jc-4fg" firstAttribute="centerX" secondItem="nCt-3f-1zn" secondAttribute="centerX" id="X6E-6i-Rre"/>
+                                            <constraint firstItem="rbE-jc-4fg" firstAttribute="centerY" secondItem="nCt-3f-1zn" secondAttribute="centerY" id="rQu-rf-a6o"/>
                                         </constraints>
-                                    </stackView>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNN-32-3Wl" userLabel="ActionButtons">
                                         <rect key="frame" x="0.0" y="534" width="337.5" height="48"/>
                                         <subviews>
@@ -396,7 +392,7 @@
                                                 <state key="normal" image="icons8-close-window-50"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-gl-1jB">
-                                                <rect key="frame" x="289.5" y="5.5" width="38" height="38"/>
+                                                <rect key="frame" x="290" y="5.5" width="37.5" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="RMQ-gl-1jB" secondAttribute="height" multiplier="1:1" id="IND-fC-EQs"/>
                                                 </constraints>
@@ -414,9 +410,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Py4-yA-h9l" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="11Z-X3-FpE"/>
                                     <constraint firstItem="hxn-FF-W00" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.05" id="DcD-tc-pf0"/>
-                                    <constraint firstItem="eBB-KO-INx" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="WKI-eQ-sXS"/>
-                                    <constraint firstItem="CFK-Ny-OS5" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="eBM-dK-9F7"/>
+                                    <constraint firstItem="nCt-3f-1zn" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.35" id="Ncr-ek-Wpw"/>
                                     <constraint firstItem="XX7-bG-hXR" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.1" id="xE0-vH-AmZ"/>
                                 </constraints>
                             </stackView>
@@ -431,10 +427,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u3w-Z4-sPC"/>
                     </view>
-                    <connections>
-                        <outlet property="eventLabel" destination="T35-Ji-Ql3" id="fvz-hP-5z3"/>
-                        <outlet property="todoLabel" destination="jat-Iu-FUM" id="uxY-Pp-tP8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGM-Pb-ndk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -444,6 +436,5 @@
     <resources>
         <image name="icons8-checked-checkbox-50" width="37" height="37"/>
         <image name="icons8-close-window-50" width="37" height="37"/>
-        <image name="icons8-edit-50" width="50" height="50"/>
     </resources>
 </document>

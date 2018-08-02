@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
+
+//write: Event.
+//read: prepType(rawValue: Event.preposition or 0?)
+
 enum prepType: Int16 {
     case before = 0
     case when = 1
@@ -26,12 +30,6 @@ enum prepType: Int16 {
         }
     }
 }
-
-//write: Event.
-//read: prepType(rawValue: Event.preposition or 0?)
-
-let EventPlaceholder: [String] = ["get up", "leave home in the morning", "go on lunch break", "math", "english", "bathroom break", "go home", "get dinner"]
-
 
 struct CoreDataHelper {
     static let context: NSManagedObjectContext = {

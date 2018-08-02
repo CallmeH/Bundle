@@ -3,17 +3,21 @@
     <entity name="Bundle" representedClassName=".Bundle" syncable="YES" codeGenerationType="class">
         <attribute name="dateCompleted" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongToEvent" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="bundleArray" inverseEntity="Event" syncable="YES"/>
         <relationship name="containsTodos" toMany="YES" deletionRule="Nullify" destinationEntity="Todo" inverseName="belongToBundle" inverseEntity="Todo" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRepeated" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="preposition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="bundleArray" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bundle" inverseName="belongToEvent" inverseEntity="Bundle" syncable="YES"/>
         <relationship name="todoArray" toMany="YES" deletionRule="Nullify" destinationEntity="Todo" inverseName="belongToEvent" inverseEntity="Todo" syncable="YES"/>
     </entity>
     <entity name="TimeTag" representedClassName="TimeTag" syncable="YES" codeGenerationType="class">
         <attribute name="preposition" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tagAtTodo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Todo" inverseName="hasTimeTag" inverseEntity="Todo" syncable="YES"/>
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="isCompleted" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -22,11 +26,12 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="belongToBundle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bundle" inverseName="containsTodos" inverseEntity="Bundle" syncable="YES"/>
         <relationship name="belongToEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="todoArray" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasTimeTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeTag" inverseName="tagAtTodo" inverseEntity="TimeTag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bundle" positionX="-65" positionY="0" width="128" height="90"/>
-        <element name="Event" positionX="-65" positionY="-135" width="128" height="120"/>
-        <element name="Todo" positionX="171" positionY="-153" width="128" height="135"/>
-        <element name="TimeTag" positionX="54" positionY="-45" width="128" height="60"/>
+        <element name="Bundle" positionX="-65" positionY="0" width="128" height="105"/>
+        <element name="Event" positionX="-65" positionY="-135" width="128" height="150"/>
+        <element name="TimeTag" positionX="54" positionY="-45" width="128" height="75"/>
+        <element name="Todo" positionX="171" positionY="-153" width="128" height="150"/>
     </elements>
 </model>

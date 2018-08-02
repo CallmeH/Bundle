@@ -126,12 +126,12 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
                 if cell.accessoryType == .checkmark {
                     cell.accessoryType = .none
                     repeatOrNot[indexPath.row].isSelected = false
-                    print(cell.isSelected)
+                    print(repeatOrNot[indexPath.row].isSelected)
                 }
                 else{
                     cell.accessoryType = .checkmark
                     repeatOrNot[indexPath.row].isSelected = true
-                    print(cell.isSelected)
+                    print(repeatOrNot[indexPath.row].isSelected)
                 }
             }
         }
