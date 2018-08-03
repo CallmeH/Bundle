@@ -110,6 +110,11 @@ class AssignToEventViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if indexPath.row == self.allEvents.count {
+//            // use prototype cell with button
+//        } else {
+//            
+//        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! EventTagsCollectionViewCell
         let event = allEvents[indexPath.item]
         cell.eventTag.text = event.name

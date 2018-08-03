@@ -13,6 +13,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if AppDelegate.isFirstLaunch() {
+            let before = CoreDataHelper.newDefaultTag()
+            before.preposition = prepType.before.rawValue
+            let after = CoreDataHelper.newDefaultTag()
+            after.preposition = prepType.after.rawValue
+            let when = CoreDataHelper.newDefaultTag()
+            when.preposition = prepType.when.rawValue
+            CoreDataHelper.save()
+        } else { return }
     }
 
     override func didReceiveMemoryWarning() {

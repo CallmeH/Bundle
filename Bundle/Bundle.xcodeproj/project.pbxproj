@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791372312113C413003452B8 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791372302113C413003452B8 /* AddTodoViewController.swift */; };
+		791372332113DFD4003452B8 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791372322113DFD4003452B8 /* AddEventViewController.swift */; };
 		7927F4A12112D13000A23285 /* FirstTimeGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A02112D13000A23285 /* FirstTimeGuide.swift */; };
 		7927F4A32112ED2B00A23285 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */; };
 		7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964133A21068E6700BD18A8 /* AppDelegate.swift */; };
@@ -66,6 +68,8 @@
 		2DA2F987E9794F81CEED1920 /* Pods-Bundle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bundle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bundle/Pods-Bundle.release.xcconfig"; sourceTree = "<group>"; };
 		45E57148CDF7519FF581F8F1 /* Pods_BundleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BundleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF8EE29FFAF89EC87BB9368 /* Pods-BundleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BundleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BundleUITests/Pods-BundleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		791372302113C413003452B8 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		791372322113DFD4003452B8 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		7927F4A02112D13000A23285 /* FirstTimeGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeGuide.swift; sourceTree = "<group>"; };
 		7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7964133721068E6700BD18A8 /* Bundle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bundle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,8 @@
 				79FFEEAB210F9064006D2654 /* Polish Elements.md */,
 				7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */,
 				79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */,
+				791372302113C413003452B8 /* AddTodoViewController.swift */,
+				791372322113DFD4003452B8 /* AddEventViewController.swift */,
 				7964136D21068F0600BD18A8 /* Controllers */,
 				7964137821068FFB00BD18A8 /* Storyboards */,
 				796413792106901400BD18A8 /* Helper */,
@@ -241,6 +247,7 @@
 		796413792106901400BD18A8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
 				7964137621068FE800BD18A8 /* CoreDataHelper.swift */,
 				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
 				79D09DCF21122DE10049BEA3 /* Constants.swift */,
@@ -291,7 +298,6 @@
 			children = (
 				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
 				796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */,
-				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
 			);
 			path = "AssignToEvent+CollectionView";
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FFEEB22111274D006D2654 /* ReviewBundlesViewController.swift in Sources */,
+				791372332113DFD4003452B8 /* AddEventViewController.swift in Sources */,
 				7964137121068F6000BD18A8 /* BundleViewController.swift in Sources */,
 				79D09DDB211292640049BEA3 /* DateFormatting.swift in Sources */,
 				79FFEEB02111014A006D2654 /* AddFirstScreenViewController.swift in Sources */,
@@ -542,6 +549,7 @@
 				79FFEEAD210FC151006D2654 /* BundleTableViewCell.swift in Sources */,
 				7964136C21068F0200BD18A8 /* InputTodoViewController.swift in Sources */,
 				7927F4A32112ED2B00A23285 /* LaunchScreenViewController.swift in Sources */,
+				791372312113C413003452B8 /* AddTodoViewController.swift in Sources */,
 				7964137321068F6C00BD18A8 /* CheckinViewController.swift in Sources */,
 				7964133D21068E6700BD18A8 /* HomeViewController.swift in Sources */,
 				79D09DD22112538E0049BEA3 /* CompletedItemsInBundleTableViewController.swift in Sources */,

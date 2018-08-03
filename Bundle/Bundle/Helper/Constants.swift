@@ -8,6 +8,7 @@
 
 import Foundation
 
+typealias preposition = Int16
 struct Constant {
     struct Segue {
         
@@ -17,6 +18,12 @@ struct Constant {
         static let time = 0
         static let event = 1
     }
+    
+//    struct prepositionType: Int {
+//        static let before = 0
+//        static let after = 1
+//        static let when = 2
+//    }
     
     let EventPlaceholder: [String] = ["get up", "leave home in the morning", "go on lunch break", "math", "english", "bathroom break", "go home", "get dinner"]
     

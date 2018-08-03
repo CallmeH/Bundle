@@ -20,13 +20,13 @@ enum prepType: Int16 {
     case after = 2
     var displayName: String {
         if rawValue == 0 {
-            return "Before"
+            return "before"
         } else if rawValue == 1 {
-            return "When"
+            return "when"
         } else if rawValue == 2 {
-            return "After"
+            return "after"
         } else {
-            return "Swipe to set up trigger time"
+            return "Tap to set up tag"
         }
     }
 }
@@ -49,7 +49,15 @@ struct CoreDataHelper {
     
     static func newEvent() -> Event {
         let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
+
         return event
+    }
+    
+    static func setBasicDefaultTags(newEvent: Event) -> Event {
+        for i in retrieveAllDefaultTags() {
+            newEvent.addToContainDefaultTag(i)
+        }
+        return newEvent
     }
     
     static func newBundle() -> Bundle {
@@ -57,10 +65,11 @@ struct CoreDataHelper {
         return bundle
     }
     
-    static func newTimeTag() -> TimeTag {
-        let timeTag = NSEntityDescription.insertNewObject(forEntityName: "TimeTag", into: context) as! TimeTag
-        
-        return timeTag
+    // allow the users to create their own default tags in future updates, set another entity (customTag) for one-time use tags
+    static func newDefaultTag() -> DefaultTag {
+        let defaultTag = NSEntityDescription.insertNewObject(forEntityName: "DefaultTag", into: context) as! DefaultTag
+
+        return defaultTag
     }
     
     static func save() {
@@ -88,12 +97,12 @@ struct CoreDataHelper {
         
         save()
     }
-    
-    static func deleteTimeTag(timeTag: Event) {
-        context.delete(timeTag)
-        
-        save()
-    }
+    // in future updates
+//    static func deleteTimeTag(timeTag: Event) {
+//        context.delete(timeTag)
+//
+//        save()
+//    }
     
     static func retrieveAllTodo() -> [Todo] {
         do {
@@ -118,21 +127,32 @@ struct CoreDataHelper {
         }
     }
     
-    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
-        do {
-            let fetch = NSFetchRequest<Todo>(entityName: "Todo")
-            fetch.predicate = NSPredicate(format: "belongToBundle == bundleName")
-            let results = try context.fetch(fetch)
-            return results
-        } catch let error {
-            print("Couldn't fetch selected todo \(error.localizedDescription)")
-            return []
-        }
-    }
+//    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
+//        do {
+//            let fetch = NSFetchRequest<Todo>(entityName: "Todo")
+//            fetch.predicate = NSPredicate(format: "belongToBundle == bundleName")
+//            let results = try context.fetch(fetch)
+//            return results
+//        } catch let error {
+//            print("Couldn't fetch selected todo \(error.localizedDescription)")
+//            return []
+//        }
+//    }
     
     static func retrieveAllEvent() -> [Event] {
         do {
             let gofetch = NSFetchRequest<Event>(entityName: "Event")
+            let results = try context.fetch(gofetch)
+            return results
+        } catch let error {
+            print("Couldn't fetch all events \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveAllDefaultTags() -> [DefaultTag] {
+        do {
+            let gofetch = NSFetchRequest<DefaultTag>(entityName: "DefaultTag")
             let results = try context.fetch(gofetch)
             return results
         } catch let error {
@@ -151,18 +171,21 @@ struct CoreDataHelper {
             return []
         }
     }
+    // in future updates
+//    static func retrieveTimeTagInEvent(event: Event) -> [DefaultTag] {
+//        do {
+//            let fetch = NSFetchRequest<DefaultTag>(entityName: "TimeTag")
+//            fetch.predicate = NSPredicate(format: "withinEvent == event")
+//            let results =  try context.fetch(fetch)
+//            return results
+//        } catch let error {
+//            print("Couldn't fetch time tags in event \(error.localizedDescription)")
+//            return []
+//        }
+//    }
     
-    static func retrieveTimeTagInEvent(event: Event) -> [TimeTag] {
-        do {
-            let fetch = NSFetchRequest<TimeTag>(entityName: "TimeTag")
-            fetch.predicate = NSPredicate(format: "withinEvent == event")
-            let results =  try context.fetch(fetch)
-            return results
-        } catch let error {
-            print("Couldn't fetch time tags in event \(error.localizedDescription)")
-            return []
-        }
-    }
+    
+    
     
 //    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
 //        do {
