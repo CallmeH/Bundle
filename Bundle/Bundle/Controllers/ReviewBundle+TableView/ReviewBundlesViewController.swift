@@ -35,6 +35,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         completedBundlesTableView.delegate = self
         completedBundlesTableView.dataSource = self
+        completedBundlesTableView.allowsSelection = true
         bundles = CoreDataHelper.retrieveAllBundle()
         events = CoreDataHelper.retrieveAllEvent().filter{$0.todoArray != []}
         
@@ -44,7 +45,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         year = bundles?.filter{($0.dateCompleted?.isInThisYear)! }.filter{($0.dateCompleted?.isInThisMonth)! == false}.filter{($0.dateCompleted?.isInThisWeek)! == false}.filter{($0.dateCompleted?.isInToday)!}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         
-        completedBundlesTableView.allowsSelection = false
+//        completedBundlesTableView.allowsSelection = false
 //        print(bundles)
     }
 
@@ -122,8 +123,11 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         func setCell() {
             cell.bundleNameLabel.text = bundlesPlaceholder.name
             if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
+                cell.eventInitialsLabel.isHidden = false
                 cell.eventInitialsLabel.text = bundlesPlaceholder.belongToEvent?.name
-            } else {return}
+            } else {
+                cell.eventInitialsLabel.isHidden = true
+            }
             if (bundlesPlaceholder.dateCompleted?.isInToday)! {
                 cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToStringToday()
             } else {
@@ -164,9 +168,37 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         switch identifier {
         case "bundleReviewToTasks":
             guard let indexPath = completedBundlesTableView.indexPathForSelectedRow else {return}
-            let chosenBundle: Bundle = bundles![indexPath.row]
+            var chosenBundle: Bundle?
             let destination = segue.destination as! CompletedItemsInBundleTableViewController
-            destination.tasks = chosenBundle.containsTodos?.allObjects as! [Todo]
+            if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
+                switch indexPath.section {
+                case 0:
+                    chosenBundle = day![indexPath.row]
+                case 1:
+                    chosenBundle = week![indexPath.row]
+                case 2:
+                    chosenBundle = month![indexPath.row]
+                case 3:
+                    chosenBundle = year![indexPath.row]
+                case 4:
+                    chosenBundle = moreThanAYear![indexPath.row]
+                default:
+                    print("In Time section, something went wrong")
+                }
+            } else {
+                for i in 0...numberOfSections(in: completedBundlesTableView)-1 {
+                    if indexPath.section == i {
+                        chosenBundle = events![i].bundleArray?.allObjects[indexPath.row] as? Bundle
+                    } else {
+                        return
+                    }
+                }
+            }
+            guard chosenBundle != nil else {
+                print ("bundle choice unsuccessful")
+                return
+            }
+            destination.tasks = chosenBundle?.containsTodos?.allObjects as! [Todo]
         default:
             print("doesn't work")
         }

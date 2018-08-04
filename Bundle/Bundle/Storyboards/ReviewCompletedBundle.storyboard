@@ -122,7 +122,7 @@
                                                     <outlet property="bundleNameLabel" destination="Vcj-F5-4p9" id="Wog-Zg-LgQ"/>
                                                     <outlet property="eventInitialsLabel" destination="FXo-hR-YI2" id="awb-Ri-CKR"/>
                                                     <outlet property="timeStampLabel" destination="mcu-fC-nR3" id="TGV-e9-jqC"/>
-                                                    <segue destination="IrA-Gc-mI0" kind="show" identifier="bundleReviewToTasks" id="AHX-4I-fs8"/>
+                                                    <segue destination="IrA-Gc-mI0" kind="show" identifier="bundleReviewToTasks" id="2wQ-MO-dgg"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -149,7 +149,7 @@
                     <navigationItem key="navigationItem" title="All Bundles" id="cAd-Bj-HNr">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Main menu" id="lKz-21-tSY">
                             <connections>
-                                <segue destination="NwE-s0-CvP" kind="show" id="3ak-Vo-vQ1"/>
+                                <segue destination="F1F-kx-EsG" kind="unwind" unwindAction="unwindFromReviewBundle:" id="aRg-0e-wfo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -159,6 +159,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMk-iB-LjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F1F-kx-EsG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3576.8000000000002" y="17.541229385307346"/>
         </scene>
@@ -252,14 +253,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-7z-yjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2637.5999999999999" y="17.541229385307346"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="f34-H6-xQS">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="NwE-s0-CvP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dxP-9d-rZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3103" y="-204"/>
         </scene>
     </scenes>
 </document>

@@ -23,7 +23,7 @@ class AddFirstScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repeatButtonDisplay.setTitle("Just for this once,", for: .normal)
+        repeatButtonDisplay.setTitle("Just once,", for: .normal)
         defaultTagButtonDisplay.setTitle("before", for: .normal)
     }
     
@@ -35,12 +35,12 @@ class AddFirstScreenViewController: UIViewController {
     @IBAction func repeatTagEditTapped(_ sender: UIButton) {
         if repeatChoice == true {
             repeatChoice = false
-            sender.setTitle("Always", for: .normal)
+            sender.setTitle("Just once,", for: .normal)
 //            reloadInputViews()
 //            return repeatChoice
         } else {
             repeatChoice = true
-            sender.setTitle("Just for this once,", for: .normal)
+            sender.setTitle("Always", for: .normal)
 //            reloadInputViews()
 //            return repeatChoice
         }

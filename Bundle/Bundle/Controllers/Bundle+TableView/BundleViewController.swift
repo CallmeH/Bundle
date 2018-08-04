@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BundleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BundleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     var bundleCopy: [Todo]? = nil {
         didSet {
             bundleTableView.reloadData()
@@ -28,10 +28,11 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         bundleTableView.allowsMultipleSelection = true
         
         let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
-        bundleCopy = bundleAll?.filter { $0.isSelected == true}.reversed()
+        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}//.reversed()
         bundleNameTextField.returnKeyType = .done
         bundleTableView.allowsSelection = false
 //        NSPredicate
+        bundleNameTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,11 +149,17 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
             let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
             for i in nonrepeatingCopy {
+                i.isSelected = false
                 newBundle.addToContainsTodos(i)
             }
             for i in repeatingCopy {
-                let duplicate = i
+                let duplicate = CoreDataHelper.newTodo()
                 duplicate.isRepeated = false
+                duplicate.isCompleted = true
+                duplicate.isSelected = false
+                duplicate.title = i.title
+                duplicate.hasTimeTag = i.hasTimeTag
+                duplicate.belongToEvent = i.belongToEvent
                 newBundle.addToContainsTodos(duplicate)
                 i.isSelected = false
                 i.isCompleted = false

@@ -19,7 +19,6 @@ class AddTodoViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputTextView.becomeFirstResponder()
         popupView.center = entireView.center
         inputTextView.delegate = self
         inputTextView.text = existingLabel ?? ""
@@ -45,12 +44,19 @@ class AddTodoViewController: UIViewController, UITextViewDelegate {
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
 //            inputTextViewLowerConstraints.secondItem = keyboardRect.height + 30
             print(inputTextViewLowerConstraints)
-            popupView.frame.origin.y =  entireView.frame.height - (keyboardRect.height) - popupView.frame.height
+            popupView.frame.origin.y =  entireView.frame.height - (keyboardRect.height) - popupView.frame.height - 30
 //            print("\(entireView.frame.height),, \(keyboardRect.height),, \(popupView.frame.height)")
 //            placeholderView.frame.size.height = keyboardRect.height
         } else {
             popupView.center = entireView.center
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        inputTextView.becomeFirstResponder()
+//        guard let keyboardRect = (UIKeyboardFrameEndUserInfoKey as? NSValue)?.cgRectValue else {return}
+//        popupView.frame.origin.y =  entireView.frame.height - (keyboardRect.height) - popupView.frame.height
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

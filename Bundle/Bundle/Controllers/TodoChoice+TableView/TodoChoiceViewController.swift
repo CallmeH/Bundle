@@ -15,6 +15,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             choiceTableView.reloadData()
         }
     }
+    var selectionCounter: Int = 0
 //    var bundleToPass: [Todo]?
     
     @IBOutlet weak var choiceTableView: UITableView!
@@ -26,7 +27,8 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //        self.choiceTableView.isEditing = true
         choiceTableView.delegate = self
         choiceTableView.dataSource = self
-        accessTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+        let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+        accessTodo = allTodo?.filter{$0.isCompleted == false}
         for i in accessTodo! {
             i.isSelected = false
         }
@@ -41,6 +43,10 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //        }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,10 +101,13 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         
         let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
         let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
+        var todoPlaceholder: Todo
         if indexPath.section == 0 {
-            cell.todoForEvent.text = nonrepeatingCopy[indexPath.row].title
+            todoPlaceholder = nonrepeatingCopy[indexPath.row]
+            cell.todoForEvent.text = todoPlaceholder.title
         } else {
-            cell.todoForEvent.text = repeatingCopy[indexPath.row].title
+            todoPlaceholder = repeatingCopy[indexPath.row]
+            cell.todoForEvent.text = todoPlaceholder.title
         }
         
 //        cell.showsReorderControl = true
@@ -128,15 +137,26 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
         func callCheckmark(_ repeatOrNot: [Todo]) {
             if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+//                if repeatOrNot[indexPath.row].isSelected == false {
+//                    repeatOrNot[indexPath.row].isSelected = true
+//                    print("set to not selected")
+//                } else {
+//                    repeatOrNot[indexPath.row].isSelected = false
+//                    print("set to selected")
+//                }
                 if cell.accessoryType == .checkmark {
                     cell.accessoryType = .none
                     repeatOrNot[indexPath.row].isSelected = false
                     print(repeatOrNot[indexPath.row].isSelected)
+                    print("set to not selected")
+                    selectionCounter -= 1
                 }
                 else{
                     cell.accessoryType = .checkmark
                     repeatOrNot[indexPath.row].isSelected = true
                     print(repeatOrNot[indexPath.row].isSelected)
+                    print("set to selected")
+                    selectionCounter += 1
                 }
             }
         }
@@ -150,7 +170,8 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        accessTodo = self.currentEvent?.todoArray?.allObjects as? [Todo]
+        // FIXME: Uncomment this line if this doesn't fix
+//        accessTodo = self.currentEvent?.todoArray?.allObjects as? [Todo]
         if editingStyle == .delete {
             let todoToDelete = accessTodo![indexPath.row]
             CoreDataHelper.deleteTodo(todo: todoToDelete)
@@ -162,8 +183,9 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func afterSelectionButton(_ sender: UIButton) {
-        guard choiceTableView.indexPathsForSelectedRows != [] else {return}
-        guard choiceTableView.indexPathsForSelectedRows != nil else { return }
+//        guard choiceTableView.indexPathsForSelectedRows != [] else {return}
+//        guard choiceTableView.indexPathsForSelectedRows != nil else { return }
+        guard selectionCounter > 0 else {return}
         performSegue(withIdentifier: "toBundle", sender: Any?.self)
     }
     

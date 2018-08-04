@@ -23,3 +23,36 @@
 
 ## Convenience:
 - continue where you left off: Restore the previous state when your app restarts. Don't make people retrace steps to reach their previous location in your app. Preserve and restore your app’s state so they can continue where they left off. [https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/onboarding/]
+
+
+
+
+
+TImothy:
+want to change events
+placeholder for add: Didn't see your event -> 
+mental strain: can't remember the whole sentence
+bundle page: reign first responder
+
+input all todo at once
+
+still want to see before/after/when when checking in
+
+
+Daniel
+
+arrow to suggest that tap can be completed to change
+multiple events
+explain what a bundle is 
+on one page
+
+go back from checkin
+
+crashes on review-sortedByEvent-tapToViewMore
+
+
+
+tap outside dismiss keyboard
+
+go back from some viewControllers
+
