@@ -3,7 +3,7 @@
 //  BundleUITests
 //
 //  Created by Pei Qin on 2018/7/23.
-//  Copyright © 2018 MakeSchool. All rights reserved.
+//  Copyright © 2018 Pei Qin. All rights reserved.
 //
 
 import XCTest
