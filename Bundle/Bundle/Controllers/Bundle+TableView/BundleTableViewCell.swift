@@ -11,8 +11,11 @@ import UIKit
 class BundleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var todoForBundle: UILabel!
+    
+    var putBackTouched: ((UITableViewCell)->Void)? = nil
+    
     @IBAction func putBack(_ sender: UIButton) {
-        
+        putBackTouched?(self)
     }
     
     var onButtonTouched: ((UITableViewCell)->Void)? = nil

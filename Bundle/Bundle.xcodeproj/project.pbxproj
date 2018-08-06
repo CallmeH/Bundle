@@ -27,6 +27,7 @@
 		7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964137621068FE800BD18A8 /* CoreDataHelper.swift */; };
 		7964137B2106919800BD18A8 /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137A2106919800BD18A8 /* Add.storyboard */; };
 		7964137D2106919F00BD18A8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7964137C2106919F00BD18A8 /* Checkin.storyboard */; };
+		796580E92117EFEB0066A4C2 /* BundleNamingPromtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796580E82117EFEB0066A4C2 /* BundleNamingPromtViewController.swift */; };
 		796D310121094DAA004C0FCA /* VariousReusableFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */; };
 		796D3104210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */; };
 		796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796D3106210A31A4004C0FCA /* FlowLayout.swift */; };
@@ -95,6 +96,7 @@
 		7964137A2106919800BD18A8 /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		7964137C2106919F00BD18A8 /* Checkin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
 		7964137E2107B4F600BD18A8 /* Attribution.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Attribution.md; sourceTree = "<group>"; };
+		796580E82117EFEB0066A4C2 /* BundleNamingPromtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleNamingPromtViewController.swift; sourceTree = "<group>"; };
 		796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousReusableFunctions.swift; sourceTree = "<group>"; };
 		796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		796D3106210A31A4004C0FCA /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
@@ -181,14 +183,12 @@
 		7964133921068E6700BD18A8 /* Bundle */ = {
 			isa = PBXGroup;
 			children = (
+				796580E62117EF8C0066A4C2 /* ARCHIVED */,
 				7964133A21068E6700BD18A8 /* AppDelegate.swift */,
 				7964137E2107B4F600BD18A8 /* Attribution.md */,
 				79CDE8F621085572009DB3F0 /* Plans.md */,
 				79FFEEAB210F9064006D2654 /* Polish Elements.md */,
 				7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */,
-				79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */,
-				791372302113C413003452B8 /* AddTodoViewController.swift */,
-				791372322113DFD4003452B8 /* AddEventViewController.swift */,
 				7964136D21068F0600BD18A8 /* Controllers */,
 				7964137821068FFB00BD18A8 /* Storyboards */,
 				796413792106901400BD18A8 /* Helper */,
@@ -221,8 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				7964133C21068E6700BD18A8 /* HomeViewController.swift */,
-				7964136B21068F0200BD18A8 /* InputTodoViewController.swift */,
-				79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */,
+				796580E72117EFB30066A4C2 /* Add flow */,
 				799851EB210B8FC70049EB8C /* Checkin+CollectionView */,
 				79F479BB2109224500B40FBA /* TodoChoice+TableView */,
 				79FFEEAE210FC155006D2654 /* Bundle+TableView */,
@@ -255,6 +254,26 @@
 				7927F4A02112D13000A23285 /* FirstTimeGuide.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		796580E62117EF8C0066A4C2 /* ARCHIVED */ = {
+			isa = PBXGroup;
+			children = (
+				791372302113C413003452B8 /* AddTodoViewController.swift */,
+				7964136B21068F0200BD18A8 /* InputTodoViewController.swift */,
+				79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */,
+			);
+			path = ARCHIVED;
+			sourceTree = "<group>";
+		};
+		796580E72117EFB30066A4C2 /* Add flow */ = {
+			isa = PBXGroup;
+			children = (
+				79FFEEAF2111014A006D2654 /* AddFirstScreenViewController.swift */,
+				791372322113DFD4003452B8 /* AddEventViewController.swift */,
+				796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */,
+			);
+			path = "Add flow";
 			sourceTree = "<group>";
 		};
 		799851EB210B8FC70049EB8C /* Checkin+CollectionView */ = {
@@ -297,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				7964136E21068F5400BD18A8 /* AssignToEventViewController.swift */,
-				796D3102210A2ECF004C0FCA /* EventTagsCollectionViewCell.swift */,
 			);
 			path = "AssignToEvent+CollectionView";
 			sourceTree = "<group>";
@@ -307,6 +325,7 @@
 			children = (
 				7964137021068F6000BD18A8 /* BundleViewController.swift */,
 				79FFEEAC210FC151006D2654 /* BundleTableViewCell.swift */,
+				796580E82117EFEB0066A4C2 /* BundleNamingPromtViewController.swift */,
 			);
 			path = "Bundle+TableView";
 			sourceTree = "<group>";
@@ -558,6 +577,7 @@
 				796D3107210A31A4004C0FCA /* FlowLayout.swift in Sources */,
 				79D09DD521125B250049BEA3 /* ReviewBundlesTableViewCell.swift in Sources */,
 				7964137721068FE800BD18A8 /* CoreDataHelper.swift in Sources */,
+				796580E92117EFEB0066A4C2 /* BundleNamingPromtViewController.swift in Sources */,
 				7927F4A12112D13000A23285 /* FirstTimeGuide.swift in Sources */,
 				79F479BD2109226C00B40FBA /* TodoChoiceTableViewCell.swift in Sources */,
 				7964136F21068F5400BD18A8 /* AssignToEventViewController.swift in Sources */,

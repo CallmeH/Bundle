@@ -41,6 +41,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //        for i in accessTodo! {
 //            i.isSelected = false
 //        }
+        choiceTableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -105,9 +106,19 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         if indexPath.section == 0 {
             todoPlaceholder = nonrepeatingCopy[indexPath.row]
             cell.todoForEvent.text = todoPlaceholder.title
+            if nonrepeatingCopy[indexPath.row].isSelected {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
         } else {
             todoPlaceholder = repeatingCopy[indexPath.row]
             cell.todoForEvent.text = todoPlaceholder.title
+            if nonrepeatingCopy[indexPath.row].isSelected {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
         }
         
 //        cell.showsReorderControl = true
@@ -144,14 +155,13 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //                    repeatOrNot[indexPath.row].isSelected = false
 //                    print("set to selected")
 //                }
-                if cell.accessoryType == .checkmark {
+                if repeatOrNot[indexPath.row].isSelected {
                     cell.accessoryType = .none
                     repeatOrNot[indexPath.row].isSelected = false
                     print(repeatOrNot[indexPath.row].isSelected)
                     print("set to not selected")
                     selectionCounter -= 1
-                }
-                else{
+                } else {
                     cell.accessoryType = .checkmark
                     repeatOrNot[indexPath.row].isSelected = true
                     print(repeatOrNot[indexPath.row].isSelected)

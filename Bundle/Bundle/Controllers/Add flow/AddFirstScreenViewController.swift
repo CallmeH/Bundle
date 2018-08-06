@@ -8,10 +8,12 @@
 
 import UIKit
 
-class AddFirstScreenViewController: UIViewController {
+class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var repeatButtonDisplay: UIButton!
     @IBOutlet weak var todoButtonDisplay: UIButton!
+    @IBOutlet weak var inputTodoTextView: UITextView!
+    @IBOutlet weak var entireView: UIView!
     @IBOutlet weak var defaultTagButtonDisplay: UIButton!
     @IBOutlet weak var eventButtonDisplay: UIButton!
     // timeTag = defaultTag (before/after/when), additional tags are named customTag
@@ -21,15 +23,69 @@ class AddFirstScreenViewController: UIViewController {
     var repeatChoice: Bool = false
     var todoLabel: String?
     
+//    var todoBoxOriginalFrameHeight: CGFloat?
+    var todoWasSetBefore = false
+    var eventWasSetBefore = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputTodoTextView.delegate = self
         repeatButtonDisplay.setTitle("Just once,", for: .normal)
         defaultTagButtonDisplay.setTitle("before", for: .normal)
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+//        todoBoxOriginalFrameHeight = inputTodoTextView.frame.origin.y
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+//    deinit {
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+//    }
+    
+//    @objc func keyboardWillChange(notification: Notification) {
+//        guard let keyboardRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+//        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+//            //            inputTextViewLowerConstraints.secondItem = keyboardRect.height + 30
+////            print(inputTextViewLowerConstraints)
+//            inputTodoTextView.frame.origin.y =  entireView.frame.height - (keyboardRect.height) - inputTodoTextView.frame.height - 30
+//            //            print("\(entireView.frame.height),, \(keyboardRect.height),, \(popupView.frame.height)")
+//            //            placeholderView.frame.size.height = keyboardRect.height
+//        } else {
+//            guard let todoBox = todoBoxOriginalFrameHeight else {return}
+//            inputTodoTextView.frame.origin.y = todoBox
+//        }
+//    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+//            guard inputTodoTextView.text != "" else { return true }
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if todoWasSetBefore {
+            return
+        } else {
+            inputTodoTextView.text = ""
+            todoWasSetBefore = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
 //        todoButtonDisplay.titleLabel?.text =
-        eventButtonDisplay.setTitle(selectedEvent?.name, for: .normal)
+        super.viewWillAppear(true)
+        if eventWasSetBefore {
+            eventButtonDisplay.setTitle(selectedEvent?.name, for: .normal)
+        } else {
+            eventButtonDisplay.setTitle("e.g. I send out the draft", for: .normal)
+        }
     }
     
     @IBAction func repeatTagEditTapped(_ sender: UIButton) {
@@ -65,7 +121,7 @@ class AddFirstScreenViewController: UIViewController {
         }
     }
     
-    
+//    textviewd
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -96,11 +152,16 @@ class AddFirstScreenViewController: UIViewController {
     }
     
     @IBAction func saveNewTodoWithEventTapped(_ sender: UIButton) {
-        guard todoButtonDisplay.titleLabel?.text != nil else { return }
-        guard todoButtonDisplay.titleLabel?.text != "" else { return }
-        guard selectedEvent != nil else { return }
+//        guard todoButtonDisplay.titleLabel?.text != nil else { return }
+//        guard todoButtonDisplay.titleLabel?.text != "" else { return }
+//        guard inputTodoTextView.text != nil else {return}
+//        guard inputTodoTextView.text != "" else {return}
+//        guard selectedEvent != nil else { return }
+        guard todoWasSetBefore else {return}
+        guard eventWasSetBefore else {return}
         let newTodo = CoreDataHelper.newTodo()
-        newTodo.title = todoButtonDisplay.titleLabel?.text
+//        newTodo.title = todoButtonDisplay.titleLabel?.text
+        newTodo.title = inputTodoTextView.text
         newTodo.isRepeated = repeatChoice
         newTodo.hasTimeTag = CoreDataHelper.retrieveAllDefaultTags().sorted {$0.preposition < $1.preposition}[prep]
         newTodo.isCompleted = false

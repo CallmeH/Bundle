@@ -105,6 +105,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
             //print to see what allEvents contain and make sure it should've been [0][1]
             let selectedEvent = allEvents[indexPaths[0][1]]
             destination.selectedEvent = selectedEvent
+            destination.eventWasSetBefore = true
         default:
             print("unidentified segue")
         }
@@ -118,9 +119,14 @@ extension AddEventViewController: UICollectionViewDelegateFlowLayout {
         
         let size = allEvents[indexPath.item].name?.size(withAttributes: [.font: UIFont.systemFont(ofSize: 20.0)])
         
-        let adjustedSize = CGSize(width: (size?.width) ?? 40 + 40, height: size?.height ?? 15 + 20)
-        
-        return adjustedSize
+        var adjustedSize = CGSize(width: (size?.width) ?? 40 + 40, height: size?.height ?? 15 + 20)
+        if adjustedSize.width > 0.95 * addToEventsCollectionView.frame.width {
+            adjustedSize.height *= CGFloat(Int(adjustedSize.width/(0.95 * addToEventsCollectionView.frame.width)) + 1)
+            adjustedSize.width = 0.95 * addToEventsCollectionView.frame.width
+            return adjustedSize
+        } else {
+            return adjustedSize
+        }
     }
     
 }

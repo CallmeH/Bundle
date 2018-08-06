@@ -12,6 +12,13 @@ class CheckinCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var eventTagCheckin: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if self.eventTagCheckin.frame.width > 0.9 * 0.95 * UIScreen.main.bounds.width {
+            self.eventTagCheckin.numberOfLines = Int(self.eventTagCheckin.frame.width/(0.9 * 0.95 * UIScreen.main.bounds.width) + 1)
+        }
+    }
+    
     override var isSelected: Bool {
         didSet {
             if self.isSelected == true {
