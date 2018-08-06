@@ -49,39 +49,46 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
         bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
+        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
+        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
+        bundleCopy = nonrepeatingCopy + repeatingCopy
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
-            return "Single use"
-        } else {
-            return "Repeated reminders"
-        }
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0{
+//            return "Single use"
+//        } else {
+//            return "Repeated reminders"
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard bundleCopy != nil else { return 0 }
-        if section == 0 {
-            return bundleCopy?.filter {$0.isRepeated == false}.count ?? 0
-        } else {
-            return bundleCopy?.filter {$0.isRepeated == true}.count ?? 0
-        }
+//        if section == 0 {
+//            return bundleCopy?.filter {$0.isRepeated == false}.count ?? 0
+//        } else {
+//            return bundleCopy?.filter {$0.isRepeated == true}.count ?? 0
+//        }
+        return bundleCopy?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chosenTodosTableViewCell", for: indexPath) as! BundleTableViewCell
+//        let cellAfter = tableView.dequeueReusableCell(withIdentifier: "chosenTodosTableViewCell", for: indexPath + 1) as! BundleTableViewCell
+        cell.checkButton.isSelected = bundleCopy![indexPath.row].isCompleted
         cell.showsReorderControl = true
         //        cell.showsReorderControl = true
-        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
+//        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
+//        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
         var todoPlaceholder: Todo
-        if indexPath.section == 0 {
+//        if indexPath.section == 0 {
             //            guard nonrepeatingCopy != nil else {return}
-            todoPlaceholder = nonrepeatingCopy[indexPath.row]
+//            todoPlaceholder = nonrepeatingCopy[indexPath.row]
+            todoPlaceholder = bundleCopy![indexPath.row]
             cell.todoForBundle.text = todoPlaceholder.title
             cell.onButtonTouched = { (cellin) in
                 guard let indexPath = tableView.indexPath(for: cellin) else { return }
@@ -102,44 +109,46 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
                 guard let indexPath = tableView.indexPath(for: cellin) else { return }
                 if todoPlaceholder.isCompleted == true {
                     todoPlaceholder.isCompleted = false
-                    cell.checkButton.isSelected = false
+//                    cell.checkButton.isSelected = false
                     self.completedCounter -= 1
                 }
                 todoPlaceholder.isSelected = false
                 let bundleAll = self.currentEvent?.todoArray?.allObjects as? [Todo]
-                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
+//                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
+                self.bundleCopy?.remove(at: indexPath.row)
                 self.somethingWasPutBack += 1
+//                cell.checkButton.isSelected = cellAfter.checkButton.isSelected
             }
-        } else {
-            //            guard repeatingCopy != nil else {return}
-            todoPlaceholder = repeatingCopy[indexPath.row]
-            cell.todoForBundle.text = todoPlaceholder.title
-            cell.onButtonTouched = { (cellin) in
-                guard let indexPath = tableView.indexPath(for: cellin) else { return }
-                print ("button tapped at\(indexPath.row)")
-                if todoPlaceholder.isCompleted == false {
-                    todoPlaceholder.isCompleted = true
-                    cell.checkButton.isSelected = true
-                    self.completedCounter += 1
-                } else {
-                    todoPlaceholder.isCompleted = false
-                    cell.checkButton.isSelected = false
-                    self.completedCounter -= 1
-                }
-            }
-            cell.putBackTouched = { (cellin) in
-                guard let indexPath = tableView.indexPath(for: cellin) else { return }
-                if todoPlaceholder.isCompleted == true {
-                    todoPlaceholder.isCompleted = false
-                    cell.checkButton.isSelected = false
-                    self.completedCounter -= 1
-                }
-                todoPlaceholder.isSelected = false
-                let bundleAll = self.currentEvent?.todoArray?.allObjects as? [Todo]
-                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
-                self.somethingWasPutBack += 1
-            }
-        }
+//        } else {
+//            //            guard repeatingCopy != nil else {return}
+//            todoPlaceholder = repeatingCopy[indexPath.row]
+//            cell.todoForBundle.text = todoPlaceholder.title
+//            cell.onButtonTouched = { (cellin) in
+//                guard let indexPath = tableView.indexPath(for: cellin) else { return }
+//                print ("button tapped at\(indexPath.row)")
+//                if todoPlaceholder.isCompleted == false {
+//                    todoPlaceholder.isCompleted = true
+//                    cell.checkButton.isSelected = true
+//                    self.completedCounter += 1
+//                } else {
+//                    todoPlaceholder.isCompleted = false
+//                    cell.checkButton.isSelected = false
+//                    self.completedCounter -= 1
+//                }
+//            }
+//            cell.putBackTouched = { (cellin) in
+//                guard let indexPath = tableView.indexPath(for: cellin) else { return }
+//                if todoPlaceholder.isCompleted == true {
+//                    todoPlaceholder.isCompleted = false
+//                    cell.checkButton.isSelected = false
+//                    self.completedCounter -= 1
+//                }
+//                todoPlaceholder.isSelected = false
+//                let bundleAll = self.currentEvent?.todoArray?.allObjects as? [Todo]
+//                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
+//                self.somethingWasPutBack += 1
+//            }
+//        }
         
         return cell
     }
@@ -160,6 +169,34 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         let moved = self.bundleCopy![sourceIndexPath.row]
         bundleCopy?.remove(at: sourceIndexPath.row)
         bundleCopy?.insert(moved, at: destinationIndexPath.row)
+//        var nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
+//        var repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
+//        if sourceIndexPath.section == 0 {
+//            if destinationIndexPath.section == 0 {
+//                //same, nonrepeating
+//                let moved = nonrepeatingCopy[sourceIndexPath.row]
+//                nonrepeatingCopy.remove(at: sourceIndexPath.row)
+//                nonrepeatingCopy.insert(moved, at: destinationIndexPath.row)
+//            } else {
+//                // non->re
+//                let moved = nonrepeatingCopy[sourceIndexPath.row]
+//                nonrepeatingCopy.remove(at: sourceIndexPath.row)
+//                repeatingCopy.insert(moved, at: destinationIndexPath.row)
+//            }
+//        } else {
+//            if destinationIndexPath.section == 0 {
+//                //re->non
+//                let moved = repeatingCopy[sourceIndexPath.row]
+//                repeatingCopy.remove(at: sourceIndexPath.row)
+//                nonrepeatingCopy.insert(moved, at: destinationIndexPath.row)
+//            } else {
+//                // same, re
+//                let moved = repeatingCopy[sourceIndexPath.row]
+//                repeatingCopy.remove(at: sourceIndexPath.row)
+//                repeatingCopy.insert(moved, at: destinationIndexPath.row)
+//            }
+//        }
+//        bundleTableView.reloadData()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -200,7 +237,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             if somethingWasPutBack > 0 {
                 let destination = segue.destination as! TodoChoiceViewController
                 destination.selectionCounter -= somethingWasPutBack
-                destination.choiceTableView.reloadData()
+//                destination.choiceTableView.reloadData()
             }
             CoreDataHelper.save()
         case "bundleCompleted":
@@ -208,25 +245,44 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             newBundle.name = bundleNameTextField.text
             newBundle.dateCompleted = Date()
             currentEvent?.addToBundleArray(newBundle)
-            let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-            let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
-            for i in nonrepeatingCopy {
-                i.isSelected = false
-                newBundle.addToContainsTodos(i)
+//            let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
+//            let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
+            for i in bundleCopy! {
+                if i.isRepeated {
+                    let duplicate = CoreDataHelper.newTodo()
+                    duplicate.isRepeated = false
+                    duplicate.isCompleted = true
+                    duplicate.isSelected = false
+                    duplicate.title = i.title
+                    duplicate.hasTimeTag = i.hasTimeTag
+                    duplicate.belongToEvent = i.belongToEvent
+                    newBundle.addToContainsTodos(duplicate)
+                    i.isSelected = false
+                    i.isCompleted = false
+                    CoreDataHelper.save()
+                } else {
+                    i.isSelected = false
+                    newBundle.addToContainsTodos(i)
+                    CoreDataHelper.save()
+                }
             }
-            for i in repeatingCopy {
-                let duplicate = CoreDataHelper.newTodo()
-                duplicate.isRepeated = false
-                duplicate.isCompleted = true
-                duplicate.isSelected = false
-                duplicate.title = i.title
-                duplicate.hasTimeTag = i.hasTimeTag
-                duplicate.belongToEvent = i.belongToEvent
-                newBundle.addToContainsTodos(duplicate)
-                i.isSelected = false
-                i.isCompleted = false
-            }
-            CoreDataHelper.save()
+//            for i in nonrepeatingCopy {
+//                i.isSelected = false
+//                newBundle.addToContainsTodos(i)
+//            }
+//            for i in repeatingCopy {
+//                let duplicate = CoreDataHelper.newTodo()
+//                duplicate.isRepeated = false
+//                duplicate.isCompleted = true
+//                duplicate.isSelected = false
+//                duplicate.title = i.title
+//                duplicate.hasTimeTag = i.hasTimeTag
+//                duplicate.belongToEvent = i.belongToEvent
+//                newBundle.addToContainsTodos(duplicate)
+//                i.isSelected = false
+//                i.isCompleted = false
+//            }
+//            CoreDataHelper.save()
 //            destination.currentEvent = currentEvent
         //            destination.bundleCopy = accessTodo!.filter { $0.isCompleted == true } as! BundledTodo
         default:

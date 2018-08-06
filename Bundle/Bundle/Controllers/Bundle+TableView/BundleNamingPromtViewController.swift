@@ -16,7 +16,9 @@ class BundleNamingPromtViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.gobackButton.layer.cornerRadius=8
+        if gobackButton != nil {
+            self.gobackButton.layer.cornerRadius=8
+        }
         self.view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         self.showAnimate()
     }

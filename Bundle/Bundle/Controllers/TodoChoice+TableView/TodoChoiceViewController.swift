@@ -15,6 +15,16 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             choiceTableView.reloadData()
         }
     }
+//    var repeatingCopy: [Todo]? = nil {
+//        didSet {
+//            choiceTableView.reloadData()
+//        }
+//    }
+//    var nonrepeatingCopy: [Todo]? = nil {
+//        didSet {
+//            choiceTableView.reloadData()
+//        }
+//    }
     var selectionCounter: Int = 0
 //    var bundleToPass: [Todo]?
     
@@ -100,12 +110,13 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         
         
         
-        let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
-        let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
+        var nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
+        var repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
         var todoPlaceholder: Todo
         if indexPath.section == 0 {
             todoPlaceholder = nonrepeatingCopy[indexPath.row]
             cell.todoForEvent.text = todoPlaceholder.title
+            cell.repeatDisplay.isSelected = true
             if nonrepeatingCopy[indexPath.row].isSelected {
                 cell.accessoryType = .checkmark
             } else {
@@ -114,13 +125,33 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         } else {
             todoPlaceholder = repeatingCopy[indexPath.row]
             cell.todoForEvent.text = todoPlaceholder.title
-            if nonrepeatingCopy[indexPath.row].isSelected {
+            cell.repeatDisplay.isSelected = false
+            if repeatingCopy[indexPath.row].isSelected {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
             }
         }
-        
+        cell.repeatButtonTouched = { (cellin) in
+            guard let indexPath = tableView.indexPath(for: cellin) else { return }
+            if todoPlaceholder.isRepeated {
+                todoPlaceholder.isRepeated = false
+                cell.repeatDisplay.isSelected = false
+                print("change to single-use")
+                let allTodo = self.currentEvent?.todoArray?.allObjects as? [Todo]
+                self.accessTodo = allTodo?.filter{$0.isCompleted == false}
+                nonrepeatingCopy = self.accessTodo?.filter {$0.isRepeated == false} ?? []
+                repeatingCopy = self.accessTodo?.filter {$0.isRepeated == true} ?? []
+                self.choiceTableView.reloadData()
+            } else {
+                todoPlaceholder.isRepeated = true
+                cell.repeatDisplay.isSelected = true
+                print("change to repeating")
+                nonrepeatingCopy = self.accessTodo?.filter {$0.isRepeated == false} ?? []
+                repeatingCopy = self.accessTodo?.filter {$0.isRepeated == true} ?? []
+                self.choiceTableView.reloadData()
+            }
+        }
 //        cell.showsReorderControl = true
             //String(indexPath.count)//accessTodo![indexPath.row].title
 
@@ -185,7 +216,8 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         if editingStyle == .delete {
             let todoToDelete = accessTodo![indexPath.row]
             CoreDataHelper.deleteTodo(todo: todoToDelete)
-            
+            let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+            accessTodo = allTodo?.filter{$0.isCompleted == false}
 //            accessTodo = CoreDataHelper.retrieveAllTodo()
             tableView.reloadData()
         }
@@ -203,6 +235,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "toBundle":
+            CoreDataHelper.save()
             let destination = segue.destination as! BundleViewController
             destination.currentEvent = currentEvent
 //            destination.bundleCopy = accessTodo!.filter { $0.isCompleted == true } as! BundledTodo

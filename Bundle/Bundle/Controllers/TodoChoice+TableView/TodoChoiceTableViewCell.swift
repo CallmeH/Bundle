@@ -11,6 +11,7 @@ import UIKit
 class TodoChoiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var todoForEvent: UILabel!
+    @IBOutlet weak var repeatDisplay: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +25,12 @@ class TodoChoiceTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    var repeatButtonTouched: ((UITableViewCell)->Void)? = nil
+    
+    @IBAction func editRepeatStatusTapped(_ sender: UIButton) {
+        repeatButtonTouched?(self)
+    }
+    
 
 }
