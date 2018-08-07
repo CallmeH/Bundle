@@ -14,7 +14,7 @@ class CompletedItemsInBundleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
-        tasks = tasks.reversed()
+        tasks = tasks.sorted{($0.hasTimeTag?.preposition)! < ($1.hasTimeTag?.preposition)!}
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,15 +43,7 @@ class CompletedItemsInBundleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskInBundleReview", for: indexPath) as! CompletedItemsInBundleTableViewCell
         cell.taskTitleLabel.text = tasks[indexPath.row].title
-        let p: prepType
-        if self.tasks[indexPath.row].hasTimeTag?.preposition == prepType.before.rawValue {
-            p = prepType.before
-        } else if self.tasks[indexPath.row].hasTimeTag?.preposition == prepType.after.rawValue {
-            p = prepType.after
-        } else {
-            p = prepType.when
-        }
-        cell.timeTag.text = p.displayName
+        cell.timeTag.text = tagToString(tasks[indexPath.row].hasTimeTag!)
         return cell
     }
     

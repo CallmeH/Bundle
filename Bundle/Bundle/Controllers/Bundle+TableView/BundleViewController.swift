@@ -39,6 +39,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+//        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationWillResignActive, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,9 +47,15 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+//    @objc func willResignActive(_ notification: Notification) {
+//        completedCounter = 0
+//        somethingWasPutBack = 0
+//
+//    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
-        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
+        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}.sorted {($0.hasTimeTag?.preposition)! < ($1.hasTimeTag?.preposition)!}
         let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
         let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
         bundleCopy = nonrepeatingCopy + repeatingCopy
@@ -242,6 +249,8 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             CoreDataHelper.save()
         case "bundleCompleted":
             let newBundle = CoreDataHelper.newBundle()
+            //FIXME: resourse on save sessions!
+                //.objectID.uriRepresentation().absoluteString
             newBundle.name = bundleNameTextField.text
             newBundle.dateCompleted = Date()
             currentEvent?.addToBundleArray(newBundle)

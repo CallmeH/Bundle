@@ -19,7 +19,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     // timeTag = defaultTag (before/after/when), additional tags are named customTag
     
     var prep: Int = Constant.prepositionPlaceholder.before
-    var selectedEvent: Event?
+    var selectedEvent: [Event]?
     var repeatChoice: Bool = false
     var todoLabel: String?
     
@@ -82,7 +82,11 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 //        todoButtonDisplay.titleLabel?.text =
         super.viewWillAppear(true)
         if eventWasSetBefore {
-            eventButtonDisplay.setTitle(selectedEvent?.name, for: .normal)
+            var arrayEventTitles = [String]()
+            for i in selectedEvent! {
+                arrayEventTitles.append(i.name!)
+            }
+            eventButtonDisplay.setTitle(arrayEventTitles.joined(separator: ", "), for: .normal)
         } else {
             eventButtonDisplay.setTitle("e.g. I send out the draft", for: .normal)
         }
@@ -104,13 +108,13 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func timeTagEditTapped(_ sender: UIButton) {
         if prep == Constant.prepositionPlaceholder.before {
-            prep = Constant.prepositionPlaceholder.after
-            sender.setTitle("after", for: .normal)
-//            defaultTagButtonDisplay.titleLabel?.text = "after"
-//            reloadInputViews()
-        } else if prep == Constant.prepositionPlaceholder.after {
             prep = Constant.prepositionPlaceholder.when
             sender.setTitle("when", for: .normal)
+//            defaultTagButtonDisplay.titleLabel?.text = "after"
+//            reloadInputViews()
+        } else if prep == Constant.prepositionPlaceholder.when {
+            prep = Constant.prepositionPlaceholder.after
+            sender.setTitle("after", for: .normal)
 //            defaultTagButtonDisplay.titleLabel?.text = "when"
 //            reloadInputViews()
         } else {
@@ -159,15 +163,17 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 //        guard selectedEvent != nil else { return }
         guard todoWasSetBefore else {return}
         guard eventWasSetBefore else {return}
-        let newTodo = CoreDataHelper.newTodo()
-//        newTodo.title = todoButtonDisplay.titleLabel?.text
-        newTodo.title = inputTodoTextView.text
-        newTodo.isRepeated = repeatChoice
-        newTodo.hasTimeTag = CoreDataHelper.retrieveAllDefaultTags().sorted {$0.preposition < $1.preposition}[prep]
-        newTodo.isCompleted = false
-        newTodo.isSelected = false
-        newTodo.belongToEvent = selectedEvent
-        CoreDataHelper.save()
+        for i in selectedEvent! {
+            let newTodo = CoreDataHelper.newTodo()
+    //        newTodo.title = todoButtonDisplay.titleLabel?.text
+            newTodo.title = inputTodoTextView.text
+            newTodo.isRepeated = repeatChoice
+            newTodo.hasTimeTag = CoreDataHelper.retrieveAllDefaultTags().sorted {$0.preposition < $1.preposition}[prep]
+            newTodo.isCompleted = false
+            newTodo.isSelected = false
+            newTodo.belongToEvent = i
+            CoreDataHelper.save()
+        }
         performSegue(withIdentifier: "saveNewTodoWithEventTapped", sender: Any?.self)
     }
     

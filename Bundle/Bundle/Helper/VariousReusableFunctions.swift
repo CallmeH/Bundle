@@ -18,6 +18,18 @@ func presetCollectionViewLayout(in collectionView: UICollectionView) {
     alignedFlowLayout?.minimumLineSpacing = 10
 }
 
+func tagToString(_ timeTag: DefaultTag) -> String? {
+    let p: prepType
+    if timeTag.preposition == prepType.before.rawValue {
+        p = prepType.before
+    } else if timeTag.preposition == prepType.after.rawValue {
+        p = prepType.after
+    } else {
+        p = prepType.when
+    }
+    return p.displayName
+}
+
 
 //class MySelectableSegmentedControl: UISegmentedControl {
 ////    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -34,7 +34,8 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allEvents = CoreDataHelper.retrieveAllEvent()
+        let completedAndUncompleted = CoreDataHelper.retrieveAllEvent()
+        allEvents = completedAndUncompleted.filter{$0.todoArray != []}
 
         CheckinCollectionView.delegate = self
         CheckinCollectionView.dataSource = self

@@ -28,6 +28,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         addToEventsCollectionView.delegate = self
         addToEventsCollectionView.dataSource = self
         addToEventsCollectionView.allowsSelection = true
+        addToEventsCollectionView.allowsMultipleSelection = true
         presetCollectionViewLayout(in: addToEventsCollectionView)
         
         inputEventTextField.delegate = self
@@ -103,8 +104,13 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
             guard let indexPaths = addToEventsCollectionView.indexPathsForSelectedItems else { return }
             print("event assigned! to events: \(String(describing: addToEventsCollectionView.indexPathsForSelectedItems))")
             //print to see what allEvents contain and make sure it should've been [0][1]
-            let selectedEvent = allEvents[indexPaths[0][1]]
-            destination.selectedEvent = selectedEvent
+//            let selectedEvent = allEvents[indexPaths[0][1]]
+//            destination.selectedEvent = selectedEvent
+            var selectedEvents = [Event]()
+            for (index, _) in indexPaths.enumerated() {
+                selectedEvents.append(allEvents[indexPaths[index][1]])
+            }
+            destination.selectedEvent = selectedEvents
             destination.eventWasSetBefore = true
         default:
             print("unidentified segue")

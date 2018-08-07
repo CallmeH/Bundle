@@ -189,8 +189,6 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
                 for i in 0...numberOfSections(in: completedBundlesTableView)-1 {
                     if indexPath.section == i {
                         chosenBundle = events![i].bundleArray?.allObjects[indexPath.row] as? Bundle
-                    } else {
-                        return
                     }
                 }
             }

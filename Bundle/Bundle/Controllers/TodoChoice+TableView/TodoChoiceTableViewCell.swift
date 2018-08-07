@@ -10,6 +10,7 @@ import UIKit
 
 class TodoChoiceTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var todoTagDisplay: UILabel!
     @IBOutlet weak var todoForEvent: UILabel!
     @IBOutlet weak var repeatDisplay: UIButton!
     

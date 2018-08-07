@@ -115,6 +115,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         var todoPlaceholder: Todo
         if indexPath.section == 0 {
             todoPlaceholder = nonrepeatingCopy[indexPath.row]
+            cell.todoTagDisplay.text = tagToString(todoPlaceholder.hasTimeTag!)
             cell.todoForEvent.text = todoPlaceholder.title
             cell.repeatDisplay.isSelected = true
             if nonrepeatingCopy[indexPath.row].isSelected {
@@ -124,6 +125,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             }
         } else {
             todoPlaceholder = repeatingCopy[indexPath.row]
+            cell.todoTagDisplay.text = tagToString(todoPlaceholder.hasTimeTag!)
             cell.todoForEvent.text = todoPlaceholder.title
             cell.repeatDisplay.isSelected = false
             if repeatingCopy[indexPath.row].isSelected {
