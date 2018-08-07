@@ -10,7 +10,13 @@ import UIKit
 
 class CompletedItemsInBundleTableViewController: UITableViewController {
 
-    var tasks: [Todo]!
+    @IBOutlet weak var backToListOfBundles: UIBarButtonItem!
+    
+    var tasks: [Todo]! {
+        didSet{
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
@@ -56,17 +62,24 @@ class CompletedItemsInBundleTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+            let todoToDelete = tasks![indexPath.row]
+            CoreDataHelper.deleteTodo(todo: todoToDelete)
+            tasks.remove(at: indexPath.row)
+//            let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+//            accessTodo = allTodo?.filter{$0.isCompleted == false}
+            //            accessTodo = CoreDataHelper.retrieveAllTodo()
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.reloadData()
+//        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

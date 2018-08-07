@@ -355,7 +355,7 @@ Tap to edit</string>
 
 e.g. Email Daniel</string>
                                                         <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -411,6 +411,11 @@ e.g. Email Daniel</string>
                                                         <state key="normal">
                                                             <attributedString key="attributedTitle"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="5aK-59-x6Z" kind="show" identifier="AddEvent" id="IRq-fd-aRo"/>
                                                         </connections>
@@ -423,6 +428,11 @@ e.g. Email Daniel</string>
                                                     <constraint firstItem="rbE-jc-4fg" firstAttribute="centerX" secondItem="nCt-3f-1zn" secondAttribute="centerX" id="X6E-6i-Rre"/>
                                                     <constraint firstItem="rbE-jc-4fg" firstAttribute="centerY" secondItem="nCt-3f-1zn" secondAttribute="centerY" id="rQu-rf-a6o"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNN-32-3Wl" userLabel="ActionButtons">
                                                 <rect key="frame" x="0.0" y="618" width="337.66666666666669" height="42.666666666666629"/>
@@ -633,6 +643,11 @@ e.g. Email Daniel</string>
                                     <constraint firstAttribute="bottom" secondItem="2yS-sj-VYi" secondAttribute="bottom" constant="10" id="lgc-0m-MYc"/>
                                     <constraint firstItem="2yS-sj-VYi" firstAttribute="top" secondItem="Nua-Qb-M21" secondAttribute="top" constant="10" id="mw1-PK-UaP"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

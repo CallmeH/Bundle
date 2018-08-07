@@ -20,6 +20,8 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    var previouslySelectedEvents = [Event]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,12 +46,35 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
     {
         inputEventTextField.resignFirstResponder()
         guard inputEventTextField.text != "" else { return true }
+        func checkDuplicate() -> Bool {
+            for i in allEvents {
+                if inputEventTextField.text == i.name {
+                    print("duplicate event name")
+                    return false
+                }
+            }
+            return true
+        }
+        guard checkDuplicate() else {
+            //FIXME: do something to call a pop up window saying: "Oops, there's another event with the same name."
+            return true
+        }
         let newEvent = CoreDataHelper.newEvent()
         newEvent.name = inputEventTextField.text
 //        newEvent.isPinned = false
         newEvent.bundleArray = []
         
         CoreDataHelper.save()
+        //save previously selected events
+        let indexPaths = addToEventsCollectionView.indexPathsForSelectedItems
+        if indexPaths != nil {
+            var temporarySelection = [Event]()
+            for (index, _) in (indexPaths?.enumerated())! {
+                temporarySelection.append(allEvents[indexPaths![index][1]])
+            }
+            previouslySelectedEvents = temporarySelection
+        }
+        //
         inputEventTextField.text = ""
         allEvents = CoreDataHelper.retrieveAllEvent()
         return true
@@ -91,10 +116,17 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         let event = allEvents[indexPath.item]
         cell.eventTag.text = event.name
         cell.backgroundColor = .lightGray
+        for i in previouslySelectedEvents {
+            //FIXME: don't let it be based on i.name, change it to be based on objectID in coredata
+            if event.name == i.name {
+                cell.isSelected = true
+                addToEventsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+                //save to previously selected list
+//                previouslySelectedEvents.append(i)
+            }
+        }
         return cell
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}

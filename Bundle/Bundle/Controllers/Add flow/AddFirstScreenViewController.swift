@@ -86,7 +86,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
             for i in selectedEvent! {
                 arrayEventTitles.append(i.name!)
             }
-            eventButtonDisplay.setTitle(arrayEventTitles.joined(separator: ", "), for: .normal)
+            eventButtonDisplay.setTitle(arrayEventTitles.joined(separator: "; "), for: .normal)
         } else {
             eventButtonDisplay.setTitle("e.g. I send out the draft", for: .normal)
         }
@@ -130,9 +130,9 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
-        case "AddTodoText":
-            let destination = segue.destination as! AddTodoViewController
-            destination.existingLabel = todoLabel
+//        case "AddTodoText":
+//            let destination = segue.destination as! AddTodoViewController
+//            destination.existingLabel = todoLabel
 //            if todoLabel == nil {
 //                destination.inputTextView.text = ""
 //            } else {
@@ -145,8 +145,8 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 //            }
 //            destination.inputTextView.text = todoButtonDisplay.titleLabel?.text ?? ""
         case "AddEvent":
-//            let destination = segue.destination as! AddEventViewController
-//            destination.allEvents
+            let destination = segue.destination as! AddEventViewController
+            destination.previouslySelectedEvents = selectedEvent ?? []
             print("choose new event")
         case "saveNewTodoWithEventTapped":
             print("successfully saved")
@@ -164,15 +164,20 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         guard todoWasSetBefore else {return}
         guard eventWasSetBefore else {return}
         for i in selectedEvent! {
-            let newTodo = CoreDataHelper.newTodo()
     //        newTodo.title = todoButtonDisplay.titleLabel?.text
-            newTodo.title = inputTodoTextView.text
-            newTodo.isRepeated = repeatChoice
-            newTodo.hasTimeTag = CoreDataHelper.retrieveAllDefaultTags().sorted {$0.preposition < $1.preposition}[prep]
-            newTodo.isCompleted = false
-            newTodo.isSelected = false
-            newTodo.belongToEvent = i
-            CoreDataHelper.save()
+            let allTodos = inputTodoTextView.text
+            let array = allTodos?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).components(separatedBy: ";").filter{!($0.isEmpty)}
+            for k in array ?? [""] {
+                guard k != "" else {return}
+                let newTodo = CoreDataHelper.newTodo()
+                newTodo.title = k
+                newTodo.isRepeated = repeatChoice
+                newTodo.hasTimeTag = CoreDataHelper.retrieveAllDefaultTags().sorted {$0.preposition < $1.preposition}[prep]
+                newTodo.isCompleted = false
+                newTodo.isSelected = false
+                newTodo.belongToEvent = i
+                CoreDataHelper.save()
+            }
         }
         performSegue(withIdentifier: "saveNewTodoWithEventTapped", sender: Any?.self)
     }

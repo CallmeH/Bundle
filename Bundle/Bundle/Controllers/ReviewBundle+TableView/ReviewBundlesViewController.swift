@@ -102,7 +102,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
             case 3:
                 return "This year"
             case 4:
-                return "Longer than a year ago"
+                return "More than a year ago"
             default:
                 return "Undefined time"
             }
@@ -163,6 +163,18 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+//    FIXME: add delete function
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let bundleToDelete = accessTodo![indexPath.row]
+//            CoreDataHelper.deleteTodo(todo: todoToDelete)
+//            let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+//            accessTodo = allTodo?.filter{$0.isCompleted == false}
+//            //            accessTodo = CoreDataHelper.retrieveAllTodo()
+//            tableView.reloadData()
+//        }
+//    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
@@ -197,9 +209,14 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
                 return
             }
             destination.tasks = chosenBundle?.containsTodos?.allObjects as! [Todo]
+            let nextPageTitle = chosenBundle?.name ?? "Back"
+            destination.backToListOfBundles.title = "< \(nextPageTitle)"
         default:
             print("doesn't work")
         }
+    }
+    
+    @IBAction func unwindToReviewBundle(_ segue: UIStoryboardSegue) {
     }
 
 }

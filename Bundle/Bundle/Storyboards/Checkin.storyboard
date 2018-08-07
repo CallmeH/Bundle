@@ -48,25 +48,11 @@
                                                     <constraint firstItem="YDm-Ao-7Yx" firstAttribute="width" secondItem="RAv-rN-QmN" secondAttribute="width" multiplier="0.3" id="txB-ig-vHl"/>
                                                 </constraints>
                                             </stackView>
-                                            <segmentedControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z06-oK-JAq">
-                                                <rect key="frame" x="0.0" y="60" width="355" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="PkR-vr-8pj"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="Before"/>
-                                                    <segment title="When"/>
-                                                    <segment title="After"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="prepositionTapped:" destination="5yk-Pg-AXI" eventType="valueChanged" id="dkk-MV-wZA"/>
-                                                </connections>
-                                            </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdB-wq-1ts">
-                                                <rect key="frame" x="0.0" y="100" width="355" height="527"/>
+                                                <rect key="frame" x="0.0" y="60" width="355" height="567"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-yg-G8e">
-                                                        <rect key="frame" x="18" y="10" width="319.5" height="497"/>
+                                                        <rect key="frame" x="18" y="10" width="319.5" height="537"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gzd-AE-sfo">
                                                                 <rect key="frame" x="10" y="10" width="298" height="500"/>
@@ -129,7 +115,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="kdB-wq-1ts" firstAttribute="width" secondItem="rnD-rr-VSD" secondAttribute="width" id="5eV-bX-umz"/>
-                                            <constraint firstItem="z06-oK-JAq" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="7lg-aY-o5W"/>
                                             <constraint firstItem="kdB-wq-1ts" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="9Eb-RN-Jzk"/>
                                             <constraint firstItem="RAv-rN-QmN" firstAttribute="centerX" secondItem="rnD-rr-VSD" secondAttribute="centerX" id="Thm-3G-nlw"/>
                                         </constraints>
@@ -155,8 +140,6 @@
                     </view>
                     <connections>
                         <outlet property="CheckinCollectionView" destination="Gzd-AE-sfo" id="QQW-Yb-v3h"/>
-                        <outlet property="prepositionChoice" destination="z06-oK-JAq" id="hRz-fv-IQV"/>
-                        <outlet property="prepositionDisplayLabel" destination="KxG-gq-CZ8" id="ZSw-ZL-1gF"/>
                         <segue destination="KQs-iK-DOo" kind="show" identifier="chosenValidEvent" id="gA1-Nh-2w4"/>
                         <segue destination="AEo-dL-7ZB" kind="show" identifier="chosenInvalidEvent" id="3nO-Hv-wZe"/>
                     </connections>
@@ -209,18 +192,23 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NtS-bX-f4Y">
                                                             <rect key="frame" x="10" y="5" width="283.5" height="33.5"/>
                                                             <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-kV-X29">
+                                                                    <rect key="frame" x="0.0" y="6.5" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skz-Zu-HOm" userLabel="Tag">
-                                                                    <rect key="frame" x="0.0" y="8.5" width="31" height="17"/>
+                                                                    <rect key="frame" x="52" y="8.5" width="31" height="17"/>
                                                                     <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                     <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr5-kV-X29">
-                                                                    <rect key="frame" x="41" y="6.5" width="42" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UI-cU-3sy">
                                                                     <rect key="frame" x="93" y="5" width="24" height="24"/>

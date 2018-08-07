@@ -215,13 +215,22 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // FIXME: Uncomment this line if this doesn't fix
 //        accessTodo = self.currentEvent?.todoArray?.allObjects as? [Todo]
+        let nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
+        let repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
         if editingStyle == .delete {
-            let todoToDelete = accessTodo![indexPath.row]
-            CoreDataHelper.deleteTodo(todo: todoToDelete)
-            let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
-            accessTodo = allTodo?.filter{$0.isCompleted == false}
+            if indexPath.section == 0{
+                let todoToDelete = nonrepeatingCopy[indexPath.row]
+                CoreDataHelper.deleteTodo(todo: todoToDelete)
+                let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+                accessTodo = allTodo?.filter{$0.isCompleted == false}
+            } else {
+                let todoToDelete = repeatingCopy[indexPath.row]
+                CoreDataHelper.deleteTodo(todo: todoToDelete)
+                let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
+                accessTodo = allTodo?.filter{$0.isCompleted == false}
+            }
 //            accessTodo = CoreDataHelper.retrieveAllTodo()
-            tableView.reloadData()
+//            tableView.reloadData()
         }
     }
     

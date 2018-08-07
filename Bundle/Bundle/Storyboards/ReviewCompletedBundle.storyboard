@@ -68,7 +68,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oC0-LS-yfh">
                                                             <rect key="frame" x="18" y="13" width="339" height="17.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Uv-Uk-rc0" userLabel="Name+Event">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Uv-Uk-rc0" userLabel="Name+Event">
                                                                     <rect key="frame" x="0.0" y="0.0" width="271" height="17.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bundle Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcj-F5-4p9" userLabel="Title Label">
@@ -78,14 +78,19 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yW-bN-Suu">
-                                                                            <rect key="frame" x="0.0" y="5" width="271" height="12.5"/>
+                                                                            <rect key="frame" x="0.0" y="10" width="271" height="7.5"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXo-hR-YI2" userLabel="Event">
-                                                                                    <rect key="frame" x="0.0" y="-2" width="51.5" height="17"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXo-hR-YI2" userLabel="Event">
+                                                                                    <rect key="frame" x="0.0" y="-4.5" width="51.5" height="17"/>
                                                                                     <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                                                                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                                     <nil key="highlightedColor"/>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                            <integer key="value" value="10"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                    </userDefinedRuntimeAttributes>
                                                                                 </label>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,9 +235,19 @@
                             <outlet property="delegate" destination="IrA-Gc-mI0" id="Dfl-qq-16T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Finished Tasks" id="CGj-Is-fTb"/>
+                    <navigationItem key="navigationItem" title="Finished Tasks" id="CGj-Is-fTb">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="OXI-0C-z68">
+                            <connections>
+                                <segue destination="lRq-u1-HfJ" kind="unwind" unwindAction="unwindToReviewBundle:" id="0hM-rY-ovi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backToListOfBundles" destination="OXI-0C-z68" id="Ry7-tO-nnK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzn-Ug-oGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lRq-u1-HfJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4431.1999999999998" y="17.541229385307346"/>
         </scene>
