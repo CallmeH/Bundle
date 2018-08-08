@@ -26,9 +26,11 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
 //        }
 //    }
     var selectionCounter: Int = 0
+    var totalTodoCounter: Int = 0
 //    var bundleToPass: [Todo]?
     
     @IBOutlet weak var choiceTableView: UITableView!
+    @IBOutlet weak var eventNameDisplay: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,8 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         for i in accessTodo! {
             i.isSelected = false
         }
+        eventNameDisplay.text = currentEvent?.name
+        totalTodoCounter = accessTodo?.count ?? 0
         // Do any additional setup after loading the view.
     }
     
@@ -136,10 +140,10 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             cell.repeatDisplay.isSelected = false
             if repeatingCopy[indexPath.row].isSelected {
                 cell.accessoryType = .checkmark
-                self.choiceTableView.reloadData()
+                cell.reloadInputViews()
             } else {
                 cell.accessoryType = .none
-                self.choiceTableView.reloadData()
+                cell.reloadInputViews()
             }
         }
         cell.repeatButtonTouched = { (cellin) in
@@ -233,11 +237,13 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
                 CoreDataHelper.deleteTodo(todo: todoToDelete)
                 let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
                 accessTodo = allTodo?.filter{$0.isCompleted == false}
+                totalTodoCounter = accessTodo?.count ?? 0
             } else {
                 let todoToDelete = repeatingCopy[indexPath.row]
                 CoreDataHelper.deleteTodo(todo: todoToDelete)
                 let allTodo = currentEvent?.todoArray?.allObjects as? [Todo]
                 accessTodo = allTodo?.filter{$0.isCompleted == false}
+                totalTodoCounter = accessTodo?.count ?? 0
             }
 //            accessTodo = CoreDataHelper.retrieveAllTodo()
 //            tableView.reloadData()
@@ -260,6 +266,11 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             let destination = segue.destination as! BundleViewController
             destination.currentEvent = currentEvent
 //            destination.bundleCopy = accessTodo!.filter { $0.isCompleted == true } as! BundledTodo
+        case "abandonTodoChoice":
+            if totalTodoCounter == 0 {
+                let destination = segue.destination as! CheckinViewController
+                destination.CheckinCollectionView.reloadData()
+            }
         default:
             print ("failed to pass data from todochoice to bundle")
         }

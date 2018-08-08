@@ -28,6 +28,11 @@ class BundleNamingPromtViewController: UIViewController {
         self.view.removeFromSuperview()
     }
 
+    @IBAction func closePopupAndButton(_ sender: UIButton) {
+        self.removeAnimate()
+        self.view.removeFromSuperview()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -96,6 +96,8 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func unwindToCheckin(_ segue: UIStoryboardSegue) {
+        let completedAndUncompleted = CoreDataHelper.retrieveAllEvent()
+        allEvents = completedAndUncompleted.filter{$0.todoArray != []}
     }
 
 }

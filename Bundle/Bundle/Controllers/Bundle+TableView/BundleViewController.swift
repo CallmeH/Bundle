@@ -35,6 +35,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         bundleTableView.allowsSelection = false
 //        NSPredicate
         bundleNameTextField.delegate = self
+        bundleNameTextField.attributedPlaceholder = NSAttributedString(string: "Give your bundle a name!", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue, NSAttributedStringKey.underlineColor: UIColor.SummerSkyBlue])
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false

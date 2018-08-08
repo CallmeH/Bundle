@@ -311,9 +311,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuF-0L-KHb" userLabel="Instructions View">
                                                 <rect key="frame" x="0.0" y="0.0" width="337.66666666666669" height="66"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete the sentence to add your todo!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-bG-hXR" userLabel="Instructions">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-bG-hXR" userLabel="Instructions">
                                                         <rect key="frame" x="0.0" y="10" width="337.66666666666669" height="65.666666666666686"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <string key="text">Add your todo
+by completing the sentence</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="SummerSkyBlue"/>
                                                         <nil key="highlightedColor"/>
@@ -443,21 +445,36 @@ e.g. Email Daniel</string>
                                                 <rect key="frame" x="0.0" y="610.66666666666663" width="337.66666666666669" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV5-gp-Q8k">
-                                                        <rect key="frame" x="10" y="9" width="33" height="33"/>
+                                                        <rect key="frame" x="10" y="10" width="60" height="30"/>
+                                                        <color key="backgroundColor" name="BlueGrey"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="vV5-gp-Q8k" secondAttribute="height" multiplier="1:1" id="hUh-Jg-ptM"/>
+                                                            <constraint firstAttribute="width" secondItem="vV5-gp-Q8k" secondAttribute="height" multiplier="2:1" id="hUh-Jg-ptM"/>
                                                         </constraints>
-                                                        <state key="normal" image="icons8-close-window-50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="  Back  ">
+                                                            <color key="titleColor" name="LightGrey"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="9nk-zb-tqD" kind="unwind" unwindAction="unwindFromInput:" id="Xzg-NF-rSQ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-gl-1jB">
                                                         <rect key="frame" x="288" y="5.3333333333333712" width="39.666666666666686" height="40"/>
+                                                        <color key="backgroundColor" name="SummerSkyBlue"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="RMQ-gl-1jB" secondAttribute="height" multiplier="1:1" id="IND-fC-EQs"/>
                                                         </constraints>
                                                         <state key="normal" image="icons8-checked-checkbox-50"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="saveNewTodoWithEventTapped:" destination="XLV-t3-Rjh" eventType="touchUpInside" id="Akn-E8-lwg"/>
                                                         </connections>
@@ -780,10 +797,13 @@ e.g. Email Daniel</string>
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueGrey">
-            <color red="0.23800000548362732" green="0.33000001311302185" blue="0.43200001120567322" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGrey">
+            <color red="0.76599997282028198" green="0.76599997282028198" blue="0.76599997282028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SummerSkyBlue">
             <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
