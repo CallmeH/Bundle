@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,13 +27,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="824"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLW-Hh-etE">
-                                                <rect key="frame" x="0.0" y="150" width="187.66666666666666" height="150"/>
+                                                <rect key="frame" x="18.666666666666671" y="150" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="DTe-Vp-EON"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Add">
-                                                    <color key="titleColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" name="AlmostWhite"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="D4b-bC-sKy" kind="show" id="mhD-Dj-fvP"/>
@@ -44,16 +45,33 @@
                                                     <constraint firstAttribute="height" constant="20" id="nYz-Ma-yP8"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="AlmostWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="VrH-PS-IXU">
+                                                <rect key="frame" x="18" y="397" width="150" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" name="BlueGrey"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Uncompleted Todos">
+                                                    <color key="titleColor" name="AlmostWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="UncompletedTodosTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bFD-QH-tf3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="backgroundColor" name="DarkGrey"/>
                                         <constraints>
                                             <constraint firstItem="h6g-QM-qHK" firstAttribute="centerX" secondItem="eLW-Hh-etE" secondAttribute="centerX" id="3Aa-ut-IT8"/>
                                             <constraint firstItem="eLW-Hh-etE" firstAttribute="top" secondItem="1HE-RF-0Qg" secondAttribute="top" constant="150" id="ba1-K6-uQ4"/>
                                             <constraint firstItem="eLW-Hh-etE" firstAttribute="centerX" secondItem="1HE-RF-0Qg" secondAttribute="centerX" id="jYH-Hr-EPc"/>
-                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="width" secondItem="1HE-RF-0Qg" secondAttribute="width" id="pDV-AH-AGv"/>
+                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="width" secondItem="1HE-RF-0Qg" secondAttribute="width" multiplier="0.8" id="pDV-AH-AGv"/>
                                             <constraint firstItem="h6g-QM-qHK" firstAttribute="top" secondItem="eLW-Hh-etE" secondAttribute="top" constant="100" id="rna-zT-8H8"/>
                                         </constraints>
                                     </view>
@@ -61,13 +79,13 @@
                                         <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="824"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUg-BM-PRb">
-                                                <rect key="frame" x="-1" y="494" width="187.66666666666666" height="150"/>
+                                                <rect key="frame" x="18.666666666666686" y="494" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="0IO-gh-cfQ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Check in">
-                                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="DarkGrey"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="0OZ-oP-Tg4" kind="show" id="HCD-sE-wcX"/>
@@ -79,20 +97,29 @@
                                                     <constraint firstAttribute="height" constant="50" id="WeF-Fo-ZaC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" name="DarkGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-2o-ang">
-                                                <rect key="frame" x="18.666666666666686" y="398.33333333333331" width="150" height="28"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="See Completed Bundles"/>
+                                                <rect key="frame" x="18.666666666666686" y="397.66666666666669" width="150" height="30"/>
+                                                <color key="backgroundColor" name="SummerSkyBlue"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Completed Bundles">
+                                                    <color key="titleColor" name="AlmostWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="hTo-yK-TDc" kind="show" id="Jwp-Qf-xcs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="AlmostWhite"/>
                                         <constraints>
-                                            <constraint firstItem="FUg-BM-PRb" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" id="1dj-h5-7es"/>
+                                            <constraint firstItem="FUg-BM-PRb" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" multiplier="0.8" id="1dj-h5-7es"/>
                                             <constraint firstItem="ddy-eN-eIs" firstAttribute="top" secondItem="FUg-BM-PRb" secondAttribute="top" constant="100" id="5ix-0S-5Zd"/>
                                             <constraint firstItem="ddy-eN-eIs" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" id="Cul-B9-jsB"/>
                                             <constraint firstAttribute="bottom" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="180" id="Jgn-yc-pP2"/>
@@ -145,5 +172,93 @@
             </objects>
             <point key="canvasLocation" x="727" y="126"/>
         </scene>
+        <!--Bundle Naming Promt View Controller-->
+        <scene sceneID="S4Z-3t-7QQ">
+            <objects>
+                <viewController storyboardIdentifier="ComingSoon" id="Xux-HO-TMV" customClass="BundleNamingPromtViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lcM-Yp-rFU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tW5-Js-eLX">
+                                <rect key="frame" x="67" y="336" width="240" height="140"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZTl-0J-zHb">
+                                        <rect key="frame" x="38" y="30" width="163" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSo-z2-oln">
+                                                <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" name="AlmostWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zi-cn-zub">
+                                                <rect key="frame" x="10" y="50" width="143" height="30"/>
+                                                <color key="backgroundColor" name="SummerSkyBlue"/>
+                                                <state key="normal" title="  Back to main page  ">
+                                                    <color key="titleColor" name="AlmostWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="qda-Z3-Hf0" kind="unwind" unwindAction="unwindFromInput:" id="pQ4-eW-tGj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="6zi-cn-zub" firstAttribute="centerX" secondItem="ZTl-0J-zHb" secondAttribute="centerX" id="Nfm-eJ-sk3"/>
+                                            <constraint firstItem="JSo-z2-oln" firstAttribute="centerX" secondItem="ZTl-0J-zHb" secondAttribute="centerX" id="PGN-Mx-J1Y"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkGrey"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Amc-Id-Lmd"/>
+                                    <constraint firstAttribute="width" constant="240" id="Bfk-5V-YTy"/>
+                                    <constraint firstItem="ZTl-0J-zHb" firstAttribute="centerY" secondItem="tW5-Js-eLX" secondAttribute="centerY" id="JWj-C9-qHW"/>
+                                    <constraint firstItem="ZTl-0J-zHb" firstAttribute="centerX" secondItem="tW5-Js-eLX" secondAttribute="centerX" id="ba6-1Q-Xt7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tW5-Js-eLX" firstAttribute="centerX" secondItem="lcM-Yp-rFU" secondAttribute="centerX" id="5Zc-Ut-NtZ"/>
+                            <constraint firstItem="tW5-Js-eLX" firstAttribute="centerY" secondItem="lcM-Yp-rFU" secondAttribute="centerY" id="dRT-TD-Lcc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bEH-DX-Yeh"/>
+                    </view>
+                    <connections>
+                        <outlet property="gobackButton" destination="6zi-cn-zub" id="O1I-PL-ZXO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZy-z9-7qG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qda-Z3-Hf0" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="770"/>
+        </scene>
     </scenes>
+    <resources>
+        <namedColor name="AlmostWhite">
+            <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
+            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlueGrey">
+            <color red="0.23800000548362732" green="0.33000001311302185" blue="0.43200001120567322" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
+            <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

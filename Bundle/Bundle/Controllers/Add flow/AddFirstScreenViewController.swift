@@ -28,6 +28,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
         inputTodoTextView.delegate = self
         repeatButtonDisplay.setTitle("Just once,", for: .normal)
         defaultTagButtonDisplay.setTitle("before", for: .normal)
@@ -60,6 +61,25 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 //            inputTodoTextView.frame.origin.y = todoBox
 //        }
 //    }
+    
+    @IBOutlet weak var instructionsCard: UIView!
+    @IBOutlet weak var repeatChoiceCard: UIView!
+    @IBOutlet weak var reminderCard: UIView!
+    @IBOutlet weak var timeTagCard: UIView!
+    @IBOutlet weak var eventCard: UIView!
+    func setUpView() {
+        instructionsCard.layer.shadowOffset = CGSize(width: 0, height: 1)
+        instructionsCard.layer.shadowOpacity = 1
+        instructionsCard.layer.shadowColor = UIColor.AlmostWhite.cgColor
+        instructionsCard.layer.shadowRadius = 35
+        func boarderBlueGrey(arrayOfCards: [UIView]) {
+            for i in arrayOfCards {
+                i.layer.borderWidth = 1
+                i.layer.borderColor = UIColor.BlueGrey.cgColor
+            }
+        }
+        boarderBlueGrey(arrayOfCards: [repeatChoiceCard,reminderCard,timeTagCard,eventCard])
+    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
@@ -108,7 +128,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
             }
             eventButtonDisplay.setTitle(truncated, for: .normal)
         } else {
-            eventButtonDisplay.setTitle("e.g. I send out the draft", for: .normal)
+            eventButtonDisplay.setTitle("e.g. sending out the draft", for: .normal)
         }
     }
     
@@ -217,3 +237,4 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         
     }
 }
+

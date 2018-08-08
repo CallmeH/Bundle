@@ -22,9 +22,11 @@ class CheckinCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if self.isSelected == true {
-                self.backgroundColor = UIColor.cyan
+                self.backgroundColor = UIColor.SummerSkyBlue
+                self.eventTagCheckin.textColor = UIColor.AlmostWhite
             } else {
                 self.backgroundColor = UIColor.lightGray
+                self.eventTagCheckin.textColor = UIColor.BlueGrey
             }
         }
     }

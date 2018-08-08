@@ -35,6 +35,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         inputEventTextField.delegate = self
         inputEventTextField.returnKeyType = .done
+        inputEventTextField.attributedPlaceholder = NSAttributedString(string: "Didn't see your event?", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue, NSAttributedStringKey.underlineColor: UIColor.SummerSkyBlue])
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -129,8 +130,13 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         //        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "singleEventChoiceCell", for: indexPath) as! EventTagsCollectionViewCell
         let event = allEvents[indexPath.item]
+        cell.layer.cornerRadius = 3
+        cell.layer.masksToBounds = true
         cell.eventTag.text = event.name
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = UIColor.DarkGrey
+//        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor.AlmostWhite.cgColor
+        cell.eventTag.textColor = UIColor.LightGrey
         for i in previouslySelectedEvents {
             //FIXME: don't let it be based on i.name, change it to be based on objectID in coredata
             if event.name == i.name {

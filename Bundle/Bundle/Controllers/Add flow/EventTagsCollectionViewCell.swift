@@ -29,9 +29,11 @@ class EventTagsCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if self.isSelected == true {
-                self.backgroundColor = UIColor.cyan
+                self.backgroundColor = UIColor.LightGrey
+                self.eventTag.textColor = UIColor.DarkGrey
             } else {
-                self.backgroundColor = UIColor.lightGray
+                self.backgroundColor = UIColor.DarkGrey
+                self.eventTag.textColor = UIColor.LightGrey
             }
         }
     }

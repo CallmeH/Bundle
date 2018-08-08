@@ -31,6 +31,15 @@ class HomeViewController: UIViewController {
     
     //add gesture swipe here
     
+    
+    @IBAction func UncompletedTodosTapped(_ sender: UIButton) {
+        let popOver = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ComingSoon") as! BundleNamingPromtViewController
+        self.addChildViewController(popOver)
+        popOver.view.frame = self.view.frame
+        self.view.addSubview(popOver.view)
+        popOver.didMove(toParentViewController: self)
+    }
+    
     @IBAction func unwindFromInput(_ segue: UIStoryboardSegue) {
         print("unwind from input")
 //        inputViewController?.dismissKeyboard()

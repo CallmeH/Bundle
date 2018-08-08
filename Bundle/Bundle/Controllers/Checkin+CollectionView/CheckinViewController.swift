@@ -24,8 +24,11 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCellCheckin", for: indexPath) as! CheckinCollectionViewCell
         let event = allEvents[indexPath.item]
+        cell.layer.cornerRadius = 3
+        cell.layer.masksToBounds = true
         cell.eventTagCheckin.text = event.name
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = .LightGrey
+        cell.eventTagCheckin.textColor = UIColor.BlueGrey
         return cell
     }
     

@@ -113,6 +113,12 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         var nonrepeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == false} ?? []
         var repeatingCopy: [Todo] = accessTodo?.filter {$0.isRepeated == true} ?? []
         var todoPlaceholder: Todo
+        cell.todoTagDisplay.layer.cornerRadius = 3
+        cell.todoTagDisplay.layer.masksToBounds = true
+        cell.todoTagDisplay.backgroundColor = UIColor.BlueGrey
+        //        cell.layer.borderWidth = 1
+        //        cell.layer.borderColor = UIColor.AlmostWhite.cgColor
+        cell.todoTagDisplay.textColor = UIColor.LightGrey
         if indexPath.section == 0 {
             todoPlaceholder = nonrepeatingCopy[indexPath.row]
             cell.todoTagDisplay.text = tagToString(todoPlaceholder.hasTimeTag!)
@@ -130,8 +136,10 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             cell.repeatDisplay.isSelected = false
             if repeatingCopy[indexPath.row].isSelected {
                 cell.accessoryType = .checkmark
+                self.choiceTableView.reloadData()
             } else {
                 cell.accessoryType = .none
+                self.choiceTableView.reloadData()
             }
         }
         cell.repeatButtonTouched = { (cellin) in
@@ -192,6 +200,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
                     cell.accessoryType = .none
                     repeatOrNot[indexPath.row].isSelected = false
                     print(repeatOrNot[indexPath.row].isSelected)
+                    choiceTableView.reloadData()
                     print("set to not selected")
                     selectionCounter -= 1
                 } else {
@@ -199,6 +208,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
                     repeatOrNot[indexPath.row].isSelected = true
                     print(repeatOrNot[indexPath.row].isSelected)
                     print("set to selected")
+                    choiceTableView.reloadData()
                     selectionCounter += 1
                 }
             }
