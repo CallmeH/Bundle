@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="824"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLW-Hh-etE">
-                                                <rect key="frame" x="67.333333333333329" y="200" width="53" height="48"/>
+                                                <rect key="frame" x="0.0" y="150" width="187.66666666666666" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="DTe-Vp-EON"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Add">
                                                     <color key="titleColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,7 +39,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-QM-qHK">
-                                                <rect key="frame" x="53.333333333333336" y="268" width="80.666666666666657" height="20"/>
+                                                <rect key="frame" x="53.333333333333336" y="250" width="80.666666666666657" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="nYz-Ma-yP8"/>
                                                 </constraints>
@@ -47,16 +51,20 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="h6g-QM-qHK" firstAttribute="centerX" secondItem="eLW-Hh-etE" secondAttribute="centerX" id="3Aa-ut-IT8"/>
-                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="top" secondItem="1HE-RF-0Qg" secondAttribute="top" constant="200" id="ba1-K6-uQ4"/>
+                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="top" secondItem="1HE-RF-0Qg" secondAttribute="top" constant="150" id="ba1-K6-uQ4"/>
                                             <constraint firstItem="eLW-Hh-etE" firstAttribute="centerX" secondItem="1HE-RF-0Qg" secondAttribute="centerX" id="jYH-Hr-EPc"/>
-                                            <constraint firstItem="h6g-QM-qHK" firstAttribute="top" secondItem="eLW-Hh-etE" secondAttribute="bottom" constant="20" id="rna-zT-8H8"/>
+                                            <constraint firstItem="eLW-Hh-etE" firstAttribute="width" secondItem="1HE-RF-0Qg" secondAttribute="width" id="pDV-AH-AGv"/>
+                                            <constraint firstItem="h6g-QM-qHK" firstAttribute="top" secondItem="eLW-Hh-etE" secondAttribute="top" constant="100" id="rna-zT-8H8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyx-Bi-k9D">
                                         <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="824"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUg-BM-PRb">
-                                                <rect key="frame" x="36.333333333333343" y="576" width="113" height="48"/>
+                                                <rect key="frame" x="-1" y="494" width="187.66666666666666" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="0IO-gh-cfQ"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Check in">
                                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,18 +74,17 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to one of your existing events" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddy-eN-eIs">
-                                                <rect key="frame" x="0.0" y="644" width="187.33333333333334" height="50"/>
+                                                <rect key="frame" x="0.0" y="594" width="187.33333333333334" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="WeF-Fo-ZaC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-2o-ang">
-                                                <rect key="frame" x="1" y="397" width="184" height="68"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-2o-ang">
+                                                <rect key="frame" x="18.666666666666686" y="398.33333333333331" width="150" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="Review completed bundles"/>
+                                                <state key="normal" title="See Completed Bundles"/>
                                                 <connections>
                                                     <segue destination="hTo-yK-TDc" kind="show" id="Jwp-Qf-xcs"/>
                                                 </connections>
@@ -85,10 +92,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.94528537329999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="ddy-eN-eIs" firstAttribute="top" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="20" id="5ix-0S-5Zd"/>
+                                            <constraint firstItem="FUg-BM-PRb" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" id="1dj-h5-7es"/>
+                                            <constraint firstItem="ddy-eN-eIs" firstAttribute="top" secondItem="FUg-BM-PRb" secondAttribute="top" constant="100" id="5ix-0S-5Zd"/>
                                             <constraint firstItem="ddy-eN-eIs" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" id="Cul-B9-jsB"/>
-                                            <constraint firstAttribute="bottom" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="200" id="Jgn-yc-pP2"/>
+                                            <constraint firstAttribute="bottom" secondItem="FUg-BM-PRb" secondAttribute="bottom" constant="180" id="Jgn-yc-pP2"/>
                                             <constraint firstItem="FUg-BM-PRb" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="Pxp-pa-gsa"/>
+                                            <constraint firstItem="m3N-2o-ang" firstAttribute="width" secondItem="Kyx-Bi-k9D" secondAttribute="width" multiplier="0.8" id="Qq2-V6-FBt"/>
+                                            <constraint firstItem="m3N-2o-ang" firstAttribute="centerY" secondItem="Kyx-Bi-k9D" secondAttribute="centerY" id="dyU-0S-V2T"/>
+                                            <constraint firstItem="m3N-2o-ang" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="whh-Ow-LXx"/>
                                             <constraint firstItem="ddy-eN-eIs" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="xQV-mj-qYc"/>
                                             <constraint firstItem="FUg-BM-PRb" firstAttribute="centerX" secondItem="Kyx-Bi-k9D" secondAttribute="centerX" id="zbV-hc-uxj"/>
                                         </constraints>

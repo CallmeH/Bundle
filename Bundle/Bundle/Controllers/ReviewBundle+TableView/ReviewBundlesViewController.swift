@@ -37,7 +37,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         completedBundlesTableView.dataSource = self
         completedBundlesTableView.allowsSelection = true
         bundles = CoreDataHelper.retrieveAllBundle()
-        events = CoreDataHelper.retrieveAllEvent().filter{$0.todoArray != []}
+        events = CoreDataHelper.retrieveAllEvent().filter{$0.bundleArray != []}
         
         day = bundles?.filter{($0.dateCompleted?.isInToday)!}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         week = bundles?.filter{($0.dateCompleted?.isInThisWeek)!}.filter{$0.dateCompleted?.isInToday == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
@@ -131,7 +131,11 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
             if (bundlesPlaceholder.dateCompleted?.isInToday)! {
                 cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToStringToday()
             } else {
-                cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToString()
+                if (bundlesPlaceholder.dateCompleted?.isInThisYear)! {
+                    cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToString()
+                } else {
+                    cell.timeStampLabel.text = bundlesPlaceholder.dateCompleted?.convertToStringIncludeYear()
+                }
             }
         }
         if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {

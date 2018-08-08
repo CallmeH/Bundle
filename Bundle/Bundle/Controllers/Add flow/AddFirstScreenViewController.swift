@@ -11,7 +11,6 @@ import UIKit
 class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var repeatButtonDisplay: UIButton!
-    @IBOutlet weak var todoButtonDisplay: UIButton!
     @IBOutlet weak var inputTodoTextView: UITextView!
     @IBOutlet weak var entireView: UIView!
     @IBOutlet weak var defaultTagButtonDisplay: UIButton!
@@ -32,6 +31,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         inputTodoTextView.delegate = self
         repeatButtonDisplay.setTitle("Just once,", for: .normal)
         defaultTagButtonDisplay.setTitle("before", for: .normal)
+        inputTodoTextView.returnKeyType = .done
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -86,7 +86,27 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
             for i in selectedEvent! {
                 arrayEventTitles.append(i.name!)
             }
-            eventButtonDisplay.setTitle(arrayEventTitles.joined(separator: "; "), for: .normal)
+            let chosenEvents = arrayEventTitles.joined(separator: "; ")
+            var truncated = ""
+            if chosenEvents.count > 100 {
+                var lengthCounter = 0
+                var showNumber = 0
+                for i in arrayEventTitles {
+                    if lengthCounter + i.count <= 100 {
+                        lengthCounter += i.count
+                        truncated = truncated + i + "; "
+                        showNumber += 1
+                    }
+                }
+                if showNumber + 1 == arrayEventTitles.count {
+                    truncated += "\nand 1 more event"
+                } else {
+                    truncated += "\nand \(arrayEventTitles.count - showNumber) more events"
+                }
+            } else {
+                truncated = arrayEventTitles.joined(separator: ";  ")
+            }
+            eventButtonDisplay.setTitle(truncated, for: .normal)
         } else {
             eventButtonDisplay.setTitle("e.g. I send out the draft", for: .normal)
         }
@@ -105,6 +125,15 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 //            return repeatChoice
         }
     }
+    
+    @IBAction func eventChoiceButtonTapped(_ sender: UIButton) {
+        let popOver = UIStoryboard(name: "Add", bundle: nil).instantiateViewController(withIdentifier: "SetYourEvents") as! AddEventViewController
+        self.addChildViewController(popOver)
+        popOver.view.frame = self.view.frame
+        self.view.addSubview(popOver.view)
+        popOver.didMove(toParentViewController: self)
+    }
+    
     
     @IBAction func timeTagEditTapped(_ sender: UIButton) {
         if prep == Constant.prepositionPlaceholder.before {
@@ -180,13 +209,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
             }
         }
         performSegue(withIdentifier: "saveNewTodoWithEventTapped", sender: Any?.self)
-    }
-    
-    
-    @IBAction func unwindFromTodoToAddFirst(_ sender: UIStoryboardSegue) {
-        let sourceViewController = sender.source as! AddTodoViewController
-        todoLabel = sourceViewController.inputTextView.text
-        todoButtonDisplay.setTitle(todoLabel, for: .normal)
     }
     
     @IBAction func unwindFromEventToAddFirst(_ sender: UIStoryboardSegue) {

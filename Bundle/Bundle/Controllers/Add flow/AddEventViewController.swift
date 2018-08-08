@@ -35,6 +35,9 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         inputEventTextField.delegate = self
         inputEventTextField.returnKeyType = .done
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,10 +45,9 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
+    func initiateNewEvent() {
         inputEventTextField.resignFirstResponder()
-        guard inputEventTextField.text != "" else { return true }
+        guard inputEventTextField.text != "" else { return }
         func checkDuplicate() -> Bool {
             for i in allEvents {
                 if inputEventTextField.text == i.name {
@@ -57,11 +59,15 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         guard checkDuplicate() else {
             //FIXME: do something to call a pop up window saying: "Oops, there's another event with the same name."
-            return true
+            return
+        }
+        var eventLongEnoughTitle: String = inputEventTextField.text!
+        while eventLongEnoughTitle.count < 5 {
+            eventLongEnoughTitle += " "
         }
         let newEvent = CoreDataHelper.newEvent()
-        newEvent.name = inputEventTextField.text
-//        newEvent.isPinned = false
+        newEvent.name = eventLongEnoughTitle
+        //        newEvent.isPinned = false
         newEvent.bundleArray = []
         
         CoreDataHelper.save()
@@ -77,7 +83,16 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         //
         inputEventTextField.text = ""
         allEvents = CoreDataHelper.retrieveAllEvent()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        initiateNewEvent()
         return true
+    }
+    
+    @IBAction func addNewEventButtonTouched(_ sender: UIButton) {
+        initiateNewEvent()
     }
     
     @IBAction func assignEventButtonTapped(_ sender: UIButton) {

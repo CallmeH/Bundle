@@ -14,8 +14,9 @@ func presetCollectionViewLayout(in collectionView: UICollectionView) {
     let alignedFlowLayout = collectionView.collectionViewLayout as? AlignedCollectionViewFlowLayout
     alignedFlowLayout?.horizontalAlignment = .left
     alignedFlowLayout?.verticalAlignment = .top
-    alignedFlowLayout?.minimumInteritemSpacing = 15
-    alignedFlowLayout?.minimumLineSpacing = 15
+    alignedFlowLayout?.minimumInteritemSpacing = 10
+    alignedFlowLayout?.minimumLineSpacing = 10
+//    alignedFlowLayout?.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
 }
 
 func tagToString(_ timeTag: DefaultTag) -> String? {

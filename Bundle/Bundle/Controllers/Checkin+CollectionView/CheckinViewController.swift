@@ -62,7 +62,12 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         let Todos = selectedEvent.todoArray?.allObjects as! [Todo]
         let uncompletedTodos = Todos.filter{$0.isCompleted == false}
         if uncompletedTodos == [] {
-            performSegue(withIdentifier: "chosenInvalidEvent", sender: Any?.self)
+//            performSegue(withIdentifier: "chosenInvalidEvent", sender: Any?.self)
+            let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "YouAreAllClear") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
         } else {
             performSegue(withIdentifier: "chosenValidEvent", sender: Any?.self)
         }

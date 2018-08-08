@@ -124,6 +124,9 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
 //                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
                 self.bundleCopy?.remove(at: indexPath.row)
                 self.somethingWasPutBack += 1
+                if self.bundleCopy?.count == 0 {
+                    self.performSegue(withIdentifier: "bundleAbandoned", sender: Any?.self)
+                }
 //                cell.checkButton.isSelected = cellAfter.checkButton.isSelected
             }
 //        } else {

@@ -13,13 +13,30 @@ struct FormattedDate {
     
 }
 
+//extension DateFormatter {
+//    static let yyyyMMdd: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        formatter.calendar = Calendar(identifier: .iso8601)
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        formatter.locale = Locale(identifier: "en_US_POSIX")
+//        return formatter
+//    }()
+//}
+
 extension Date {
     func convertToString() -> String {
-        return DateFormatter.localizedString(from: self, dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none)
+        let withYear = DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: DateFormatter.Style.none)
+        let array = withYear.components(separatedBy: ",")
+        return array[0]
     }
     
     func convertToStringToday() -> String {
         return DateFormatter.localizedString(from: self, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.short)
+    }
+    
+    func convertToStringIncludeYear() -> String {
+        return DateFormatter.localizedString(from: self, dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none)
     }
 //    func withinYear(input: Date) -> Bool {
 //        let currentComponent = Calendar.current.dateComponents([.year, .month, .day], from: FormattedDate.currentDate)
