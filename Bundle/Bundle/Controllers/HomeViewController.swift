@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Crashlytics
+//TODO: shows up as report for name, and you can have custom categories and say how long it is to see the total length of time.
+//Answers.logCustomEvent(withName: "Video Played", customAttributes: ["Category":"Comedy", "Length":350])
 
 class HomeViewController: UIViewController {
 

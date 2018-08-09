@@ -126,7 +126,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         popOver.didMove(toParentViewController: self)
     }
     
-    
+    //FIXME: works now, but how to customize tags?
     @IBAction func timeTagEditTapped(_ sender: UIButton) {
         if prep == Constant.prepositionPlaceholder.before {
             prep = Constant.prepositionPlaceholder.when

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		791372312113C413003452B8 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791372302113C413003452B8 /* AddTodoViewController.swift */; };
 		791372332113DFD4003452B8 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791372322113DFD4003452B8 /* AddEventViewController.swift */; };
+		791CD378211CDBC400E4F510 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791CD376211CDBC400E4F510 /* Fabric.framework */; };
+		791CD379211CDBC400E4F510 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791CD377211CDBC400E4F510 /* Crashlytics.framework */; };
 		7927F4A12112D13000A23285 /* FirstTimeGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A02112D13000A23285 /* FirstTimeGuide.swift */; };
 		7927F4A32112ED2B00A23285 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */; };
 		7964133B21068E6700BD18A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964133A21068E6700BD18A8 /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		5FF8EE29FFAF89EC87BB9368 /* Pods-BundleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BundleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BundleUITests/Pods-BundleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		791372302113C413003452B8 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		791372322113DFD4003452B8 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		791CD376211CDBC400E4F510 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		791CD377211CDBC400E4F510 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7927F4A02112D13000A23285 /* FirstTimeGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeGuide.swift; sourceTree = "<group>"; };
 		7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7964133721068E6700BD18A8 /* Bundle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bundle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFA97AB7BD8771758F97FD7 /* Pods_Bundle.framework in Frameworks */,
+				791CD379211CDBC400E4F510 /* Crashlytics.framework in Frameworks */,
+				791CD378211CDBC400E4F510 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +169,8 @@
 		7964132E21068E6700BD18A8 = {
 			isa = PBXGroup;
 			children = (
+				791CD377211CDBC400E4F510 /* Crashlytics.framework */,
+				791CD376211CDBC400E4F510 /* Fabric.framework */,
 				796580E62117EF8C0066A4C2 /* ARCHIVED */,
 				7964133921068E6700BD18A8 /* Bundle */,
 				7964135121068E6B00BD18A8 /* BundleTests */,
@@ -358,6 +366,7 @@
 				7964133421068E6700BD18A8 /* Frameworks */,
 				7964133521068E6700BD18A8 /* Resources */,
 				6C22DE5AF0B7D0B65C9BCDBE /* [CP] Embed Pods Frameworks */,
+				791CD375211CDB1C00E4F510 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -515,6 +524,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bundle/Pods-Bundle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		791CD375211CDB1C00E4F510 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c52c8851f835c45cee9c2909d4b5aac33c80b1f8 7f37cdc8115f9b5542f8d7bc588f9eefb26b9fb2b29bb2415f90e980f060e550";
 		};
 		DDE77EDB62EC9990343530E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -762,7 +784,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SMAPT4S6ZP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Bundle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -785,6 +812,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SMAPT4S6ZP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Bundle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

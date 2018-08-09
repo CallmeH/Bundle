@@ -125,6 +125,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
             guard let indexPath = tableView.indexPath(for: cellin) else { return }
             if todoPlaceholder.isRepeated {
                 todoPlaceholder.isRepeated = false
+                CoreDataHelper.save()
                 cell.repeatDisplay.isSelected = false
                 print("change to single-use")
                 let allTodo = self.currentEvent?.todoArray?.allObjects as? [Todo]
@@ -134,6 +135,7 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
                 self.choiceTableView.reloadData()
             } else {
                 todoPlaceholder.isRepeated = true
+                CoreDataHelper.save()
                 cell.repeatDisplay.isSelected = true
                 print("change to repeating")
                 nonrepeatingCopy = self.accessTodo?.filter {$0.isRepeated == false} ?? []
