@@ -311,9 +311,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuF-0L-KHb" userLabel="Instructions View">
                                                 <rect key="frame" x="0.0" y="0.0" width="337.66666666666669" height="66"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-bG-hXR" userLabel="Instructions">
-                                                        <rect key="frame" x="0.0" y="10" width="337.66666666666669" height="65.666666666666686"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-bG-hXR" userLabel="Instructions">
+                                                        <rect key="frame" x="62.666666666666671" y="12.666666666666668" width="212.66666666666663" height="40.666666666666657"/>
                                                         <string key="text">Add your todo
 by completing the sentence</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -321,6 +320,11 @@ by completing the sentence</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="XX7-bG-hXR" firstAttribute="centerX" secondItem="NuF-0L-KHb" secondAttribute="centerX" id="Xg6-cD-Maj"/>
+                                                    <constraint firstItem="XX7-bG-hXR" firstAttribute="centerX" secondItem="NuF-0L-KHb" secondAttribute="centerX" id="ijH-7c-8Mb"/>
+                                                    <constraint firstItem="XX7-bG-hXR" firstAttribute="centerY" secondItem="NuF-0L-KHb" secondAttribute="centerY" id="pez-TG-2V6"/>
+                                                </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdY-fv-3vi" userLabel="RepeatChoice">
                                                 <rect key="frame" x="0.0" y="76" width="337.66666666666669" height="82.333333333333314"/>
@@ -472,7 +476,7 @@ e.g. Email Daniel</string>
                                                         <state key="normal" image="icons8-checked-checkbox-50"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="10"/>
+                                                                <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -491,9 +495,15 @@ e.g. Email Daniel</string>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Py4-yA-h9l" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.25" id="11Z-X3-FpE"/>
+                                            <constraint firstItem="uym-kw-sCf" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="8ho-2L-htw"/>
+                                            <constraint firstItem="IdY-fv-3vi" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="8xj-Sb-zQt"/>
+                                            <constraint firstItem="mNN-32-3Wl" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="9Ib-xL-0fS"/>
+                                            <constraint firstItem="NuF-0L-KHb" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="DQd-c1-2rn"/>
                                             <constraint firstItem="NuF-0L-KHb" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.1" id="Mrv-kP-xnT"/>
                                             <constraint firstItem="nCt-3f-1zn" firstAttribute="height" secondItem="OsX-J8-uph" secondAttribute="height" multiplier="0.25" id="Ncr-ek-Wpw"/>
+                                            <constraint firstItem="Py4-yA-h9l" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="e4A-lN-0bS"/>
                                             <constraint firstItem="uym-kw-sCf" firstAttribute="height" secondItem="IdY-fv-3vi" secondAttribute="height" id="oeW-Vg-cFc"/>
+                                            <constraint firstItem="nCt-3f-1zn" firstAttribute="centerX" secondItem="OsX-J8-uph" secondAttribute="centerX" id="td2-Sx-7gL"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -570,7 +580,7 @@ e.g. Email Daniel</string>
                                                         <state key="normal" image="icons8-checked-checkbox-50"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="10"/>
+                                                                <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>

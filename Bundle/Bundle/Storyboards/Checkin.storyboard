@@ -536,12 +536,12 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-qv-zo5">
-                                                            <rect key="frame" x="10" y="10.5" width="317.5" height="29"/>
+                                                            <rect key="frame" x="10" y="10.5" width="317.5" height="19"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y72-1d-jMi">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="mns-w5-4GA"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="mns-w5-4GA"/>
                                                                         <constraint firstAttribute="width" secondItem="y72-1d-jMi" secondAttribute="height" multiplier="1:1" id="qEJ-WW-yMw"/>
                                                                     </constraints>
                                                                     <color key="tintColor" name="AlmostWhite"/>
@@ -552,13 +552,13 @@
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-wO-nyx">
-                                                                    <rect key="frame" x="40" y="0.0" width="247.5" height="30"/>
+                                                                    <rect key="frame" x="30" y="0.0" width="257.5" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-Ro-HpS">
-                                                                    <rect key="frame" x="297.5" y="4.5" width="20" height="20"/>
+                                                                    <rect key="frame" x="297.5" y="-0.5" width="20" height="20"/>
                                                                     <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="dCF-eS-bRQ"/>

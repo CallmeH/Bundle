@@ -45,6 +45,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         year = bundles?.filter{($0.dateCompleted?.isInThisYear)! }.filter{($0.dateCompleted?.isInThisMonth)! == false}.filter{($0.dateCompleted?.isInThisWeek)! == false}.filter{($0.dateCompleted?.isInToday)!}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         
+        navigationController?.navigationBar.barTintColor = UIColor.SummerSkyBlue
 //        completedBundlesTableView.allowsSelection = false
 //        print(bundles)
     }
@@ -124,7 +125,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
             cell.bundleNameLabel.text = bundlesPlaceholder.name
             if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
                 cell.eventInitialsLabel.isHidden = false
-                cell.eventInitialsLabel.text = bundlesPlaceholder.belongToEvent?.name
+                cell.eventInitialsLabel.text = " " + (bundlesPlaceholder.belongToEvent?.name)! + " "
             } else {
                 cell.eventInitialsLabel.isHidden = true
             }
