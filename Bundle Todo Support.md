@@ -16,6 +16,7 @@
 
 #### Contact
 
+email: developer.pei.qin@outlook.com
 
 Any questions, suggestions, feature requests, or crash/bug reports are welcomed.
 
