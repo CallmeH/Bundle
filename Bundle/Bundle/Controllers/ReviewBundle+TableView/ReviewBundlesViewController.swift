@@ -125,6 +125,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
                 cell.eventInitialsLabel.isHidden = false
                 cell.eventInitialsLabel.text = " " + (bundlesPlaceholder.belongToEvent?.name)! + " "
             } else {
+                cell.eventInitialsLabel.text = ""
                 cell.eventInitialsLabel.isHidden = true
             }
             if (bundlesPlaceholder.dateCompleted?.isInToday)! {

@@ -31,7 +31,11 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         for i in accessTodo! {
             i.isSelected = false
         }
-        eventNameDisplay.text = currentEvent?.name
+        if (currentEvent?.name?.count)! > 80 {
+            eventNameDisplay.text = String((currentEvent?.name?.prefix(77))!) + "..."
+        } else {
+            eventNameDisplay.text = currentEvent?.name
+        }
         totalTodoCounter = accessTodo?.count ?? 0
     }
     

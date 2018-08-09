@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -167,7 +166,7 @@
                         <viewLayoutGuide key="safeArea" id="dxR-Bq-a4e"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Bundles" id="cAd-Bj-HNr">
-                        <barButtonItem key="leftBarButtonItem" title="Main menu" id="lKz-21-tSY">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="lKz-21-tSY">
                             <color key="tintColor" name="AlmostWhite"/>
                             <connections>
                                 <segue destination="F1F-kx-EsG" kind="unwind" unwindAction="unwindFromReviewBundle:" id="aRg-0e-wfo"/>

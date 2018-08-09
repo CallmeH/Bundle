@@ -65,6 +65,14 @@ class HomeViewController: UIViewController {
         self.view.window?.makeKeyAndVisible()
     }
     
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
+        print("unwind from checkin")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let initialViewController = storyboard.instantiateInitialViewController() else {fatalError("Cannot initialize storyboard")}
+        self.view.window?.rootViewController = initialViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    
     //additional features:
     //review completed bundles
     

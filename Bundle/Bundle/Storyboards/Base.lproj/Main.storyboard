@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -124,6 +123,16 @@
                                                     <segue destination="hTo-yK-TDc" kind="show" id="Jwp-Qf-xcs"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pE1-ga-H73" userLabel="more">
+                                                <rect key="frame" x="138.00000000000003" y="70" width="30" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                                <state key="normal" title="...">
+                                                    <color key="titleColor" name="BlueGrey"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="D4T-gB-2Tq" kind="show" id="bbT-Vr-h31"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="AlmostWhite"/>
                                         <constraints>
@@ -144,7 +153,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="pE1-ga-H73" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="AI7-K4-lmN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NWI-FN-qJx" secondAttribute="trailing" id="Ta6-wr-Po6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="pE1-ga-H73" secondAttribute="top" constant="-20" id="czg-Re-ibm"/>
                             <constraint firstItem="NWI-FN-qJx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-50" id="k9d-5p-x8I"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NWI-FN-qJx" secondAttribute="bottom" constant="-40" id="kxc-I4-hkp"/>
                             <constraint firstItem="NWI-FN-qJx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x9w-HI-apZ"/>
@@ -155,6 +166,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="33.990147783251231"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Hl0-39-Nvx">
+            <objects>
+                <viewController id="D4T-gB-2Tq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X4b-hK-Qrj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vm9-OS-V63">
+                                <rect key="frame" x="0.0" y="80.666666666666686" width="375.33333333333331" height="660.66666666666652"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6S7-WB-GCN">
+                                        <rect key="frame" x="37.666666666666657" y="140.00000000000003" width="300" height="381.66666666666674"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAy-Zg-HQD">
+                                                <rect key="frame" x="58.000000000000014" y="0.0" width="184.66666666666669" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                <color key="textColor" name="AlmostWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8P-gf-QZU">
+                                                <rect key="frame" x="0.0" y="54.000000000000014" width="300" height="223.33333333333337"/>
+                                                <string key="text">@MakeSchool: for providing a dedicated workspace and technical support
+
+@mischa-hildebrand on GitHub: for providing CoacoPod AlignedCollectionViewFlowLayout (under MIT License)
+
+@beta testers at MakeSchool: Thanks for the support and feedback!</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="LightGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pei Qin 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-eY-xUa">
+                                                <rect key="frame" x="114.66666666666669" y="307.33333333333337" width="71.333333333333314" height="14.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" name="BlueGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4T-Ru-1ka">
+                                                <rect key="frame" x="75" y="351.66666666666674" width="150" height="30"/>
+                                                <color key="backgroundColor" name="SummerSkyBlue"/>
+                                                <state key="normal" title="Back">
+                                                    <color key="titleColor" name="AlmostWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="cFq-Wi-48W" kind="unwind" unwindAction="unwindToHome:" id="JGo-Lw-bAI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="h4T-Ru-1ka" firstAttribute="width" secondItem="6S7-WB-GCN" secondAttribute="width" multiplier="0.5" id="h2l-du-koK"/>
+                                            <constraint firstItem="L8P-gf-QZU" firstAttribute="width" secondItem="6S7-WB-GCN" secondAttribute="width" id="tIV-2J-zOU"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6S7-WB-GCN" firstAttribute="centerY" secondItem="Vm9-OS-V63" secondAttribute="centerY" id="hCt-cg-ow9"/>
+                                    <constraint firstItem="6S7-WB-GCN" firstAttribute="centerX" secondItem="Vm9-OS-V63" secondAttribute="centerX" id="jB1-jq-UX9"/>
+                                    <constraint firstItem="6S7-WB-GCN" firstAttribute="width" secondItem="Vm9-OS-V63" secondAttribute="width" multiplier="0.8" id="kD8-Uu-bm5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="DarkGrey"/>
+                        <constraints>
+                            <constraint firstItem="Xiy-s6-fx2" firstAttribute="centerY" secondItem="Vm9-OS-V63" secondAttribute="centerY" id="Gpg-N5-5Vb"/>
+                            <constraint firstItem="Vm9-OS-V63" firstAttribute="height" secondItem="Xiy-s6-fx2" secondAttribute="height" multiplier="0.9" id="Kq6-ES-Pgi"/>
+                            <constraint firstItem="Vm9-OS-V63" firstAttribute="width" secondItem="X4b-hK-Qrj" secondAttribute="width" id="QHA-cW-nyM"/>
+                            <constraint firstItem="Vm9-OS-V63" firstAttribute="centerX" secondItem="X4b-hK-Qrj" secondAttribute="centerX" id="suS-ED-dSr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xiy-s6-fx2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxl-cW-8nR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cFq-Wi-48W" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="-422"/>
         </scene>
         <!--Add-->
         <scene sceneID="9UZ-Vn-0jN">
@@ -256,11 +348,26 @@
         <namedColor name="AlmostWhite">
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="AlmostWhite">
+            <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlueGrey">
+            <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BlueGrey">
             <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGrey">
+            <color red="0.76599997282028198" green="0.76599997282028198" blue="0.76599997282028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
+            <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SummerSkyBlue">
             <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

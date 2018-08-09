@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -31,12 +30,12 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAR-AO-QTF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDm-Ao-7Yx">
-                                                                <rect key="frame" x="17.5" y="10" width="71" height="30"/>
+                                                                <rect key="frame" x="19" y="10" width="50" height="30"/>
                                                                 <color key="backgroundColor" name="BlueGrey"/>
-                                                                <state key="normal" title="  go back  ">
+                                                                <state key="normal" title="  Back  ">
                                                                     <color key="titleColor" name="AlmostWhite"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -56,7 +55,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on an event to check in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxG-gq-CZ8">
-                                                        <rect key="frame" x="106.5" y="0.0" width="248.5" height="50"/>
+                                                        <rect key="frame" x="89" y="0.0" width="266" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="BlueGrey"/>
                                                         <nil key="highlightedColor"/>
@@ -64,7 +63,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="O67-qC-w2z"/>
-                                                    <constraint firstItem="gAR-AO-QTF" firstAttribute="width" secondItem="RAv-rN-QmN" secondAttribute="width" multiplier="0.3" id="kcc-7n-QhS"/>
+                                                    <constraint firstItem="gAR-AO-QTF" firstAttribute="width" secondItem="RAv-rN-QmN" secondAttribute="width" multiplier="0.25" id="kcc-7n-QhS"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdB-wq-1ts">
@@ -536,44 +535,64 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-qv-zo5">
-                                                            <rect key="frame" x="10" y="10.5" width="317.5" height="19"/>
+                                                            <rect key="frame" x="10" y="10.5" width="317.5" height="23"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y72-1d-jMi">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDR-MW-DAH" userLabel="checkView">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="23"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y72-1d-jMi">
+                                                                            <rect key="frame" x="5" y="1.5" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="mns-w5-4GA"/>
+                                                                                <constraint firstAttribute="width" secondItem="y72-1d-jMi" secondAttribute="height" multiplier="1:1" id="qEJ-WW-yMw"/>
+                                                                            </constraints>
+                                                                            <color key="tintColor" name="AlmostWhite"/>
+                                                                            <state key="normal" image="unchecked"/>
+                                                                            <state key="selected" image="checked"/>
+                                                                            <connections>
+                                                                                <action selector="checkButtonTapped:" destination="AHG-CT-S1J" eventType="touchUpInside" id="Ong-Do-EGv"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="mns-w5-4GA"/>
-                                                                        <constraint firstAttribute="width" secondItem="y72-1d-jMi" secondAttribute="height" multiplier="1:1" id="qEJ-WW-yMw"/>
+                                                                        <constraint firstItem="y72-1d-jMi" firstAttribute="centerX" secondItem="DDR-MW-DAH" secondAttribute="centerX" id="030-jI-v6q"/>
+                                                                        <constraint firstItem="y72-1d-jMi" firstAttribute="centerY" secondItem="DDR-MW-DAH" secondAttribute="centerY" id="Qu5-wJ-QzQ"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="wS6-lh-wiw"/>
                                                                     </constraints>
-                                                                    <color key="tintColor" name="AlmostWhite"/>
-                                                                    <state key="normal" image="unchecked"/>
-                                                                    <state key="selected" image="checked"/>
-                                                                    <connections>
-                                                                        <action selector="checkButtonTapped:" destination="AHG-CT-S1J" eventType="touchUpInside" id="Ong-Do-EGv"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-wO-nyx">
-                                                                    <rect key="frame" x="30" y="0.0" width="257.5" height="20"/>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-wO-nyx">
+                                                                    <rect key="frame" x="40" y="0.0" width="237.5" height="23"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" name="DarkGrey"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-Ro-HpS">
-                                                                    <rect key="frame" x="297.5" y="-0.5" width="20" height="20"/>
-                                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbE-h8-4Ul" userLabel="putbackView">
+                                                                    <rect key="frame" x="287.5" y="0.0" width="30" height="23"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-Ro-HpS" userLabel="putbackButton">
+                                                                            <rect key="frame" x="5.5" y="1.5" width="20" height="20"/>
+                                                                            <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="dCF-eS-bRQ"/>
+                                                                                <constraint firstAttribute="width" secondItem="Wcy-Ro-HpS" secondAttribute="height" multiplier="1:1" id="jLZ-ck-j1v"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="icons8-undo-50"/>
+                                                                            <connections>
+                                                                                <action selector="putBack:" destination="AHG-CT-S1J" eventType="touchUpInside" id="fvw-T7-FCx"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="dCF-eS-bRQ"/>
-                                                                        <constraint firstAttribute="width" secondItem="Wcy-Ro-HpS" secondAttribute="height" multiplier="1:1" id="jLZ-ck-j1v"/>
+                                                                        <constraint firstItem="Wcy-Ro-HpS" firstAttribute="centerY" secondItem="QbE-h8-4Ul" secondAttribute="centerY" id="kGP-0G-RQr"/>
+                                                                        <constraint firstItem="Wcy-Ro-HpS" firstAttribute="centerX" secondItem="QbE-h8-4Ul" secondAttribute="centerX" id="wAI-HK-Ah1"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="yFc-er-0ee"/>
                                                                     </constraints>
-                                                                    <state key="normal" image="icons8-undo-50"/>
-                                                                    <connections>
-                                                                        <action selector="putBack:" destination="AHG-CT-S1J" eventType="touchUpInside" id="fvw-T7-FCx"/>
-                                                                    </connections>
-                                                                </button>
+                                                                </view>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Wcy-Ro-HpS" firstAttribute="centerY" secondItem="nIu-qv-zo5" secondAttribute="centerY" id="Ryb-AU-8Xq"/>
                                                                 <constraint firstItem="xFF-wO-nyx" firstAttribute="centerY" secondItem="nIu-qv-zo5" secondAttribute="centerY" id="Tit-yw-owR"/>
-                                                                <constraint firstItem="y72-1d-jMi" firstAttribute="centerY" secondItem="nIu-qv-zo5" secondAttribute="centerY" id="w4W-rf-mgg"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
@@ -758,11 +777,11 @@ Go back and give the bundle a name/short summary to keep your finished todos nic
         <namedColor name="AlmostWhite">
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="AlmostWhite">
-            <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="BlueGrey">
             <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
