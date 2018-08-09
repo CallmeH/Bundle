@@ -59,10 +59,6 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
             return 5
             // today, this week, this month, this year, longer than a year ago
         } else {
-            //            return CoreDataHelper.retrieveAllEvent().filter({ (event: Event) -> Bool in
-            //                guard event.todoArray == [] else { return true }
-            //                return false
-            //            }).count
             return events!.count
         }
     }
@@ -123,6 +119,8 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         
         func setCell() {
             cell.bundleNameLabel.text = bundlesPlaceholder.name
+            cell.eventInitialsLabel.layer.cornerRadius = 3
+            cell.eventInitialsLabel.layer.masksToBounds = true
             if sortSegmentedControl.selectedSegmentIndex == Constant.ReviewBundleSortingOptions.time {
                 cell.eventInitialsLabel.isHidden = false
                 cell.eventInitialsLabel.text = " " + (bundlesPlaceholder.belongToEvent?.name)! + " "

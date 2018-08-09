@@ -44,7 +44,7 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         CheckinCollectionView.dataSource = self
         
         CheckinCollectionView.allowsSelection = true
-        // Do any additional setup after loading the view.
+        
         presetCollectionViewLayout(in: CheckinCollectionView)
     }
     
@@ -52,12 +52,6 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewWillAppear(true)
         CheckinCollectionView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let indexPath = CheckinCollectionView.indexPathsForSelectedItems else {return}
@@ -65,7 +59,6 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         let Todos = selectedEvent.todoArray?.allObjects as! [Todo]
         let uncompletedTodos = Todos.filter{$0.isCompleted == false}
         if uncompletedTodos == [] {
-//            performSegue(withIdentifier: "chosenInvalidEvent", sender: Any?.self)
             let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "YouAreAllClear") as! BundleNamingPromtViewController
             self.addChildViewController(popOver)
             popOver.view.frame = self.view.frame
@@ -86,9 +79,6 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
             let destination = segue.destination as! TodoChoiceViewController
             destination.currentEvent = selectedEvent
         case "chosenInvalidEvent":
-//            guard let indexPath = CheckinCollectionView.indexPathsForSelectedItems else {return}
-//            let selectedEvent = allEvents[indexPath[0].item]
-//            let destination
             print("all clear")
         default:
             return
@@ -106,7 +96,6 @@ extension CheckinViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let size = allEvents[indexPath.item].name?.size(withAttributes: [.font: UIFont.systemFont(ofSize: 20.0)])
-//        print(size)
         
         var adjustedSize = CGSize(width: size?.width ?? 40 + 40, height: size?.height ?? 15 + 20)
         if adjustedSize.width > 0.95 * CheckinCollectionView.frame.width {

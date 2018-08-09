@@ -16,7 +16,6 @@ func presetCollectionViewLayout(in collectionView: UICollectionView) {
     alignedFlowLayout?.verticalAlignment = .top
     alignedFlowLayout?.minimumInteritemSpacing = 10
     alignedFlowLayout?.minimumLineSpacing = 10
-//    alignedFlowLayout?.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
 }
 
 func tagToString(_ timeTag: DefaultTag) -> String? {
@@ -30,22 +29,3 @@ func tagToString(_ timeTag: DefaultTag) -> String? {
     }
     return p.displayName
 }
-
-
-//class MySelectableSegmentedControl: UISegmentedControl {
-////    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        let previousIndex = selectedSegmentIndex
-////
-////        super.touchesEnded(touches, with: event)
-////
-////        if previousIndex == selectedSegmentIndex {
-////            let touchLocation = touches.first!.location(in: self)
-////
-////            if bounds.contains(touchLocation) {
-////                sendActions(for: .valueChanged)
-////            }
-////        }
-////    }
-//
-////    override func aa
-//}

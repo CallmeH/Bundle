@@ -19,14 +19,6 @@ struct Constant {
         static let event = 1
     }
     
-//    struct prepositionType: Int {
-//        static let before = 0
-//        static let after = 1
-//        static let when = 2
-//    }
-    
-    let EventPlaceholder: [String] = ["get up", "leave home in the morning", "go on lunch break", "math", "english", "bathroom break", "go home", "get dinner"]
-    
     enum prepType: Int16 {
         case before = 0
         case when = 1
@@ -51,10 +43,3 @@ struct Constant {
     }
     
 }
-
-
-
-//user default
-//1: set things to Codable
-//let data = try? JSONEncoder.encode(<#T##JSONEncoder#>)
-

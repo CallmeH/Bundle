@@ -13,17 +13,6 @@ struct FormattedDate {
     
 }
 
-//extension DateFormatter {
-//    static let yyyyMMdd: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd"
-//        formatter.calendar = Calendar(identifier: .iso8601)
-//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-//        formatter.locale = Locale(identifier: "en_US_POSIX")
-//        return formatter
-//    }()
-//}
-
 extension Date {
     func convertToString() -> String {
         let withYear = DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: DateFormatter.Style.none)
@@ -38,15 +27,6 @@ extension Date {
     func convertToStringIncludeYear() -> String {
         return DateFormatter.localizedString(from: self, dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none)
     }
-//    func withinYear(input: Date) -> Bool {
-//        let currentComponent = Calendar.current.dateComponents([.year, .month, .day], from: FormattedDate.currentDate)
-//        let yearLimit =
-//        if input
-//    }
-//
-//    func withinDay(current: Date) -> Bool {
-//        if current
-//    }
     
     func isInSameWeek(date: Date) -> Bool {
         return Calendar.current.isDate(self, equalTo: date, toGranularity: .weekOfYear)
@@ -79,11 +59,3 @@ extension Date {
         return self < Date()
     }
 }
-
-
-//WRONG!
-//let day = bundles?.filter{$0.dateCompleted?.isInToday ?? false}[indexPath.row]
-//let week = bundles?.filter{(($0.dateCompleted?.isInThisWeek)! && $0.dateCompleted?.isInToday == false)}[indexPath.row]
-//let month = bundles?.filter{($0.dateCompleted?.isInThisMonth)! && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]
-//let year = bundles?.filter{($0.dateCompleted?.isInThisYear)! && $0.dateCompleted?.isInThisMonth == false && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]
-//let moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false && $0.dateCompleted?.isInThisMonth == false && $0.dateCompleted?.isInThisWeek == false && $0.dateCompleted?.isInToday == false}[indexPath.row]

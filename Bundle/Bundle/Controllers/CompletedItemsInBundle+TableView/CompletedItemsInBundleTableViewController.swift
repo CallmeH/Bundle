@@ -51,6 +51,8 @@ class CompletedItemsInBundleTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskInBundleReview", for: indexPath) as! CompletedItemsInBundleTableViewCell
         cell.taskTitleLabel.text = tasks[indexPath.row].title
         cell.timeTag.text = tagToString(tasks[indexPath.row].hasTimeTag!)
+        cell.timeTag.layer.cornerRadius = 3
+        cell.timeTag.layer.masksToBounds = true
         return cell
     }
     

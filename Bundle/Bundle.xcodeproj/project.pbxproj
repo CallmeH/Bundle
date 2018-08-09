@@ -163,6 +163,7 @@
 		7964132E21068E6700BD18A8 = {
 			isa = PBXGroup;
 			children = (
+				796580E62117EF8C0066A4C2 /* ARCHIVED */,
 				7964133921068E6700BD18A8 /* Bundle */,
 				7964135121068E6B00BD18A8 /* BundleTests */,
 				7964135C21068E6B00BD18A8 /* BundleUITests */,
@@ -185,12 +186,8 @@
 		7964133921068E6700BD18A8 /* Bundle */ = {
 			isa = PBXGroup;
 			children = (
-				796580E62117EF8C0066A4C2 /* ARCHIVED */,
 				7964133A21068E6700BD18A8 /* AppDelegate.swift */,
 				7964137E2107B4F600BD18A8 /* Attribution.md */,
-				79CDE8F621085572009DB3F0 /* Plans.md */,
-				79FFEEAB210F9064006D2654 /* Polish Elements.md */,
-				7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */,
 				7964136D21068F0600BD18A8 /* Controllers */,
 				7964137821068FFB00BD18A8 /* Storyboards */,
 				796413792106901400BD18A8 /* Helper */,
@@ -248,7 +245,6 @@
 		796413792106901400BD18A8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
 				7964137621068FE800BD18A8 /* CoreDataHelper.swift */,
 				796D310021094DAA004C0FCA /* VariousReusableFunctions.swift */,
 				79D09DCF21122DE10049BEA3 /* Constants.swift */,
@@ -262,8 +258,12 @@
 		796580E62117EF8C0066A4C2 /* ARCHIVED */ = {
 			isa = PBXGroup;
 			children = (
+				796D3106210A31A4004C0FCA /* FlowLayout.swift */,
+				79CDE8F621085572009DB3F0 /* Plans.md */,
+				79FFEEAB210F9064006D2654 /* Polish Elements.md */,
 				791372302113C413003452B8 /* AddTodoViewController.swift */,
 				7964136B21068F0200BD18A8 /* InputTodoViewController.swift */,
+				7927F4A22112ED2B00A23285 /* LaunchScreenViewController.swift */,
 				79F479BE2109344000B40FBA /* AssignToEvent+CollectionView */,
 			);
 			path = ARCHIVED;

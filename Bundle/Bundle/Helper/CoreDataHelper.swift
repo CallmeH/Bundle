@@ -127,18 +127,6 @@ struct CoreDataHelper {
         }
     }
     
-//    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
-//        do {
-//            let fetch = NSFetchRequest<Todo>(entityName: "Todo")
-//            fetch.predicate = NSPredicate(format: "belongToBundle == bundleName")
-//            let results = try context.fetch(fetch)
-//            return results
-//        } catch let error {
-//            print("Couldn't fetch selected todo \(error.localizedDescription)")
-//            return []
-//        }
-//    }
-    
     static func retrieveAllEvent() -> [Event] {
         do {
             let gofetch = NSFetchRequest<Event>(entityName: "Event")
@@ -183,35 +171,4 @@ struct CoreDataHelper {
 //            return []
 //        }
 //    }
-    
-    
-    
-    
-//    static func retrieveTodoInBundle(bundleName: Bundle) -> [Todo] {
-//        do {
-//            let fetchSub = NSFetchRequest<Todo>(entityName: "Bundle.containsTodos")
-////            fetchSub.predicate = NSPredicate(format: "= %@", <#T##args: CVarArg...##CVarArg#>)
-//            let results = try context.fetch(fetchSub)
-//            return results
-//            /*
-//             let predicate = NSPredicate(format: "categoryName == %@", "yourCategoryHere")
-//             let fetchSubcategory = NSFetchRequest(entityName: "Subcategory")
-//             fetchSubcategory.predicate = predicate
-//             if let subCategoryResults = try context.executeFetchRequest(fetchSubcategory) as? [Subcategory] {
-//             //do stuff
-//             }
-//             let fetchItem = NSFetchRequest(entityName: "Item")
-//             fetchItem.predicate = predicate
-//             if let itemResults = try context.executeFetchRequest(fetchItem) as? [Item] {
-//             //do stuff
-//             */
-//        } catch let error {
-//            print("couldn't fetch todo in bundle\(bundleName) due to \(error.localizedDescription)")
-//            return []
-//        }
-//    }
-    //retrieve an unsaved session from before
 }
-
-
-

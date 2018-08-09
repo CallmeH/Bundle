@@ -68,6 +68,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         let newEvent = CoreDataHelper.newEvent()
         newEvent.name = eventLongEnoughTitle
+        //FIXME: add "event pinned" functionality
         //        newEvent.isPinned = false
         newEvent.bundleArray = []
         
@@ -108,21 +109,13 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         performSegue(withIdentifier: "EventsAssigned", sender: Any?.self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allEvents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //FIXME: make last cell into an + button, and directly edit there
         //        if indexPath.row == self.allEvents.count {
         //            // use prototype cell with button
         //        } else {
@@ -134,16 +127,12 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.layer.masksToBounds = true
         cell.eventTag.text = event.name
         cell.backgroundColor = UIColor.DarkGrey
-//        cell.layer.borderWidth = 1
-//        cell.layer.borderColor = UIColor.AlmostWhite.cgColor
         cell.eventTag.textColor = UIColor.LightGrey
         for i in previouslySelectedEvents {
             //FIXME: don't let it be based on i.name, change it to be based on objectID in coredata
             if event.name == i.name {
                 cell.isSelected = true
                 addToEventsCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-                //save to previously selected list
-//                previouslySelectedEvents.append(i)
             }
         }
         return cell
@@ -156,9 +145,6 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
             let destination = segue.destination as! AddFirstScreenViewController
             guard let indexPaths = addToEventsCollectionView.indexPathsForSelectedItems else { return }
             print("event assigned! to events: \(String(describing: addToEventsCollectionView.indexPathsForSelectedItems))")
-            //print to see what allEvents contain and make sure it should've been [0][1]
-//            let selectedEvent = allEvents[indexPaths[0][1]]
-//            destination.selectedEvent = selectedEvent
             var selectedEvents = [Event]()
             for (index, _) in indexPaths.enumerated() {
                 selectedEvents.append(allEvents[indexPaths[index][1]])

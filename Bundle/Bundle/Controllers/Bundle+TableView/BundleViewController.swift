@@ -23,23 +23,21 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         bundleTableView.delegate = self
         bundleTableView.dataSource = self
         bundleTableView.allowsMultipleSelection = true
         bundleTableView.isEditing = true
         
-//        let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
-//        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}//.reversed()
         bundleNameTextField.returnKeyType = .done
         bundleTableView.allowsSelection = false
-//        NSPredicate
+
         bundleNameTextField.delegate = self
         bundleNameTextField.attributedPlaceholder = NSAttributedString(string: "Give your bundle a name!", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue, NSAttributedStringKey.underlineColor: UIColor.SummerSkyBlue])
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        //FIXME: save a session in UserDefaults. --save the bundle itself, and call upon the id in userdefaults to ask if the user wants to return to that page
 //        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationWillResignActive, object: nil)
     }
 
@@ -47,12 +45,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    @objc func willResignActive(_ notification: Notification) {
-//        completedCounter = 0
-//        somethingWasPutBack = 0
-//
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
@@ -66,36 +58,15 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         return 1
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0{
-//            return "Single use"
-//        } else {
-//            return "Repeated reminders"
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard bundleCopy != nil else { return 0 }
-//        if section == 0 {
-//            return bundleCopy?.filter {$0.isRepeated == false}.count ?? 0
-//        } else {
-//            return bundleCopy?.filter {$0.isRepeated == true}.count ?? 0
-//        }
         return bundleCopy?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chosenTodosTableViewCell", for: indexPath) as! BundleTableViewCell
-//        let cellAfter = tableView.dequeueReusableCell(withIdentifier: "chosenTodosTableViewCell", for: indexPath + 1) as! BundleTableViewCell
         cell.checkButton.isSelected = bundleCopy![indexPath.row].isCompleted
         cell.showsReorderControl = true
-        //        cell.showsReorderControl = true
-//        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-//        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
         var todoPlaceholder: Todo
-//        if indexPath.section == 0 {
-            //            guard nonrepeatingCopy != nil else {return}
-//            todoPlaceholder = nonrepeatingCopy[indexPath.row]
             todoPlaceholder = bundleCopy![indexPath.row]
             cell.todoForBundle.text = todoPlaceholder.title
             cell.onButtonTouched = { (cellin) in
@@ -117,56 +88,18 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
                 guard let indexPath = tableView.indexPath(for: cellin) else { return }
                 if todoPlaceholder.isCompleted == true {
                     todoPlaceholder.isCompleted = false
-//                    cell.checkButton.isSelected = false
                     self.completedCounter -= 1
                 }
                 todoPlaceholder.isSelected = false
-                let bundleAll = self.currentEvent?.todoArray?.allObjects as? [Todo]
-//                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
                 self.bundleCopy?.remove(at: indexPath.row)
                 self.somethingWasPutBack += 1
                 if self.bundleCopy?.count == 0 {
                     self.performSegue(withIdentifier: "bundleAbandoned", sender: Any?.self)
                 }
-//                cell.checkButton.isSelected = cellAfter.checkButton.isSelected
             }
-//        } else {
-//            //            guard repeatingCopy != nil else {return}
-//            todoPlaceholder = repeatingCopy[indexPath.row]
-//            cell.todoForBundle.text = todoPlaceholder.title
-//            cell.onButtonTouched = { (cellin) in
-//                guard let indexPath = tableView.indexPath(for: cellin) else { return }
-//                print ("button tapped at\(indexPath.row)")
-//                if todoPlaceholder.isCompleted == false {
-//                    todoPlaceholder.isCompleted = true
-//                    cell.checkButton.isSelected = true
-//                    self.completedCounter += 1
-//                } else {
-//                    todoPlaceholder.isCompleted = false
-//                    cell.checkButton.isSelected = false
-//                    self.completedCounter -= 1
-//                }
-//            }
-//            cell.putBackTouched = { (cellin) in
-//                guard let indexPath = tableView.indexPath(for: cellin) else { return }
-//                if todoPlaceholder.isCompleted == true {
-//                    todoPlaceholder.isCompleted = false
-//                    cell.checkButton.isSelected = false
-//                    self.completedCounter -= 1
-//                }
-//                todoPlaceholder.isSelected = false
-//                let bundleAll = self.currentEvent?.todoArray?.allObjects as? [Todo]
-//                self.bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}
-//                self.somethingWasPutBack += 1
-//            }
-//        }
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
@@ -180,34 +113,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         let moved = self.bundleCopy![sourceIndexPath.row]
         bundleCopy?.remove(at: sourceIndexPath.row)
         bundleCopy?.insert(moved, at: destinationIndexPath.row)
-//        var nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-//        var repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
-//        if sourceIndexPath.section == 0 {
-//            if destinationIndexPath.section == 0 {
-//                //same, nonrepeating
-//                let moved = nonrepeatingCopy[sourceIndexPath.row]
-//                nonrepeatingCopy.remove(at: sourceIndexPath.row)
-//                nonrepeatingCopy.insert(moved, at: destinationIndexPath.row)
-//            } else {
-//                // non->re
-//                let moved = nonrepeatingCopy[sourceIndexPath.row]
-//                nonrepeatingCopy.remove(at: sourceIndexPath.row)
-//                repeatingCopy.insert(moved, at: destinationIndexPath.row)
-//            }
-//        } else {
-//            if destinationIndexPath.section == 0 {
-//                //re->non
-//                let moved = repeatingCopy[sourceIndexPath.row]
-//                repeatingCopy.remove(at: sourceIndexPath.row)
-//                nonrepeatingCopy.insert(moved, at: destinationIndexPath.row)
-//            } else {
-//                // same, re
-//                let moved = repeatingCopy[sourceIndexPath.row]
-//                repeatingCopy.remove(at: sourceIndexPath.row)
-//                repeatingCopy.insert(moved, at: destinationIndexPath.row)
-//            }
-//        }
-//        bundleTableView.reloadData()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -223,11 +128,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
                 self.addChildViewController(popOver)
                 popOver.view.frame = self.view.frame
                 self.view.addSubview(popOver.view)
-                //                let (canMakeIt, cantMakeIt) = CalculateTime.findNames(time: indexPath.row, names: names)
-                //                print(canMakeIt)
-                //                print(cantMakeIt)
-                //                popOver.canMakeNamesLabel.text = canMakeIt
-                //                popOver.cannotMakeNamesLabel.text = cantMakeIt
                 popOver.didMove(toParentViewController: self)
             } else {
                 performSegue(withIdentifier: "bundleCompleted", sender: Any?.self)
@@ -242,7 +142,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         switch identifier {
         case "bundleAbandoned":
             for i in bundleCopy! {
-//                i.isSelected = false
                 i.isCompleted = false
             }
             if somethingWasPutBack > 0 {
@@ -258,8 +157,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
             newBundle.name = bundleNameTextField.text
             newBundle.dateCompleted = Date()
             currentEvent?.addToBundleArray(newBundle)
-//            let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-//            let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
             for i in bundleCopy! {
                 if i.isRepeated {
                     let duplicate = CoreDataHelper.newTodo()
@@ -279,37 +176,8 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
                     CoreDataHelper.save()
                 }
             }
-//            for i in nonrepeatingCopy {
-//                i.isSelected = false
-//                newBundle.addToContainsTodos(i)
-//            }
-//            for i in repeatingCopy {
-//                let duplicate = CoreDataHelper.newTodo()
-//                duplicate.isRepeated = false
-//                duplicate.isCompleted = true
-//                duplicate.isSelected = false
-//                duplicate.title = i.title
-//                duplicate.hasTimeTag = i.hasTimeTag
-//                duplicate.belongToEvent = i.belongToEvent
-//                newBundle.addToContainsTodos(duplicate)
-//                i.isSelected = false
-//                i.isCompleted = false
-//            }
-//            CoreDataHelper.save()
-//            destination.currentEvent = currentEvent
-        //            destination.bundleCopy = accessTodo!.filter { $0.isCompleted == true } as! BundledTodo
         default:
             print ("failed to pass data")
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

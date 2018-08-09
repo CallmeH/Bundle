@@ -33,20 +33,4 @@ extension UIColor {
     static var SummerSkyBlue: UIColor {
         return UIColor(named: "SummerSkyBlue")!
     }
-    
-//    static var tcBlueBlack: UIColor {
-//        return UIColor(named: "tcBlueBlack")!
-//    }
-//
-//    static var tcSeafoamGreen: UIColor {
-//        return UIColor(named: "tcSeafoamGreen")!
-//    }
-//
-//    static var tcBlack: UIColor {
-//        return UIColor(named: "tcBlack")!
-//    }
-//
-//    static var tcWhite: UIColor {
-//        return UIColor(named: "tcWhite")!
-//    }
 }

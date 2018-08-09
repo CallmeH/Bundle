@@ -36,31 +36,9 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-//        todoBoxOriginalFrameHeight = inputTodoTextView.frame.origin.y
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
-//    deinit {
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-//    }
-    
-//    @objc func keyboardWillChange(notification: Notification) {
-//        guard let keyboardRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-//        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-//            //            inputTextViewLowerConstraints.secondItem = keyboardRect.height + 30
-////            print(inputTextViewLowerConstraints)
-//            inputTodoTextView.frame.origin.y =  entireView.frame.height - (keyboardRect.height) - inputTodoTextView.frame.height - 30
-//            //            print("\(entireView.frame.height),, \(keyboardRect.height),, \(popupView.frame.height)")
-//            //            placeholderView.frame.size.height = keyboardRect.height
-//        } else {
-//            guard let todoBox = todoBoxOriginalFrameHeight else {return}
-//            inputTodoTextView.frame.origin.y = todoBox
-//        }
-//    }
+    //FIXME: view move with keyboard? listen to events (refer to see deleted lines)
     
     @IBOutlet weak var instructionsCard: UIView!
     @IBOutlet weak var repeatChoiceCard: UIView!
@@ -84,7 +62,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             textView.resignFirstResponder()
-//            guard inputTodoTextView.text != "" else { return true }
         }
         return true
     }
@@ -99,7 +76,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        todoButtonDisplay.titleLabel?.text =
         super.viewWillAppear(true)
         if eventWasSetBefore {
             var arrayEventTitles = [String]()
@@ -136,13 +112,9 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         if repeatChoice == true {
             repeatChoice = false
             sender.setTitle("Just once,", for: .normal)
-//            reloadInputViews()
-//            return repeatChoice
         } else {
             repeatChoice = true
             sender.setTitle("Always", for: .normal)
-//            reloadInputViews()
-//            return repeatChoice
         }
     }
     
@@ -159,18 +131,12 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         if prep == Constant.prepositionPlaceholder.before {
             prep = Constant.prepositionPlaceholder.when
             sender.setTitle("when", for: .normal)
-//            defaultTagButtonDisplay.titleLabel?.text = "after"
-//            reloadInputViews()
         } else if prep == Constant.prepositionPlaceholder.when {
             prep = Constant.prepositionPlaceholder.after
             sender.setTitle("after", for: .normal)
-//            defaultTagButtonDisplay.titleLabel?.text = "when"
-//            reloadInputViews()
         } else {
             prep = Constant.prepositionPlaceholder.before
             sender.setTitle("before", for: .normal)
-//            defaultTagButtonDisplay.titleLabel?.text = "before"
-//            reloadInputViews()
         }
     }
     
@@ -179,20 +145,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
-//        case "AddTodoText":
-//            let destination = segue.destination as! AddTodoViewController
-//            destination.existingLabel = todoLabel
-//            if todoLabel == nil {
-//                destination.inputTextView.text = ""
-//            } else {
-//                destination.inputTextView.text = todoLabel
-//            }
-//            if (todoButtonDisplay.titleLabel?.text)! == nil {
-//                destination.inputTextView.text = ""
-//            } else {
-//                destination.inputTextView.text = todoButtonDisplay.titleLabel?.text
-//            }
-//            destination.inputTextView.text = todoButtonDisplay.titleLabel?.text ?? ""
         case "AddEvent":
             let destination = segue.destination as! AddEventViewController
             destination.previouslySelectedEvents = selectedEvent ?? []
@@ -205,11 +157,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveNewTodoWithEventTapped(_ sender: UIButton) {
-//        guard todoButtonDisplay.titleLabel?.text != nil else { return }
-//        guard todoButtonDisplay.titleLabel?.text != "" else { return }
-//        guard inputTodoTextView.text != nil else {return}
-//        guard inputTodoTextView.text != "" else {return}
-//        guard selectedEvent != nil else { return }
         guard todoWasSetBefore else {return}
         guard eventWasSetBefore else {return}
         for i in selectedEvent! {
@@ -232,9 +179,6 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func unwindFromEventToAddFirst(_ sender: UIStoryboardSegue) {
-//        let sourceViewController = sender.source as! AddEventViewController
-//        guard let indexPaths = sourceViewController.addToEventsCollectionView.indexPathsForSelectedItems else { return }
-        
     }
 }
 
