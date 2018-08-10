@@ -31,13 +31,14 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         setUpView()
         inputTodoTextView.delegate = self
+        inputTodoTextView.text = "\ne.g.Email Daniel"
         repeatButtonDisplay.setTitle("Just once,", for: .normal)
         defaultTagButtonDisplay.setTitle("before", for: .normal)
         inputTodoTextView.returnKeyType = .done
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        Answers.logCustomEvent(withName: "land on add", customAttributes: ["Funnel":"fresh add", "Flow": "Add", "Controller":"AddFirst"])
+//        Answers.logCustomEvent(withName: "land on add", customAttributes: ["Funnel":"fresh add", "Flow": "Add", "Controller":"AddFirst"])
     }
     
     //FIXME: view move with keyboard? listen to events (refer to see deleted lines)
@@ -177,7 +178,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
                 CoreDataHelper.save()
             }
         }
-        Answers.logCustomEvent(withName: "Add flow completed", customAttributes: ["Category":"Core flow add", "Flow": "Add", "Controller":"AddFirst"])
+//        Answers.logCustomEvent(withName: "Add flow completed", customAttributes: ["Category":"Core flow add", "Flow": "Add", "Controller":"AddFirst"])
         performSegue(withIdentifier: "saveNewTodoWithEventTapped", sender: Any?.self)
     }
     

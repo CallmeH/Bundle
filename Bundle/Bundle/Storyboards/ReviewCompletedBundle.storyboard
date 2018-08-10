@@ -182,7 +182,7 @@
             </objects>
             <point key="canvasLocation" x="3576.8000000000002" y="17.541229385307346"/>
         </scene>
-        <!--Finished Tasks-->
+        <!--Completed Items In Bundle Table View Controller-->
         <scene sceneID="3G5-dY-OZ3">
             <objects>
                 <tableViewController id="IrA-Gc-mI0" customClass="CompletedItemsInBundleTableViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
@@ -250,7 +250,7 @@
                             <outlet property="delegate" destination="IrA-Gc-mI0" id="Dfl-qq-16T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Finished Tasks" id="CGj-Is-fTb">
+                    <navigationItem key="navigationItem" id="CGj-Is-fTb">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="OXI-0C-z68">
                             <color key="tintColor" name="AlmostWhite"/>
                             <connections>

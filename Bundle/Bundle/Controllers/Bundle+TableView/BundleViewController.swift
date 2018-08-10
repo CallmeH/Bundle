@@ -115,6 +115,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let moved = self.bundleCopy![sourceIndexPath.row]
         bundleCopy?.remove(at: sourceIndexPath.row)
+        
         bundleCopy?.insert(moved, at: destinationIndexPath.row)
     }
 
@@ -127,18 +128,18 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func attemptToCompleteButtonTapped(_ sender: UIButton) {
         if completedCounter == bundleCopy?.count {
             if bundleNameTextField.text == "" {
-                Answers.logCustomEvent(withName: "bundle unnamed", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
+//                Answers.logCustomEvent(withName: "bundle unnamed", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
                 let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "NameYourBundle") as! BundleNamingPromtViewController
                 self.addChildViewController(popOver)
                 popOver.view.frame = self.view.frame
                 self.view.addSubview(popOver.view)
                 popOver.didMove(toParentViewController: self)
             } else {
-                Answers.logCustomEvent(withName: "Checkin flow completed", customAttributes: ["Category":"Core flow checkin", "Tag":"Expected", "Flow": "Checkin", "Controller":"Bundle"])
+//                Answers.logCustomEvent(withName: "Checkin flow completed", customAttributes: ["Category":"Core flow checkin", "Tag":"Expected", "Flow": "Checkin", "Controller":"Bundle"])
                 performSegue(withIdentifier: "bundleCompleted", sender: Any?.self)
             }
         } else {
-            Answers.logCustomEvent(withName: "bundle uncompleted", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
+//            Answers.logCustomEvent(withName: "bundle uncompleted", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
             let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "CompleteYourBundle") as! BundleNamingPromtViewController
             self.addChildViewController(popOver)
             popOver.view.frame = self.view.frame
@@ -152,7 +153,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "bundleAbandoned":
-            Answers.logCustomEvent(withName: "quit bundle", customAttributes: ["Funnel":"Cancel", "Flow": "Checkin", "Controller":"Bundle"])
+//            Answers.logCustomEvent(withName: "quit bundle", customAttributes: ["Funnel":"Cancel", "Flow": "Checkin", "Controller":"Bundle"])
             for i in bundleCopy! {
                 i.isCompleted = false
             }

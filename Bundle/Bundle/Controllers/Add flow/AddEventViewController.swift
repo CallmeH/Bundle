@@ -101,7 +101,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBAction func assignEventButtonTapped(_ sender: UIButton) {
         if inputEventTextField.text != "" {
             initiateNewEvent()
-            Answers.logCustomEvent(withName: "Events assigned 4 addiing", customAttributes: ["Tag":"Work-around", "Flow": "Add", "Controller":"AddEvent"])
+//            Answers.logCustomEvent(withName: "Events assigned 4 addiing", customAttributes: ["Tag":"Work-around", "Flow": "Add", "Controller":"AddEvent"])
             //FIXME: fix it
 //            addToEventsCollectionView.selectItem(at: addToEventsCollectionView.indexPath(for: addToEventsCollectionView.cellForItem(at: IndexPath(row: allEvents.count-1, section: 0))!), animated: true, scrollPosition: UICollectionViewScrollPosition.bottom)
             return
@@ -114,7 +114,7 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
             print("\n\n\n no selection \n\n\n")
             return
         }
-        Answers.logCustomEvent(withName: "Events assigned", customAttributes: ["Tag":"Expected", "Flow": "Add", "Controller":"AddEvent"])
+//        Answers.logCustomEvent(withName: "Events assigned", customAttributes: ["Tag":"Expected", "Flow": "Add", "Controller":"AddEvent"])
         performSegue(withIdentifier: "EventsAssigned", sender: Any?.self)
     }
     

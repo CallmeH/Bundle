@@ -48,7 +48,7 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         presetCollectionViewLayout(in: CheckinCollectionView)
         
-        Answers.logCustomEvent(withName: "land on checkin", customAttributes: ["Funnel":"fresh checkin", "Flow": "Checkin", "Controller":"Checkin"])
+//        Answers.logCustomEvent(withName: "land on checkin", customAttributes: ["Funnel":"fresh checkin", "Flow": "Checkin", "Controller":"Checkin"])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,14 +76,14 @@ class CheckinViewController: UIViewController, UICollectionViewDelegate, UIColle
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "chosenValidEvent":
-            Answers.logCustomEvent(withName: "Event with valid todos", customAttributes: ["Tag":"Expected", "Funnel":"checkin->todochoice", "Flow": "Checkin", "Controller":"CheckinView"])
+//            Answers.logCustomEvent(withName: "Event with valid todos", customAttributes: ["Tag":"Expected", "Funnel":"checkin->todochoice", "Flow": "Checkin", "Controller":"CheckinView"])
             guard let indexPath = CheckinCollectionView.indexPathsForSelectedItems else { return }
             guard indexPath.count == 1 else {return}
             let selectedEvent = allEvents[indexPath[0].item]
             let destination = segue.destination as! TodoChoiceViewController
             destination.currentEvent = selectedEvent
         case "chosenInvalidEvent":
-            Answers.logCustomEvent(withName: "Event with no todos", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"CheckinView"])
+//            Answers.logCustomEvent(withName: "Event with no todos", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"CheckinView"])
             print("all clear")
         default:
             return
