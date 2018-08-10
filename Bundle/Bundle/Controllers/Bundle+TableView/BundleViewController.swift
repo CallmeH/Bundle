@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class BundleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     var bundleCopy: [Todo]? = nil {
@@ -17,6 +18,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     var currentEvent: Event?
     var completedCounter: Int = 0
     var somethingWasPutBack = 0
+    var reloadCounter = 0
     @IBOutlet weak var bundleNameTextField: UITextField!
 
     @IBOutlet weak var bundleTableView: UITableView!
@@ -37,6 +39,11 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
+        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}.sorted {($0.hasTimeTag?.preposition)! < ($1.hasTimeTag?.preposition)!}
+        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
+        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
+        bundleCopy = nonrepeatingCopy + repeatingCopy
         //FIXME: save a session in UserDefaults. --save the bundle itself, and call upon the id in userdefaults to ask if the user wants to return to that page
 //        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationWillResignActive, object: nil)
     }
@@ -44,14 +51,6 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let bundleAll = currentEvent?.todoArray?.allObjects as? [Todo]
-        bundleCopy = bundleAll?.filter{ $0.isSelected == true}.filter{$0.isCompleted == false}.sorted {($0.hasTimeTag?.preposition)! < ($1.hasTimeTag?.preposition)!}
-        let nonrepeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == false} ?? []
-        let repeatingCopy: [Todo] = bundleCopy?.filter {$0.isRepeated == true} ?? []
-        bundleCopy = nonrepeatingCopy + repeatingCopy
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -106,6 +105,10 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        if reloadCounter == 0 {
+            bundleTableView.reloadData()
+            reloadCounter += 1
+        }
         return false
     }
     
@@ -124,15 +127,23 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func attemptToCompleteButtonTapped(_ sender: UIButton) {
         if completedCounter == bundleCopy?.count {
             if bundleNameTextField.text == "" {
+                Answers.logCustomEvent(withName: "bundle unnamed", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
                 let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "NameYourBundle") as! BundleNamingPromtViewController
                 self.addChildViewController(popOver)
                 popOver.view.frame = self.view.frame
                 self.view.addSubview(popOver.view)
                 popOver.didMove(toParentViewController: self)
             } else {
+                Answers.logCustomEvent(withName: "Checkin flow completed", customAttributes: ["Category":"Core flow checkin", "Tag":"Expected", "Flow": "Checkin", "Controller":"Bundle"])
                 performSegue(withIdentifier: "bundleCompleted", sender: Any?.self)
             }
         } else {
+            Answers.logCustomEvent(withName: "bundle uncompleted", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"Bundle"])
+            let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "CompleteYourBundle") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
             return
         }
     }
@@ -141,6 +152,7 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         guard let identifier = segue.identifier else {return}
         switch identifier {
         case "bundleAbandoned":
+            Answers.logCustomEvent(withName: "quit bundle", customAttributes: ["Funnel":"Cancel", "Flow": "Checkin", "Controller":"Bundle"])
             for i in bundleCopy! {
                 i.isCompleted = false
             }

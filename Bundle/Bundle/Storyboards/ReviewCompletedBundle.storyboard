@@ -99,8 +99,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="bottom" secondItem="FXo-hR-YI2" secondAttribute="bottom" id="0IG-YM-1LZ"/>
                                                                                 <constraint firstItem="FXo-hR-YI2" firstAttribute="leading" secondItem="4yW-bN-Suu" secondAttribute="leading" id="8rN-5c-NUr"/>
-                                                                                <constraint firstItem="FXo-hR-YI2" firstAttribute="centerX" secondItem="4yW-bN-Suu" secondAttribute="centerX" id="JBm-LD-xx0"/>
-                                                                                <constraint firstItem="FXo-hR-YI2" firstAttribute="leading" secondItem="4yW-bN-Suu" secondAttribute="leading" id="KbD-rE-wWB"/>
+                                                                                <constraint firstItem="FXo-hR-YI2" firstAttribute="width" relation="lessThanOrEqual" secondItem="4yW-bN-Suu" secondAttribute="width" id="s28-Y1-wJH"/>
                                                                                 <constraint firstItem="FXo-hR-YI2" firstAttribute="centerY" secondItem="4yW-bN-Suu" secondAttribute="centerY" id="vuU-uB-LOm"/>
                                                                             </constraints>
                                                                         </view>

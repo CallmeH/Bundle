@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Crashlytics
+
 class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var currentEvent: Event?
@@ -200,8 +202,17 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func afterSelectionButton(_ sender: UIButton) {
-        guard selectionCounter > 0 else {return}
-        performSegue(withIdentifier: "toBundle", sender: Any?.self)
+        if selectionCounter == 0 {
+            Answers.logCustomEvent(withName: "no todos selected", customAttributes: ["Tag":"Work-around", "Flow": "Checkin", "Controller":"TodoChoice"])
+            let popOver = UIStoryboard(name: "Checkin", bundle: nil).instantiateViewController(withIdentifier: "ChooseYourTodos") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
+        } else {
+            Answers.logCustomEvent(withName: "todos selected", customAttributes: ["Tag":"Expected", "Flow": "Checkin", "Controller":"TodoChoice"])
+            performSegue(withIdentifier: "toBundle", sender: Any?.self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -209,9 +220,11 @@ class TodoChoiceViewController: UIViewController, UITableViewDataSource, UITable
         switch identifier {
         case "toBundle":
             CoreDataHelper.save()
+            Answers.logCustomEvent(withName: "chosen todos", customAttributes: ["Funnel":"todochoice->bundle", "Flow": "Checkin", "Controller":"TodoChoice"])
             let destination = segue.destination as! BundleViewController
             destination.currentEvent = currentEvent
         case "abandonTodoChoice":
+            Answers.logCustomEvent(withName: "quit choosing todos", customAttributes: ["Funnel":"Cancel", "Flow": "Checkin", "Controller":"TodoChoice"])
             if totalTodoCounter == 0 {
                 let destination = segue.destination as! CheckinViewController
                 destination.CheckinCollectionView.reloadData()

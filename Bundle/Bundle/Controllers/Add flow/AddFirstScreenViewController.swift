@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
 
@@ -36,6 +37,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        Answers.logCustomEvent(withName: "land on add", customAttributes: ["Funnel":"fresh add", "Flow": "Add", "Controller":"AddFirst"])
     }
     
     //FIXME: view move with keyboard? listen to events (refer to see deleted lines)
@@ -175,6 +177,7 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
                 CoreDataHelper.save()
             }
         }
+        Answers.logCustomEvent(withName: "Add flow completed", customAttributes: ["Category":"Core flow add", "Flow": "Add", "Controller":"AddFirst"])
         performSegue(withIdentifier: "saveNewTodoWithEventTapped", sender: Any?.self)
     }
     

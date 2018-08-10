@@ -462,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNd-c8-k8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="785"/>
+            <point key="canvasLocation" x="-121" y="773"/>
         </scene>
         <!--Bundle View Controller-->
         <scene sceneID="KsJ-k0-f2u">
@@ -700,8 +700,8 @@
 
 Congratulations on finishing all the tasks in this bundle.
 
-Go back and give the bundle a name/short summary to keep your finished todos nice and neat.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+Go back and give the bundle a name/short summary to organize your todos.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="BlueGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -764,6 +764,166 @@ Go back and give the bundle a name/short summary to keep your finished todos nic
             </objects>
             <point key="canvasLocation" x="2135" y="56"/>
         </scene>
+        <!--Bundle Naming Promt View Controller-->
+        <scene sceneID="yJ3-nY-G0G">
+            <objects>
+                <viewController storyboardIdentifier="ChooseYourTodos" id="kX4-DG-LID" customClass="BundleNamingPromtViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xPg-Ot-8vC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-Zt-TuB">
+                                <rect key="frame" x="37" y="182" width="300" height="323.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGG-mj-v9z">
+                                        <rect key="frame" x="15" y="33" width="270" height="258.5"/>
+                                        <string key="text">You haven't choosen any todos.
+Tap on a title to select it.
+
+* Pro tip: Tap on the "1" or "repeat" button before the title to change the todo between repeating and single-use.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="BlueGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-Sz-ZFf">
+                                        <rect key="frame" x="75" y="288.5" width="150" height="30"/>
+                                        <color key="backgroundColor" name="SummerSkyBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="shO-Vc-ZoF"/>
+                                        </constraints>
+                                        <state key="normal" title="Go Back">
+                                            <color key="titleColor" name="AlmostWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="closePopupButton:" destination="kX4-DG-LID" eventType="touchUpInside" id="yB4-tG-5K8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="AlmostWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aWC-Sz-ZFf" firstAttribute="centerX" secondItem="Y6Q-Zt-TuB" secondAttribute="centerX" id="AWe-W3-X1u"/>
+                                    <constraint firstItem="aWC-Sz-ZFf" firstAttribute="width" secondItem="Y6Q-Zt-TuB" secondAttribute="width" multiplier="0.5" id="BBF-To-VM6"/>
+                                    <constraint firstAttribute="bottom" secondItem="aWC-Sz-ZFf" secondAttribute="bottom" constant="5" id="Icc-kf-PaQ"/>
+                                    <constraint firstItem="hGG-mj-v9z" firstAttribute="centerY" secondItem="Y6Q-Zt-TuB" secondAttribute="centerY" id="Rtg-dH-TPx"/>
+                                    <constraint firstItem="hGG-mj-v9z" firstAttribute="width" secondItem="Y6Q-Zt-TuB" secondAttribute="width" multiplier="0.9" id="gUV-L1-faV"/>
+                                    <constraint firstItem="hGG-mj-v9z" firstAttribute="centerX" secondItem="Y6Q-Zt-TuB" secondAttribute="centerX" id="gri-fe-8Ol"/>
+                                    <constraint firstItem="hGG-mj-v9z" firstAttribute="height" secondItem="Y6Q-Zt-TuB" secondAttribute="height" multiplier="0.8" id="upS-wR-XBc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.23921568630000001" green="0.3294117647" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y6Q-Zt-TuB" firstAttribute="width" secondItem="m6o-oU-B48" secondAttribute="width" multiplier="0.8" id="2qf-9z-TtU"/>
+                            <constraint firstItem="Y6Q-Zt-TuB" firstAttribute="height" secondItem="m6o-oU-B48" secondAttribute="height" multiplier="0.5" id="UxE-IU-pTY"/>
+                            <constraint firstItem="Y6Q-Zt-TuB" firstAttribute="centerX" secondItem="m6o-oU-B48" secondAttribute="centerX" id="aMH-qU-oRG"/>
+                            <constraint firstItem="Y6Q-Zt-TuB" firstAttribute="centerY" secondItem="m6o-oU-B48" secondAttribute="centerY" id="kyG-be-qBJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m6o-oU-B48"/>
+                    </view>
+                    <connections>
+                        <outlet property="gobackButton" destination="aWC-Sz-ZFf" id="ZNy-kT-YVB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-3l-cWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="772"/>
+        </scene>
+        <!--Bundle Naming Promt View Controller-->
+        <scene sceneID="Nto-pr-dC2">
+            <objects>
+                <viewController storyboardIdentifier="CompleteYourBundle" id="2oe-3O-BnO" customClass="BundleNamingPromtViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TqA-Pt-l6C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3n3-8Z-N0u">
+                                <rect key="frame" x="37" y="182" width="300" height="323.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bZ-DJ-eVF">
+                                        <rect key="frame" x="15" y="33" width="270" height="258.5"/>
+                                        <string key="text">A bundle is a commitement.
+You need to check all todos as complete here.
+
+* Pro tip: use the arrow on the right to "put back" a todo that you don't want to complete anymore.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="BlueGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dz8-h6-GfO">
+                                        <rect key="frame" x="75" y="288.5" width="150" height="30"/>
+                                        <color key="backgroundColor" name="SummerSkyBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="g1l-MY-Sas"/>
+                                        </constraints>
+                                        <state key="normal" title="Go Back">
+                                            <color key="titleColor" name="AlmostWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="closePopupButton:" destination="2oe-3O-BnO" eventType="touchUpInside" id="AGi-j2-0jN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="AlmostWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7bZ-DJ-eVF" firstAttribute="height" secondItem="3n3-8Z-N0u" secondAttribute="height" multiplier="0.8" id="0n9-AD-YDJ"/>
+                                    <constraint firstItem="7bZ-DJ-eVF" firstAttribute="centerY" secondItem="3n3-8Z-N0u" secondAttribute="centerY" id="8Qj-52-PHE"/>
+                                    <constraint firstItem="7bZ-DJ-eVF" firstAttribute="width" secondItem="3n3-8Z-N0u" secondAttribute="width" multiplier="0.9" id="8mo-Xe-8so"/>
+                                    <constraint firstAttribute="bottom" secondItem="dz8-h6-GfO" secondAttribute="bottom" constant="5" id="VlJ-uQ-9hq"/>
+                                    <constraint firstItem="dz8-h6-GfO" firstAttribute="width" secondItem="3n3-8Z-N0u" secondAttribute="width" multiplier="0.5" id="rNr-rT-2Du"/>
+                                    <constraint firstItem="dz8-h6-GfO" firstAttribute="centerX" secondItem="3n3-8Z-N0u" secondAttribute="centerX" id="t0v-gr-esL"/>
+                                    <constraint firstItem="7bZ-DJ-eVF" firstAttribute="centerX" secondItem="3n3-8Z-N0u" secondAttribute="centerX" id="vzH-vQ-y6u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.23921568630000001" green="0.3294117647" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3n3-8Z-N0u" firstAttribute="centerX" secondItem="Y2s-D8-19n" secondAttribute="centerX" id="6iq-bv-98i"/>
+                            <constraint firstItem="3n3-8Z-N0u" firstAttribute="width" secondItem="Y2s-D8-19n" secondAttribute="width" multiplier="0.8" id="dhW-8g-3za"/>
+                            <constraint firstItem="3n3-8Z-N0u" firstAttribute="centerY" secondItem="Y2s-D8-19n" secondAttribute="centerY" id="gYs-H7-hpJ"/>
+                            <constraint firstItem="3n3-8Z-N0u" firstAttribute="height" secondItem="Y2s-D8-19n" secondAttribute="height" multiplier="0.5" id="hL7-bi-GWO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y2s-D8-19n"/>
+                    </view>
+                    <connections>
+                        <outlet property="gobackButton" destination="dz8-h6-GfO" id="lP8-jo-lnv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le0-Nx-Z3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="771"/>
+        </scene>
     </scenes>
     <resources>
         <image name="checked" width="50" height="50"/>
@@ -775,13 +935,22 @@ Go back and give the bundle a name/short summary to keep your finished todos nic
         <image name="icons8-undo-50" width="50" height="50"/>
         <image name="unchecked" width="50" height="50"/>
         <namedColor name="AlmostWhite">
+            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
+            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueGrey">
-            <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="DarkGrey">
-            <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="BlueGrey">
+            <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlueGrey">
+            <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -790,7 +959,13 @@ Go back and give the bundle a name/short summary to keep your finished todos nic
             <color red="0.76599997282028198" green="0.76599997282028198" blue="0.76599997282028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SummerSkyBlue">
+            <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
             <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
+            <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

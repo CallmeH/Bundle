@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -46,6 +47,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         moreThanAYear = bundles?.filter{$0.dateCompleted?.isInThisYear == false}.sorted(by: { $0.dateCompleted! > $1.dateCompleted!})
         
         navigationController?.navigationBar.barTintColor = UIColor.SummerSkyBlue
+        Answers.logCustomEvent(withName: "land on review", customAttributes: ["Funnel":"fresh review", "Flow": "Review", "Controller":"ReviewBundles"])
 //        completedBundlesTableView.allowsSelection = false
 //        print(bundles)
     }
@@ -183,6 +185,7 @@ class ReviewBundlesViewController: UIViewController, UITableViewDelegate, UITabl
         guard let identifier = segue.identifier else { return }
         switch identifier {
         case "bundleReviewToTasks":
+            Answers.logCustomEvent(withName: "see bundle details", customAttributes: ["Funnel":"review->completed", "Flow": "Review", "Controller":"CompletedItems"])
             guard let indexPath = completedBundlesTableView.indexPathForSelectedRow else {return}
             var chosenBundle: Bundle?
             let destination = segue.destination as! CompletedItemsInBundleTableViewController
