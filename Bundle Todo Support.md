@@ -3,22 +3,20 @@
 ## Table of Contents
 
 - [Associated files](#associated-files)
-- [Contact](#contact)
+- [Contact information](#contact-information)
 
 ------
 
-### Overview
-
 #### Associated files
 
-- for app design document & development timeline: see README.md
-- for privacy policy: see Privacy Policy.md
+- for app design document & development timeline: see [README.md](https://github.com/CallmeH/Bundle/blob/master/README.md)
+- for privacy policy: see [Privacy Policy.md](https://github.com/CallmeH/Bundle/blob/master/Privacy%20Policy.md)
 
-#### Contact
+#### Contact information
 
 email: developer.pei.qin@outlook.com
 
-Any questions, suggestions, feature requests, or crash/bug reports are welcomed.
+Welcome any questions, suggestions, feature requests, or crash/bug reports!
 
 
 
