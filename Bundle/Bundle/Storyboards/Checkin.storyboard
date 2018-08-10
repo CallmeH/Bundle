@@ -541,14 +541,14 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="23"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y72-1d-jMi">
-                                                                            <rect key="frame" x="5" y="1.5" width="20" height="20"/>
+                                                                            <rect key="frame" x="-2.5" y="-6" width="35" height="35"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="mns-w5-4GA"/>
+                                                                                <constraint firstAttribute="height" constant="35" id="mns-w5-4GA"/>
                                                                                 <constraint firstAttribute="width" secondItem="y72-1d-jMi" secondAttribute="height" multiplier="1:1" id="qEJ-WW-yMw"/>
                                                                             </constraints>
                                                                             <color key="tintColor" name="AlmostWhite"/>
-                                                                            <state key="normal" image="unchecked"/>
-                                                                            <state key="selected" image="checked"/>
+                                                                            <state key="normal" image="unchecked-mark"/>
+                                                                            <state key="selected" image="checked-mark"/>
                                                                             <connections>
                                                                                 <action selector="checkButtonTapped:" destination="AHG-CT-S1J" eventType="touchUpInside" id="Ong-Do-EGv"/>
                                                                             </connections>
@@ -720,7 +720,8 @@ Go back and give the bundle a name/short summary to organize your todos.</string
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="closePopupButton:" destination="ER7-5K-KhN" eventType="touchUpInside" id="5HM-gq-gjm"/>
+                                            <action selector="closePopupButton:" destination="ER7-5K-KhN" eventType="touchUpInside" id="3Fz-p7-lXb"/>
+                                            <segue destination="e4X-R5-x1U" kind="unwind" unwindAction="unwindToBundle:" id="WyT-bq-zBi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -761,6 +762,7 @@ Go back and give the bundle a name/short summary to organize your todos.</string
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JC0-Zn-sZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="e4X-R5-x1U" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2135" y="56"/>
         </scene>
@@ -926,43 +928,25 @@ You need to check all todos as complete here.
         </scene>
     </scenes>
     <resources>
-        <image name="checked" width="50" height="50"/>
+        <image name="checked-mark" width="83" height="83"/>
         <image name="icons8-1-24" width="24" height="24"/>
         <image name="icons8-checked-checkbox-50" width="37" height="37"/>
         <image name="icons8-close-window-50" width="37" height="37"/>
         <image name="icons8-gift-card-50" width="50" height="50"/>
         <image name="icons8-repeat-24" width="24" height="24"/>
         <image name="icons8-undo-50" width="50" height="50"/>
-        <image name="unchecked" width="50" height="50"/>
+        <image name="unchecked-mark" width="83" height="83"/>
         <namedColor name="AlmostWhite">
             <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="AlmostWhite">
-            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="AlmostWhite">
-            <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="BlueGrey">
             <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BlueGrey">
-            <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BlueGrey">
-            <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGrey">
             <color red="0.76599997282028198" green="0.76599997282028198" blue="0.76599997282028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SummerSkyBlue">
-            <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SummerSkyBlue">
-            <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SummerSkyBlue">
             <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

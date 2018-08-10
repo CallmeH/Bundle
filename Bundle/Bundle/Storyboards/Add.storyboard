@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -452,7 +451,192 @@ e.g. Email Daniel</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsB-go-X6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KAD-f4-7iT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1500" y="406"/>
+            <point key="canvasLocation" x="-1399" y="0.0"/>
+        </scene>
+        <!--Bundle Naming Promt View Controller-->
+        <scene sceneID="z3s-ne-KoB">
+            <objects>
+                <viewController storyboardIdentifier="NoEventAlert" id="gGE-Zj-9LY" customClass="BundleNamingPromtViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mvj-pa-2tV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4a-pz-5MQ">
+                                <rect key="frame" x="37" y="227.66666666666663" width="300" height="367"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8I-Jm-Ouu">
+                                        <rect key="frame" x="15" y="37.333333333333343" width="270" height="293"/>
+                                        <string key="text">You haven't choosen any todos.
+Tap on a title to select it.
+
+* Pro tip: Tap on the "1" or "repeat" button before the title to change the todo between repeating and single-use.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="BlueGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Q12-rR-pSr">
+                                        <rect key="frame" x="45" y="332" width="210" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBR-Y9-WCR">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="30"/>
+                                                <color key="backgroundColor" name="AlmostWhite"/>
+                                                <state key="normal" title="Go Back">
+                                                    <color key="titleColor" name="SummerSkyBlue"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="closePopupButton:" destination="gGE-Zj-9LY" eventType="touchUpInside" id="2nm-Ja-vB1"/>
+                                                    <segue destination="POK-4F-vAQ" kind="unwind" unwindAction="unwindFromEventToAddFirst:" id="ksC-0l-S9O"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOp-M8-M82">
+                                                <rect key="frame" x="115" y="0.0" width="95" height="30"/>
+                                                <color key="backgroundColor" name="SummerSkyBlue"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="ewd-47-2kG"/>
+                                                </constraints>
+                                                <state key="normal" title="Set event">
+                                                    <color key="titleColor" name="AlmostWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="closePopupButton:" destination="gGE-Zj-9LY" eventType="touchUpInside" id="cOS-p2-jmq"/>
+                                                    <segue destination="POK-4F-vAQ" kind="unwind" unwindAction="unwindAddFirstToEventChoice:" id="XQh-we-gVu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="AlmostWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Q8I-Jm-Ouu" firstAttribute="height" secondItem="v4a-pz-5MQ" secondAttribute="height" multiplier="0.8" id="7kJ-wi-IC0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q12-rR-pSr" secondAttribute="bottom" constant="5" id="BMV-Mk-aS9"/>
+                                    <constraint firstItem="Q8I-Jm-Ouu" firstAttribute="centerY" secondItem="v4a-pz-5MQ" secondAttribute="centerY" id="Pzv-XW-OXn"/>
+                                    <constraint firstItem="Q12-rR-pSr" firstAttribute="centerX" secondItem="v4a-pz-5MQ" secondAttribute="centerX" id="XSq-Wo-6tm"/>
+                                    <constraint firstItem="Q8I-Jm-Ouu" firstAttribute="centerX" secondItem="v4a-pz-5MQ" secondAttribute="centerX" id="iUL-AT-d3i"/>
+                                    <constraint firstItem="Q12-rR-pSr" firstAttribute="width" secondItem="v4a-pz-5MQ" secondAttribute="width" multiplier="0.7" id="lyh-Di-oMp"/>
+                                    <constraint firstItem="Q8I-Jm-Ouu" firstAttribute="width" secondItem="v4a-pz-5MQ" secondAttribute="width" multiplier="0.9" id="zsA-r6-EJt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.23921568630000001" green="0.3294117647" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v4a-pz-5MQ" firstAttribute="height" secondItem="yAh-Yi-ZYD" secondAttribute="height" multiplier="0.5" id="XVV-qB-t4U"/>
+                            <constraint firstItem="v4a-pz-5MQ" firstAttribute="centerX" secondItem="yAh-Yi-ZYD" secondAttribute="centerX" id="b1R-2F-R9p"/>
+                            <constraint firstItem="v4a-pz-5MQ" firstAttribute="width" secondItem="yAh-Yi-ZYD" secondAttribute="width" multiplier="0.8" id="bea-si-acU"/>
+                            <constraint firstItem="v4a-pz-5MQ" firstAttribute="centerY" secondItem="yAh-Yi-ZYD" secondAttribute="centerY" id="tEj-Ya-HNp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yAh-Yi-ZYD"/>
+                    </view>
+                    <connections>
+                        <outlet property="gobackButton" destination="FBR-Y9-WCR" id="yaW-F7-0WI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foW-8u-LOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="POK-4F-vAQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1399" y="756"/>
+        </scene>
+        <!--Bundle Naming Promt View Controller-->
+        <scene sceneID="A3C-UI-YyI">
+            <objects>
+                <viewController storyboardIdentifier="NoTodoAlert" id="RSH-0j-9zg" customClass="BundleNamingPromtViewController" customModule="Bundle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LZL-jN-F6P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWU-Vy-G0v">
+                                <rect key="frame" x="37" y="227.66666666666663" width="300" height="367"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7O-9j-k50">
+                                        <rect key="frame" x="15.666666666666657" y="37.333333333333343" width="270" height="293"/>
+                                        <string key="text">Hmmm..
+Looks like you haven't put down any todos.
+
+*Pro tip: to add multiple todos, separate each item with ;</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="BlueGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eov-ct-tTP">
+                                        <rect key="frame" x="75" y="332" width="150" height="30"/>
+                                        <color key="backgroundColor" name="SummerSkyBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="LXx-B1-42M"/>
+                                        </constraints>
+                                        <state key="normal" title="Set todo">
+                                            <color key="titleColor" name="AlmostWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="closePopupButton:" destination="RSH-0j-9zg" eventType="touchUpInside" id="rFX-uz-KJL"/>
+                                            <segue destination="isK-Ca-03v" kind="unwind" unwindAction="unwindAddFristToTextView:" id="deO-Hm-dTX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="AlmostWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eov-ct-tTP" firstAttribute="width" secondItem="bWU-Vy-G0v" secondAttribute="width" multiplier="0.5" id="7im-lb-Wso"/>
+                                    <constraint firstItem="eov-ct-tTP" firstAttribute="centerX" secondItem="bWU-Vy-G0v" secondAttribute="centerX" id="Lyv-FK-2d1"/>
+                                    <constraint firstItem="A7O-9j-k50" firstAttribute="centerY" secondItem="bWU-Vy-G0v" secondAttribute="centerY" id="RTc-IN-zqw"/>
+                                    <constraint firstItem="A7O-9j-k50" firstAttribute="height" secondItem="bWU-Vy-G0v" secondAttribute="height" multiplier="0.8" id="Tfi-wP-GKW"/>
+                                    <constraint firstAttribute="bottom" secondItem="eov-ct-tTP" secondAttribute="bottom" constant="5" id="am4-70-Rbo"/>
+                                    <constraint firstItem="A7O-9j-k50" firstAttribute="width" secondItem="bWU-Vy-G0v" secondAttribute="width" multiplier="0.9" id="gba-qk-vSK"/>
+                                    <constraint firstItem="A7O-9j-k50" firstAttribute="centerX" secondItem="bWU-Vy-G0v" secondAttribute="centerX" id="ws2-vc-NUo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.23921568630000001" green="0.3294117647" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bWU-Vy-G0v" firstAttribute="centerX" secondItem="oiJ-V1-zEr" secondAttribute="centerX" id="dHm-Qj-06M"/>
+                            <constraint firstItem="bWU-Vy-G0v" firstAttribute="centerY" secondItem="oiJ-V1-zEr" secondAttribute="centerY" id="e8X-c4-zq0"/>
+                            <constraint firstItem="bWU-Vy-G0v" firstAttribute="width" secondItem="oiJ-V1-zEr" secondAttribute="width" multiplier="0.8" id="hH1-sJ-Fjg"/>
+                            <constraint firstItem="bWU-Vy-G0v" firstAttribute="height" secondItem="oiJ-V1-zEr" secondAttribute="height" multiplier="0.5" id="oS3-Fd-ect"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oiJ-V1-zEr"/>
+                    </view>
+                    <connections>
+                        <outlet property="gobackButton" destination="eov-ct-tTP" id="SDV-Ag-LfN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CDd-De-5du" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="isK-Ca-03v" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2316" y="756"/>
         </scene>
     </scenes>
     <resources>
@@ -462,10 +646,25 @@ e.g. Email Daniel</string>
             <color red="0.059000000357627869" green="0.10199999809265137" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AlmostWhite">
+            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
+            <color red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
+            <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AlmostWhite">
             <color red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueGrey">
             <color red="0.23899999260902405" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlueGrey">
+            <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlueGrey">
+            <color red="0.23899999259999999" green="0.32899999619999998" blue="0.43099999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.13333333333333333" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -474,7 +673,16 @@ e.g. Email Daniel</string>
             <color red="0.76599997282028198" green="0.76599997282028198" blue="0.76599997282028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SummerSkyBlue">
+            <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
             <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
+            <color red="0.19215686274509805" green="0.71372549019607845" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SummerSkyBlue">
+            <color red="0.19215686269999999" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

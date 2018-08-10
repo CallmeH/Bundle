@@ -95,7 +95,11 @@ class AddEventViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func addNewEventButtonTouched(_ sender: UIButton) {
-        initiateNewEvent()
+        if inputEventTextField.text == "" {
+            inputEventTextField.becomeFirstResponder()
+        } else {
+            initiateNewEvent()
+        }
     }
     
     @IBAction func assignEventButtonTapped(_ sender: UIButton) {

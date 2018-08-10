@@ -149,6 +149,10 @@ class BundleViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    @IBAction func unwindToBundle(_ segue: UIStoryboardSegue) {
+        bundleNameTextField.becomeFirstResponder()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         switch identifier {

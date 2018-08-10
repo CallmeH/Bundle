@@ -160,8 +160,30 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveNewTodoWithEventTapped(_ sender: UIButton) {
-        guard todoWasSetBefore else {return}
-        guard eventWasSetBefore else {return}
+        guard todoWasSetBefore else {
+            let popOver = UIStoryboard(name: "Add", bundle: nil).instantiateViewController(withIdentifier: "NoTodoAlert") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
+            return
+        }
+        guard inputTodoTextView.text != "" else {
+            let popOver = UIStoryboard(name: "Add", bundle: nil).instantiateViewController(withIdentifier: "NoTodoAlert") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
+            return
+        }
+        guard eventWasSetBefore else {
+            let popOver = UIStoryboard(name: "Add", bundle: nil).instantiateViewController(withIdentifier: "NoEventAlert") as! BundleNamingPromtViewController
+            self.addChildViewController(popOver)
+            popOver.view.frame = self.view.frame
+            self.view.addSubview(popOver.view)
+            popOver.didMove(toParentViewController: self)
+            return
+        }
         for i in selectedEvent! {
     //        newTodo.title = todoButtonDisplay.titleLabel?.text
             let allTodos = inputTodoTextView.text
@@ -184,5 +206,14 @@ class AddFirstScreenViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func unwindFromEventToAddFirst(_ sender: UIStoryboardSegue) {
     }
+    
+    @IBAction func unwindAddFristToTextView(_ sender: UIStoryboardSegue) {
+        inputTodoTextView.becomeFirstResponder()
+    }
+    
+    @IBAction func unwindAddFirstToEventChoice(_ sender: UIStoryboardSegue) {
+        performSegue(withIdentifier: "AddEvent", sender: Any?.self)
+    }
+    
 }
 
